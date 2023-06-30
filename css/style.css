@@ -313,6 +313,7 @@ body {
 }
 .post-content aside {
 	padding: var(--space-3) var(--space-4);
+	margin: var(--space-4) 0;
 	border: var(--border-main);
 }
 .post-content pre {
