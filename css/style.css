@@ -416,11 +416,11 @@ body {
 	line-height: 2;
 }
 
-.profile-image {
+.profile img {
 	padding: var(--space-2);
 	border: var(--border-main);
-	line-height: 0;
 }
+
 .profile-icons {
 	display: flex;
 	flex-flow: row wrap;
