@@ -286,7 +286,8 @@ body {
 	border-bottom: var(--border-main);
 }
 .post-content > * {
-	margin: var(--space-3) 0;	
+	max-width: 100%;
+	margin: var(--space-3) 0;
 }
 .post-content p {
 	overflow: auto;
