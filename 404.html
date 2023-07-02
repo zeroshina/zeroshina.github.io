@@ -114,16 +114,14 @@
     <link rel="stylesheet" href="/lib/icomoon/style.css">
     <link rel="stylesheet" href="/lib/lightbox/lightbox.css">
     <script type="text/javascript" src="/lib/lightbox/lightbox.js"></script> 
-    <script type="application/javascript">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KNSCG1XLPB"></script> 
+    <script>
 
-    var doNotTrack = false;
-    if (!doNotTrack) {
-        window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-        ga('create', 'G-KNSCG1XLPB', 'auto');
-        
-        ga('send', 'pageview');
-    }
-    </script> 
-    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-KNSCG1XLPB');
+    </script>
 </body>
 </html>
