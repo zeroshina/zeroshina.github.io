@@ -9,7 +9,25 @@
 	--space-3: 1.00rem;
 	--space-4: 1.50rem;
 	--space-5: 3.00rem;
+}
 
+@media (max-width: 1199px) {
+	:root {
+		--width-site: 960px;
+	}
+}
+@media (max-width: 999px) {
+	:root {
+		--width-site: 760px;
+	}
+}
+@media (max-width: 799px) {
+	:root {
+		--width-site: 560px;
+	}
+}
+
+:root {
 	--ff-logo: "Noto Serif", "Times New Roman";
 	--ff-main: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", "游ゴシック", "Yu Gothic", "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
 	--ff-code: "DejaVu Sans Mono", "Noto Sans Mono", "Consolas", "Courier";
@@ -36,7 +54,6 @@
 
 	--border-color: #e0e0e0;
 	--border-main: 1px solid var(--border-color);
-
 	--btn-size-page: 3rem;
 }
 
@@ -104,11 +121,6 @@ body {
 .site-content , .header-content, .footer-content {
 	max-width: var(--width-site); 
 }
-@media (max-width: 1199px) { .site-content, .header-content, .footer-content { max-width: 960px; } }
-@media (max-width: 999px)  { .site-content, .header-content, .footer-content  { max-width: 760px; } }
-@media (max-width: 799px)  { .site-content, .header-content, .footer-content  { max-width: 560px; } }
-@media (max-width: 560px)  { .site-content, .header-content, .footer-content  { max-width: none; } }
-
 .main-content {
 	flex: 1 0 var(--width-main);
 }
