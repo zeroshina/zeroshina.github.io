@@ -331,21 +331,21 @@ body {
 	margin: var(--space-4) 0;
 	border: var(--border-main);
 }
-.post-content pre {
-	padding: var(--space-2) var(--space-3);
+
+pre {
+	padding: var(--space-3) var(--space-3);
 	font-family: var(--fonts-mono);
 	line-height: inherit;
 	word-wrap: break-word;
-
 	background-color: var(--bgc-sub);
 }
-.post-content code {
-	padding: 0 var(--space-1);
+p code {
+	margin: var(--space-1);
+	padding: var(--space-1);
 	background-color: var(--bgc-sub);
 }
 
 .post-content table {
-	width: 100%;
 	margin: 40px 0;
 	border-collapse: collapse;
 }
