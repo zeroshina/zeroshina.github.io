@@ -310,6 +310,11 @@ body {
 	display: block;
 	margin: var(--space-2) auto;
 }
+.post-content canvas {
+	display: block;
+	margin: var(--space-3) auto;
+}
+
 .post-content ul, 
 .post-content ol {
 	list-style-position: inside;
