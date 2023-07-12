@@ -438,6 +438,7 @@ p code {
 }
 
 .profile img {
+	box-sizing: content-box;
 	padding: var(--space-2);
 	border: var(--border-main);
 }
