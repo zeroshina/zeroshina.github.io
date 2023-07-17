@@ -32,14 +32,15 @@
 	--ff-main: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", "游ゴシック", "Yu Gothic", "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
 	--ff-code: "DejaVu Sans Mono", "Noto Sans Mono", "Consolas", "Courier";
 
-	--fs-site-title: 5rem;
+	--fs-site-title: 5.5rem;
 	--fs-site-menu: 1.1rem;
-	--fs-single-title: 1.8rem;
-	--fs-card-title: 1.4rem;
+	--fs-single-title: 1.9rem;
+	--fs-card-title: 1.5rem;
 	--fs-icon-main: 1.5rem;
 
 	--fs-subtitle: 1.5rem;
 	--fs-main: 0.9rem;
+	--fs-sub: 0.8rem;
 
 	--fc-main-a: #444444;
 	--fc-main-b: #666666;
@@ -175,6 +176,7 @@ body {
 	font-family: var(--ff-logo);
 	font-size: var(--fs-site-title);
 	font-weight: bold;
+	line-height: 1.5;
 	text-align: center;
 }
 
@@ -242,6 +244,7 @@ body {
 }
 .post-meta {
 	color: var(--fc-main-b);
+	font-size: var(--fs-sub);
 }
 
 /* post-card */
@@ -254,18 +257,17 @@ body {
 .card .post-title {
 	font-size: var(--fs-card-title);
 	text-align: center;
-	margin: var(--space-2) 0;
+	margin: var(--space-3) 0;
 }
 
 .card .post-thumbnail {
 }
 
 .card .post-meta {
-	margin: var(--space-2) 0;
+	text-align: center;
 }
 
 .card .post-meta.taxonomies {
-	text-align: center;
 }
 
 /* post-single */
@@ -273,10 +275,11 @@ body {
 	width: 100%;
 	max-width: var(--width-article);
 	margin: 0 auto var(--space-4);
+	padding: 0 var(--space-4);
 }
 
 .single .post-header {
-	padding: var(--space-3) var(--space-4);
+	padding: var(--space-4) 0;
 	border-bottom: var(--border-main);
 }
 
@@ -287,18 +290,16 @@ body {
 }
 
 .single .post-meta {
-	margin: var(--space-1);
 	text-align: center;
 }
 
 .single .readmore {
-	text-align: right;
+	font-size: var(--fs-sub);
 }
 
 /* post-contnet */
 .post-content {
-	padding: var(--space-3) var(--space-4);
-	border-bottom: var(--border-main);
+	padding: var(--space-3) 0;
 }
 .post-content > * {
 	max-width: 100%;
@@ -366,7 +367,7 @@ p code {
 }
 
 .post-footer {
-	padding: var(--space-3) var(--space-4);
+	border-bottom: var(--border-main);
 }
 .post-navigation {
 	margin: var(--space-2);
@@ -414,6 +415,9 @@ p code {
 
 
 /* side content */
+.side-content {
+	font-size: var(--fs-sub);
+}
 .side-content a {
 	color: var(--fc-main-a);
 }
