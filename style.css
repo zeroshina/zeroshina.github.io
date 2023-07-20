@@ -371,8 +371,11 @@ p code {
 	border-bottom: var(--border-main);
 }
 .post-navigation {
-	margin: var(--space-2);
+	padding: var(--space-3) 0;
 	text-align: center;
+}
+.post-navigation .next-post, .post-navigation .prev-post {
+	margin: var(--space-1) 0;
 }
 
 /* pagination */
