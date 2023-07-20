@@ -7,8 +7,15 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
         <copyright>©047</copyright>
-        <lastBuildDate>Fri, 14 Jul 2023 00:00:00 +0900</lastBuildDate>
+        <lastBuildDate>Thu, 20 Jul 2023 00:00:00 +0900</lastBuildDate>
         <atom:link href="https://zeroshina.jp/index.xml" rel="self" type="application/rss+xml" />
+        <item>
+            <title>WordpressからHugoへ</title>
+            <link>https://zeroshina.jp/blog/2023-07-20-wordpress-to-hugo/</link>
+            <pubDate>Thu, 20 Jul 2023 00:00:00 +0900</pubDate>
+            <guid>https://zeroshina.jp/blog/2023-07-20-wordpress-to-hugo/</guid>
+            <description>&lt;p&gt;サイトの新調をしました。性懲りもなく、半年ぶりn回目の。&lt;/p&gt; &lt;p&gt;ただし今回はいつも使っていたWordpressではなくHugoでサイト構築を行っており、いわゆる動的サイトから静的サイトへ移行しております。学びのある挑戦だからセーフ…！&lt;/p&gt; &lt;p&gt;構成としてはHugoでサイトを出力し、GitHub Pagesで公開するというよくある組み合わせです。 ついでに出力時にTidy HTMLで整形を掛けているため、ソースコードもそれなりに整っているかと思います。割と自己満足の領域ですが、人の目に触れないところも綺麗にしておきたい欲があるのでここは移行して嬉しかったところの一つだったりします。&lt;/p&gt; &lt;p&gt;サイトのテーマも一応自分で拵えたもので、見た目も機能も最低限ですが自分がやりたいことは一通り実装できました。当初は既存のテーマにコード直書き☆蛮族カスタマイズでぱぱっと済ます予定でしたが、結局は時間と労力を掛けてしまいました。でも楽しかったから…学びがあったから…&lt;/p&gt;</description>
+        </item>
         <item>
             <title>ゼルダの伝説BotW クリア！</title>
             <link>https://zeroshina.jp/blog/2023-07-14-botw/</link>
