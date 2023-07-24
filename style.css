@@ -306,12 +306,16 @@ body {
 	max-width: 100%;
 	margin: var(--space-3) 0;
 }
+.post-content > h2 {
+	margin-top: var(--space-4);
+	border-bottom: var(--border-main);
+}
 .post-content p {
 	overflow: auto;
 }
 .post-content img {
 	display: block;
-	margin: var(--space-2) auto;
+	margin: var(--space-2) 0;
 }
 .post-content canvas {
 	display: block;
