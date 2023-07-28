@@ -7,8 +7,15 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
         <copyright>©047</copyright>
-        <lastBuildDate>Mon, 24 Jul 2023 00:00:00 +0900</lastBuildDate>
+        <lastBuildDate>Fri, 28 Jul 2023 00:00:00 +0900</lastBuildDate>
         <atom:link href="https://zeroshina.jp/index.xml" rel="self" type="application/rss+xml" />
+        <item>
+            <title>Blender Unlitシェーダーによる描画と出力</title>
+            <link>https://zeroshina.jp/post/blender-render-unlit/</link>
+            <pubDate>Fri, 28 Jul 2023 00:00:00 +0900</pubDate>
+            <guid>https://zeroshina.jp/post/blender-render-unlit/</guid>
+            <description>&lt;p&gt;ローポリでモデルを制作する際、Unlitシェーダーで描画・出力したい場面がありました。&lt;br&gt; Unlit、つまりモデルに陰影をつけずにテクスチャのカラーをそのまま反映させる描画方法ですね。こちらはBlenderのWorkbenchレンダラーを使うことで簡単に設定できるため、メモも兼ねて手順を残しておきます。&lt;/p&gt; &lt;p&gt;使用したBlenderのバージョンは3.6.1になります。&lt;/p&gt;</description>
+        </item>
         <item>
             <title>ピクミン4（体験版）クリア！</title>
             <link>https://zeroshina.jp/blog/2023-07-24-pikmin4/</link>
