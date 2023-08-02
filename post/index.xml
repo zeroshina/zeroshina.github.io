@@ -7,8 +7,15 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
         <copyright>©047</copyright>
-        <lastBuildDate>Tue, 01 Aug 2023 00:00:00 +0900</lastBuildDate>
+        <lastBuildDate>Thu, 03 Aug 2023 00:00:00 +0900</lastBuildDate>
         <atom:link href="https://zeroshina.jp/post/index.xml" rel="self" type="application/rss+xml" />
+        <item>
+            <title>Blender 背景を透過したavi動画の出力</title>
+            <link>https://zeroshina.jp/post/blender-alpha-movie/</link>
+            <pubDate>Thu, 03 Aug 2023 00:00:00 +0900</pubDate>
+            <guid>https://zeroshina.jp/post/blender-alpha-movie/</guid>
+            <description>&lt;p&gt;Blenderで出力した動画に編集を加える場合、背景が透過されていた方が都合の良い場面があります。&lt;br&gt; こちらは出力設定を変更することで対応できますが、項目が多く見落としがちなため手順をメモとして残しておこうと思います。&lt;/p&gt; &lt;p&gt;使用しているBlenderのバージョンは3.6.1になります。&lt;/p&gt;</description>
+        </item>
         <item>
             <title>Blender ワイヤーフレームでの描画と出力</title>
             <link>https://zeroshina.jp/post/blender-render-wireframe/</link>
