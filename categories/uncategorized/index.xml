@@ -2,13 +2,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>その他 on 047</title>
-        <link>https://zeroshina.jp/categories/misc/</link>
+        <link>https://zeroshina.jp/categories/uncategorized/</link>
         <description>Recent content in その他 on 047</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
         <copyright>©047</copyright>
         <lastBuildDate>Thu, 17 Mar 2022 00:00:00 +0900</lastBuildDate>
-        <atom:link href="https://zeroshina.jp/categories/misc/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://zeroshina.jp/categories/uncategorized/index.xml" rel="self" type="application/rss+xml" />
         <item>
             <title>「このApple IDは有効ではありません。」と表示された時の対処法</title>
             <link>https://zeroshina.jp/post/apple-id-disabled/</link>
