@@ -7,8 +7,15 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
         <copyright>©047</copyright>
-        <lastBuildDate>Fri, 01 Sep 2023 00:00:00 +0900</lastBuildDate>
+        <lastBuildDate>Thu, 07 Sep 2023 00:00:00 +0900</lastBuildDate>
         <atom:link href="https://zeroshina.jp/tags/index.xml" rel="self" type="application/rss+xml" />
+        <item>
+            <title>遊戯王</title>
+            <link>https://zeroshina.jp/tags/yugioh/</link>
+            <pubDate>Thu, 07 Sep 2023 00:00:00 +0900</pubDate>
+            <guid>https://zeroshina.jp/tags/yugioh/</guid>
+            <description></description>
+        </item>
         <item>
             <title>アプリ</title>
             <link>https://zeroshina.jp/tags/mobile-app/</link>
@@ -42,13 +49,6 @@
             <link>https://zeroshina.jp/tags/blender/</link>
             <pubDate>Thu, 03 Aug 2023 00:00:00 +0900</pubDate>
             <guid>https://zeroshina.jp/tags/blender/</guid>
-            <description></description>
-        </item>
-        <item>
-            <title>遊戯王</title>
-            <link>https://zeroshina.jp/tags/yugioh/</link>
-            <pubDate>Mon, 31 Jul 2023 00:00:00 +0900</pubDate>
-            <guid>https://zeroshina.jp/tags/yugioh/</guid>
             <description></description>
         </item>
     </channel>
