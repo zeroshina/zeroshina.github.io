@@ -7,7 +7,7 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
         <copyright>©047</copyright>
-        <lastBuildDate>Fri, 08 Sep 2023 00:00:00 +0900</lastBuildDate>
+        <lastBuildDate>Fri, 15 Sep 2023 00:00:00 +0900</lastBuildDate>
         <atom:link href="https://zeroshina.jp/categories/index.xml" rel="self" type="application/rss+xml" />
         <item>
             <title>その他</title>
@@ -19,8 +19,15 @@
         <item>
             <title>カード</title>
             <link>https://zeroshina.jp/categories/card/</link>
-            <pubDate>Fri, 08 Sep 2023 00:00:00 +0900</pubDate>
+            <pubDate>Fri, 15 Sep 2023 00:00:00 +0900</pubDate>
             <guid>https://zeroshina.jp/categories/card/</guid>
+            <description></description>
+        </item>
+        <item>
+            <title>レビュー</title>
+            <link>https://zeroshina.jp/categories/review/</link>
+            <pubDate>Fri, 15 Sep 2023 00:00:00 +0900</pubDate>
+            <guid>https://zeroshina.jp/categories/review/</guid>
             <description></description>
         </item>
         <item>
