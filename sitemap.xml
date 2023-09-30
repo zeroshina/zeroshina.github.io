@@ -6,15 +6,31 @@
     </url>
     <url>
         <loc>https://zeroshina.jp/</loc>
-        <lastmod>2023-09-15T00:00:00+09:00</lastmod>
+        <lastmod>2023-09-30T00:00:00+09:00</lastmod>
+    </url>
+    <url>
+        <loc>https://zeroshina.jp/blog/</loc>
+        <lastmod>2023-09-30T00:00:00+09:00</lastmod>
     </url>
     <url>
         <loc>https://zeroshina.jp/categories/</loc>
-        <lastmod>2023-09-15T00:00:00+09:00</lastmod>
+        <lastmod>2023-09-30T00:00:00+09:00</lastmod>
     </url>
     <url>
         <loc>https://zeroshina.jp/tags/</loc>
-        <lastmod>2023-09-15T00:00:00+09:00</lastmod>
+        <lastmod>2023-09-30T00:00:00+09:00</lastmod>
+    </url>
+    <url>
+        <loc>https://zeroshina.jp/tags/mobile-app/</loc>
+        <lastmod>2023-09-30T00:00:00+09:00</lastmod>
+    </url>
+    <url>
+        <loc>https://zeroshina.jp/categories/game/</loc>
+        <lastmod>2023-09-30T00:00:00+09:00</lastmod>
+    </url>
+    <url>
+        <loc>https://zeroshina.jp/blog/2023-09-30-pokemon-sleep/</loc>
+        <lastmod>2023-09-30T00:00:00+09:00</lastmod>
     </url>
     <url>
         <loc>https://zeroshina.jp/post/</loc>
@@ -37,20 +53,8 @@
         <lastmod>2023-09-15T00:00:00+09:00</lastmod>
     </url>
     <url>
-        <loc>https://zeroshina.jp/blog/</loc>
-        <lastmod>2023-09-08T00:00:00+09:00</lastmod>
-    </url>
-    <url>
         <loc>https://zeroshina.jp/blog/2023-09-08-yugioh-ocg/</loc>
         <lastmod>2023-09-08T00:00:00+09:00</lastmod>
-    </url>
-    <url>
-        <loc>https://zeroshina.jp/tags/mobile-app/</loc>
-        <lastmod>2023-09-01T00:00:00+09:00</lastmod>
-    </url>
-    <url>
-        <loc>https://zeroshina.jp/categories/game/</loc>
-        <lastmod>2023-09-01T00:00:00+09:00</lastmod>
     </url>
     <url>
         <loc>https://zeroshina.jp/blog/2023-09-01-pokemon-sleep/</loc>
