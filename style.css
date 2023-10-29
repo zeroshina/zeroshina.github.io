@@ -32,7 +32,10 @@
 	--ff-main: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", "游ゴシック", "Yu Gothic", "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
 	--ff-code: "DejaVu Sans Mono", "Noto Sans Mono", "Consolas", "Courier";
 
-	--fs-site-title: 5.5rem;
+	--fs-site-title-main: 5.2rem;
+	--fs-site-title-sub: 3.2rem;
+	--sps-site-title: 0.75;
+
 	--fs-site-menu: 1.1rem;
 	--fs-single-title: 1.9rem;
 	--fs-card-title: 1.5rem;
@@ -94,6 +97,11 @@ a {
 }
 a:hover {
 	color: var(--fc-sub-b);
+}
+
+/* Delere brank at <li><br><a>... for firefox */
+li::marker {
+	white-space: normal;
 }
 
 html {
@@ -166,18 +174,57 @@ body {
 
 .header-content a {
 	color: var(--fc-main-a);
+	fill: var(--fc-main-a);
 	text-decoration: none;
 }
 .header-content a:hover {
 	color: var(--fc-main-b);
+	fill: var(--fc-main-b);
+}
+
+.site-title>a {
+	display: inline-flex;
+	align-items: baseline;
+	justify-content: center;
+	overflow: hidden;
+}
+
+.site-title>a * {
+	flex: 0 0 auto;
+}
+
+.site-logo {
+	margin-right: var(--space-2);
+}
+.site-logo svg, .site-logo img {
+	width: inherit;
+	height: var(--fs-site-title-main);
+	vertical-align: sub;
 }
 
 .site-title {
 	font-family: var(--ff-logo);
-	font-size: var(--fs-site-title);
+	font-size: var(--fs-site-title-main);
 	font-weight: bold;
 	line-height: 1.5;
 	text-align: center;
+	overflow: hidden;
+}
+
+.site-title .site-title-second {
+	font-size: var(--fs-site-title-sub);
+}
+
+@media (max-width: 799px) {
+	.site-title {
+		font-size: calc(var(--fs-site-title-main) * var(--sps-site-title));
+	}
+	.site-logo svg {
+		height: calc(var(--fs-site-title-main) * var(--sps-site-title));
+	}
+	.site-title .site-title-second {
+		font-size: calc(var(--fs-site-title-sub) * var(--sps-site-title));
+	}
 }
 
 .site-menu {
@@ -244,8 +291,17 @@ body {
 	color: var(--fc-main-b);
 }
 .post-meta {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+
+	padding: 0 var(--space-2);
 	color: var(--fc-main-b);
 	font-size: var(--fs-sub);
+}
+.post-meta>* {
+	flex: 0 0 auto;
+	margin: 0 var(--space-1);
 }
 
 /* post-card */
