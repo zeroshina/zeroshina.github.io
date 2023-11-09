@@ -99,6 +99,11 @@ a:hover {
 	color: var(--fc-sub-b);
 }
 
+/* Delete brank img-bottom  */
+a img {
+	vertical-align: middle;
+}
+
 /* Delere brank at <li><br><a>... for firefox */
 li::marker {
 	white-space: normal;
@@ -503,6 +508,9 @@ p code {
 }
 .widget-content li {
 	line-height: 2;
+}
+.widget-content p {
+	margin: var(--space-2) 0;
 }
 
 .profile img {
