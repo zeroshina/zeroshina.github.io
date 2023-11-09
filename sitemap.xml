@@ -6,26 +6,38 @@
     </url>
     <url>
         <loc>https://zeroshina.jp/</loc>
-        <lastmod>2023-11-03T00:00:00+09:00</lastmod>
+        <lastmod>2023-11-09T00:00:00+09:00</lastmod>
+    </url>
+    <url>
+        <loc>https://zeroshina.jp/categories/</loc>
+        <lastmod>2023-11-09T00:00:00+09:00</lastmod>
+    </url>
+    <url>
+        <loc>https://zeroshina.jp/review/</loc>
+        <lastmod>2023-11-09T00:00:00+09:00</lastmod>
+    </url>
+    <url>
+        <loc>https://zeroshina.jp/tags/</loc>
+        <lastmod>2023-11-09T00:00:00+09:00</lastmod>
+    </url>
+    <url>
+        <loc>https://zeroshina.jp/categories/card/</loc>
+        <lastmod>2023-11-09T00:00:00+09:00</lastmod>
+    </url>
+    <url>
+        <loc>https://zeroshina.jp/review/small-sleeve-inner-side-daiso/</loc>
+        <lastmod>2023-11-09T00:00:00+09:00</lastmod>
+    </url>
+    <url>
+        <loc>https://zeroshina.jp/tags/yugioh/</loc>
+        <lastmod>2023-11-09T00:00:00+09:00</lastmod>
     </url>
     <url>
         <loc>https://zeroshina.jp/blog/</loc>
         <lastmod>2023-11-03T00:00:00+09:00</lastmod>
     </url>
     <url>
-        <loc>https://zeroshina.jp/categories/</loc>
-        <lastmod>2023-11-03T00:00:00+09:00</lastmod>
-    </url>
-    <url>
         <loc>https://zeroshina.jp/tags/steam/</loc>
-        <lastmod>2023-11-03T00:00:00+09:00</lastmod>
-    </url>
-    <url>
-        <loc>https://zeroshina.jp/tags/</loc>
-        <lastmod>2023-11-03T00:00:00+09:00</lastmod>
-    </url>
-    <url>
-        <loc>https://zeroshina.jp/categories/card/</loc>
         <lastmod>2023-11-03T00:00:00+09:00</lastmod>
     </url>
     <url>
@@ -34,10 +46,6 @@
     </url>
     <url>
         <loc>https://zeroshina.jp/blog/2023-11-03-yugioh-master-duel/</loc>
-        <lastmod>2023-11-03T00:00:00+09:00</lastmod>
-    </url>
-    <url>
-        <loc>https://zeroshina.jp/tags/yugioh/</loc>
         <lastmod>2023-11-03T00:00:00+09:00</lastmod>
     </url>
     <url>
@@ -57,15 +65,7 @@
         <lastmod>2023-09-30T00:00:00+09:00</lastmod>
     </url>
     <url>
-        <loc>https://zeroshina.jp/post/</loc>
-        <lastmod>2023-09-15T00:00:00+09:00</lastmod>
-    </url>
-    <url>
-        <loc>https://zeroshina.jp/categories/review/</loc>
-        <lastmod>2023-09-15T00:00:00+09:00</lastmod>
-    </url>
-    <url>
-        <loc>https://zeroshina.jp/post/review-drybox-nakabayashi/</loc>
+        <loc>https://zeroshina.jp/review/drybox-nakabayashi/</loc>
         <lastmod>2023-09-15T00:00:00+09:00</lastmod>
     </url>
     <url>
@@ -101,15 +101,19 @@
         <lastmod>2023-08-04T00:00:00+09:00</lastmod>
     </url>
     <url>
-        <loc>https://zeroshina.jp/categories/modeling/</loc>
-        <lastmod>2023-08-03T00:00:00+09:00</lastmod>
-    </url>
-    <url>
         <loc>https://zeroshina.jp/tags/blender/</loc>
         <lastmod>2023-08-03T00:00:00+09:00</lastmod>
     </url>
     <url>
         <loc>https://zeroshina.jp/post/blender-alpha-movie/</loc>
+        <lastmod>2023-08-03T00:00:00+09:00</lastmod>
+    </url>
+    <url>
+        <loc>https://zeroshina.jp/post/</loc>
+        <lastmod>2023-08-03T00:00:00+09:00</lastmod>
+    </url>
+    <url>
+        <loc>https://zeroshina.jp/categories/modeling/</loc>
         <lastmod>2023-08-03T00:00:00+09:00</lastmod>
     </url>
     <url>
@@ -165,11 +169,20 @@
         <lastmod>2023-04-26T00:00:00+09:00</lastmod>
     </url>
     <url>
-        <loc>https://zeroshina.jp/post/small-sleeve-inner-side/</loc>
+        <loc>https://zeroshina.jp/review/small-sleeve-inner-side/</loc>
         <lastmod>2023-01-28T00:00:00+09:00</lastmod>
     </url>
     <url>
         <loc>https://zeroshina.jp/post/apple-id-disabled/</loc>
         <lastmod>2022-03-17T00:00:00+09:00</lastmod>
+    </url>
+    <url>
+        <loc>https://zeroshina.jp/artwork/</loc>
+    </url>
+    <url>
+        <loc>https://zeroshina.jp/tags/sd/</loc>
+    </url>
+    <url>
+        <loc>https://zeroshina.jp/tags/lowpoly/</loc>
     </url>
 </urlset>
