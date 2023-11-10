@@ -50,8 +50,11 @@
     </header>
     <main class="site-content">
         <div class="main-content">
-            <article class="post single section-blog">
+            <div class="post card section-blog">
                 <header class="post-header">
+                    <div class="post-thumbnail">
+                        <a href="/blog/2023-07-20-wordpress-to-hugo/"><img src="/uploads/site/default-cover-thumb.webp" alt="" loading="lazy" width="800" height="450"></a>
+                    </div>
                     <h1 class="post-title"><a href="/blog/2023-07-20-wordpress-to-hugo/">WordpressからHugoへ</a></h1>
                     <div class="post-meta date">
                         <time class="post-meta-item" datetime="2023-07-20 00:00:00 +0900 JST">2023/07/20</time>
@@ -60,18 +63,7 @@
                         <span class="post-meta-title taxonomy">Categories:</span> <span class="post-meta-item term"><a href="/categories/diary/">日記</a></span>
                     </div>
                 </header>
-                <div class="post-content">
-                    <p>半年ぶりn回目のサイトの新調を行いました。</p>
-                    <p>ただし今回は長年使っていたWordpressではなく、Hugoでサイトの構築を行っています。いわゆる動的サイトから静的サイトへの移行ということで、学びのある挑戦だからセーフと自分に言い聞かせております。</p>
-                    <p>構成としてはHugoでサイト出力、GitHub Pagesで公開というよくある組み合わせです。 また出力時にTidy HTMLで整形を掛けているためソースコードも多少整っているハズ。割と自己満足の領域ですが、何気に移行して一番嬉しかったところの一つかもしれません。</p>
-                    <p>サイトのテーマは一応自分で制作したものになります。当初は既存のテーマにコード直書き☆蛮族カスタマイズでぱぱっと済ます予定でしたが、結局は時間と労力を掛けてしまいました。おかげで最低限ではありますが、自分が欲しい機能は一通り実装できたと思います。</p>
-                    <p>以下はWordpressからHugoへ移行した理由と、実際に移行した感想でも残しておこうと思います。</p>
-                    <div class="readmore">
-                        <a href="/blog/2023-07-20-wordpress-to-hugo/">Read More…</a>
-                    </div>
-                </div>
-                <footer class="post-footer"></footer>
-            </article>
+            </div>
             <ul class="pagination">
                 <li class="page-item current"><span>1</span></li>
             </ul>
@@ -88,63 +80,6 @@
                     <div class="profile-icons">
                         <a href="https://arstla.net/" class="icon icon-home" target="_blank" rel="noopener" title="Site"></a> <a href="https://misskey.io/@zeroshina" class="icon icon-bubble" target="_blank" rel="noopener" title="Misskey"></a> <a href="https://www.buymeacoffee.com/zeroshina" class="icon icon-mug" target="_blank" rel="noopener" title="Buy Me a Coffee"></a> <a href="https://zeroshina.jp/index.xml" class="icon icon-rss" target="_blank" rel="noopener" title="RSS"></a>
                     </div>
-                </div>
-            </aside>
-            <aside class="widget recent">
-                <div class="widget-header">
-                    <h2>Recent Review</h2>
-                </div>
-                <div class="widget-content">
-                    <ul>
-                        <li>
-                            <p><a href="/review/small-sleeve-inner-side-daiso/"><img src="/review/small-sleeve-inner-side-daiso/cover-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
-                            <p><a href="/review/small-sleeve-inner-side-daiso/">ダイソーの横入れインナースリーブは実用的なのか？DAISO トレカスリーブ MS-1 レビュー</a></p>
-                        </li>
-                    </ul>
-                </div>
-                <div class="widget-header">
-                    <h2>Recent Blog</h2>
-                </div>
-                <div class="widget-content">
-                    <ul>
-                        <li>
-                            <p><a href="/blog/2023-11-03-yugioh-master-duel/"><img src="/uploads/blog/2023-11-03-yugioh-master-duel-01-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
-                            <p><a href="/blog/2023-11-03-yugioh-master-duel/">爆死と幸運と最近の遊戯王あれこれ</a></p>
-                        </li>
-                    </ul>
-                </div>
-                <div class="widget-header">
-                    <h2>Recent Tips</h2>
-                </div>
-                <div class="widget-content">
-                    <ul>
-                        <li>
-                            <p><a href="/post/blender-alpha-movie/"><img src="/post/blender-alpha-movie/cover-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
-                            <p><a href="/post/blender-alpha-movie/">Blender 背景を透過したavi動画の出力</a></p>
-                        </li>
-                    </ul>
-                </div>
-                <div class="widget-header">
-                    <h2>Recent Artwork</h2>
-                </div>
-                <div class="widget-content">
-                    <ul>
-                        <li>
-                            <p><a href="/artwork/lowpoly-256fes-2023/"><img src="/artwork/lowpoly-256fes-2023/cover-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
-                            <p><a href="/artwork/lowpoly-256fes-2023/">ローポリ アルシェインさん in #256fes</a></p>
-                        </li>
-                    </ul>
-                </div>
-            </aside>
-            <aside class="widget custom">
-                <div class="widget-header">
-                    <h2>Ad</h2>
-                </div>
-                <div class="widget-content">
-                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5700117217719363" crossorigin="anonymous"></script> <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5700117217719363" data-ad-slot="2963772559" data-ad-format="auto" data-full-width-responsive="true"></ins> 
-                    <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
                 </div>
             </aside>
             <aside class="widget taxnomies categories">
@@ -200,6 +135,63 @@
                         </li>
                         <li>
                             <a href="/tags/vr/">VR (1)</a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+            <aside class="widget custom">
+                <div class="widget-header">
+                    <h2>Ad</h2>
+                </div>
+                <div class="widget-content">
+                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5700117217719363" crossorigin="anonymous"></script> <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5700117217719363" data-ad-slot="2963772559" data-ad-format="auto" data-full-width-responsive="true"></ins> 
+                    <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </aside>
+            <aside class="widget recent">
+                <div class="widget-header">
+                    <h2>Recent Review</h2>
+                </div>
+                <div class="widget-content">
+                    <ul>
+                        <li>
+                            <p><a href="/review/small-sleeve-inner-side-daiso/"><img src="/review/small-sleeve-inner-side-daiso/cover-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
+                            <p><a href="/review/small-sleeve-inner-side-daiso/">ダイソーの横入れインナースリーブは実用的なのか？DAISO トレカスリーブ MS-1 レビュー</a></p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="widget-header">
+                    <h2>Recent Blog</h2>
+                </div>
+                <div class="widget-content">
+                    <ul>
+                        <li>
+                            <p><a href="/blog/2023-11-03-yugioh-master-duel/"><img src="/uploads/blog/2023-11-03-yugioh-master-duel-01-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
+                            <p><a href="/blog/2023-11-03-yugioh-master-duel/">爆死と幸運と最近の遊戯王あれこれ</a></p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="widget-header">
+                    <h2>Recent Tips</h2>
+                </div>
+                <div class="widget-content">
+                    <ul>
+                        <li>
+                            <p><a href="/post/blender-alpha-movie/"><img src="/post/blender-alpha-movie/cover-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
+                            <p><a href="/post/blender-alpha-movie/">Blender 背景を透過したavi動画の出力</a></p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="widget-header">
+                    <h2>Recent Artwork</h2>
+                </div>
+                <div class="widget-content">
+                    <ul>
+                        <li>
+                            <p><a href="/artwork/lowpoly-256fes-2023/"><img src="/artwork/lowpoly-256fes-2023/cover-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
+                            <p><a href="/artwork/lowpoly-256fes-2023/">ローポリ アルシェインさん in #256fes</a></p>
                         </li>
                     </ul>
                 </div>
