@@ -237,14 +237,14 @@ body {
 	flex-flow: row wrap;
 	justify-content: center;
 
-	padding: 0 var(--space-2);
+	padding: 0 var(--space-3);
 
 	font-family: var(--ff-logo);
 	font-size: var(--fs-site-menu);
 	font-weight: bold;
 }
 .site-menu .menu-item {
-	margin: 0 var(--space-2);
+	margin: 0 var(--space-3);
 }
 
 .site-menu .menu-item .sub-menu {

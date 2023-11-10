@@ -145,6 +145,22 @@
         <lastmod>2023-07-14T00:00:00+09:00</lastmod>
     </url>
     <url>
+        <loc>https://zeroshina.jp/artwork/</loc>
+        <lastmod>2023-07-11T00:00:00+09:00</lastmod>
+    </url>
+    <url>
+        <loc>https://zeroshina.jp/tags/sd/</loc>
+        <lastmod>2023-07-11T00:00:00+09:00</lastmod>
+    </url>
+    <url>
+        <loc>https://zeroshina.jp/tags/lowpoly/</loc>
+        <lastmod>2023-07-11T00:00:00+09:00</lastmod>
+    </url>
+    <url>
+        <loc>https://zeroshina.jp/artwork/lowpoly-256fes-2023/</loc>
+        <lastmod>2023-07-11T00:00:00+09:00</lastmod>
+    </url>
+    <url>
         <loc>https://zeroshina.jp/privacy/</loc>
         <lastmod>2023-07-01T00:00:00+09:00</lastmod>
     </url>
@@ -175,11 +191,5 @@
     <url>
         <loc>https://zeroshina.jp/post/apple-id-disabled/</loc>
         <lastmod>2022-03-17T00:00:00+09:00</lastmod>
-    </url>
-    <url>
-        <loc>https://zeroshina.jp/tags/sd/</loc>
-    </url>
-    <url>
-        <loc>https://zeroshina.jp/tags/lowpoly/</loc>
     </url>
 </urlset>
