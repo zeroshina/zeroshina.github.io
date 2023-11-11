@@ -59,6 +59,8 @@
 	--border-color: #e0e0e0;
 	--border-main: 1px solid var(--border-color);
 	--btn-size-page: 3rem;
+
+	--as-card-image: 16/9;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -323,7 +325,11 @@ body {
 	margin: var(--space-3) 0;
 }
 
-.card .post-thumbnail {
+.card .post-image {
+	display: flex;
+	align-items: center;
+	overflow: hidden;
+	aspect-ratio: var(--as-card-image);
 }
 
 .card .post-meta {
