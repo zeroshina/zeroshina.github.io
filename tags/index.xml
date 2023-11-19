@@ -7,8 +7,22 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
         <copyright>© 047</copyright>
-        <lastBuildDate>Wed, 15 Nov 2023 00:00:00 +0900</lastBuildDate>
+        <lastBuildDate>Sat, 18 Nov 2023 00:00:00 +0900</lastBuildDate>
         <atom:link href="https://zeroshina.jp/tags/index.xml" rel="self" type="application/rss+xml" />
+        <item>
+            <title>Steam</title>
+            <link>https://zeroshina.jp/tags/steam/</link>
+            <pubDate>Sat, 18 Nov 2023 00:00:00 +0900</pubDate>
+            <guid>https://zeroshina.jp/tags/steam/</guid>
+            <description></description>
+        </item>
+        <item>
+            <title>VR</title>
+            <link>https://zeroshina.jp/tags/vr/</link>
+            <pubDate>Sat, 18 Nov 2023 00:00:00 +0900</pubDate>
+            <guid>https://zeroshina.jp/tags/vr/</guid>
+            <description></description>
+        </item>
         <item>
             <title>Hugo</title>
             <link>https://zeroshina.jp/tags/hugo/</link>
@@ -31,13 +45,6 @@
             <description></description>
         </item>
         <item>
-            <title>Steam</title>
-            <link>https://zeroshina.jp/tags/steam/</link>
-            <pubDate>Fri, 03 Nov 2023 00:00:00 +0900</pubDate>
-            <guid>https://zeroshina.jp/tags/steam/</guid>
-            <description></description>
-        </item>
-        <item>
             <title>アプリ</title>
             <link>https://zeroshina.jp/tags/mobile-app/</link>
             <pubDate>Mon, 30 Oct 2023 00:00:00 +0900</pubDate>
@@ -49,13 +56,6 @@
             <link>https://zeroshina.jp/tags/nintendo-switch/</link>
             <pubDate>Mon, 28 Aug 2023 00:00:00 +0900</pubDate>
             <guid>https://zeroshina.jp/tags/nintendo-switch/</guid>
-            <description></description>
-        </item>
-        <item>
-            <title>VR</title>
-            <link>https://zeroshina.jp/tags/vr/</link>
-            <pubDate>Sun, 20 Aug 2023 00:00:00 +0900</pubDate>
-            <guid>https://zeroshina.jp/tags/vr/</guid>
             <description></description>
         </item>
         <item>
