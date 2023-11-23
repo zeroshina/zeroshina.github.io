@@ -7,8 +7,15 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
         <copyright>© 047</copyright>
-        <lastBuildDate>Sun, 19 Nov 2023 00:00:00 +0900</lastBuildDate>
+        <lastBuildDate>Thu, 23 Nov 2023 00:00:00 +0900</lastBuildDate>
         <atom:link href="https://zeroshina.jp/tags/index.xml" rel="self" type="application/rss+xml" />
+        <item>
+            <title>Nintendo Switch</title>
+            <link>https://zeroshina.jp/tags/nintendo-switch/</link>
+            <pubDate>Thu, 23 Nov 2023 00:00:00 +0900</pubDate>
+            <guid>https://zeroshina.jp/tags/nintendo-switch/</guid>
+            <description></description>
+        </item>
         <item>
             <title>Steam</title>
             <link>https://zeroshina.jp/tags/steam/</link>
@@ -49,13 +56,6 @@
             <link>https://zeroshina.jp/tags/mobile-app/</link>
             <pubDate>Mon, 30 Oct 2023 00:00:00 +0900</pubDate>
             <guid>https://zeroshina.jp/tags/mobile-app/</guid>
-            <description></description>
-        </item>
-        <item>
-            <title>Nintendo Switch</title>
-            <link>https://zeroshina.jp/tags/nintendo-switch/</link>
-            <pubDate>Mon, 28 Aug 2023 00:00:00 +0900</pubDate>
-            <guid>https://zeroshina.jp/tags/nintendo-switch/</guid>
             <description></description>
         </item>
         <item>

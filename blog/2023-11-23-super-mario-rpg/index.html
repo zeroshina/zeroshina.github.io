@@ -5,18 +5,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta property="og:site_name" content="047">
-    <meta property="og:title" content="WordpressからHugoへ">
+    <meta property="og:title" content="童心に帰る旅 スーパーマリオRPG">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://zeroshina.jp/blog/2023-07-20-wordpress-to-hugo/">
-    <meta property="og:image" content="https://zeroshina.jp/uploads/site/cover-scroll-thumb.webp">
+    <meta property="og:url" content="https://zeroshina.jp/blog/2023-11-23-super-mario-rpg/">
+    <meta property="og:image" content="https://zeroshina.jp/uploads/blog/2023-11-23-super-mario-rpg-01-thumb.webp">
     <meta property="og:locale" content="ja_JP">
-    <link rel="canonical" href="https://zeroshina.jp/blog/2023-07-20-wordpress-to-hugo/">
+    <link rel="canonical" href="https://zeroshina.jp/blog/2023-11-23-super-mario-rpg/">
     <link rel="stylesheet" href="/style.css">
     <link rel="icon" href="/uploads/site/favicon.png">
     <link rel="stylesheet" href="/lib/icomoon/style.css">
     <link rel="stylesheet" href="/lib/lightbox/lightbox.css">
     <script defer type="text/javascript" src="/lib/lightbox/lightbox.js"></script>
-    <title>WordpressからHugoへ - 047</title>
+    <title>童心に帰る旅 スーパーマリオRPG - 047</title>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-KNSCG1XLPB"></script>
     <script>
     window.dataLayer = window.dataLayer || [];
@@ -51,53 +51,37 @@
         <div class="main-content">
             <article class="post single section-blog">
                 <header class="post-header">
-                    <h1 class="post-title">WordpressからHugoへ</h1>
+                    <h1 class="post-title">童心に帰る旅 スーパーマリオRPG</h1>
                     <div class="post-meta date">
-                        <time class="post-meta-item" datetime="2023-07-20 00:00:00 +0900 JST">2023/07/20</time>
+                        <time class="post-meta-item" datetime="2023-11-23 00:00:00 +0900 JST">2023/11/23</time>
                     </div>
                     <div class="post-meta taxonomies">
-                        <span class="post-meta-title taxonomy">Categories:</span> <span class="post-meta-item term"><a href="/categories/diary/">日記</a></span>
+                        <span class="post-meta-title taxonomy">Categories:</span> <span class="post-meta-item term"><a href="/categories/game/">ゲーム</a></span>
+                    </div>
+                    <div class="post-meta taxonomies">
+                        <span class="post-meta-title taxonomy">Tags:</span> <span class="post-meta-item term"><a href="/tags/nintendo-switch/">Nintendo Switch</a></span>
                     </div>
                 </header>
                 <div class="post-content">
-                    <p>半年ぶりn回目のサイトの新調を行いました。</p>
-                    <p>ただし今回は長年使っていたWordpressではなく、Hugoでサイトの構築を行っています。いわゆる動的サイトから静的サイトへの移行ということで、学びのある挑戦だからセーフと自分に言い聞かせております。</p>
-                    <p>構成としてはHugoでサイト出力、GitHub Pagesで公開というよくある組み合わせです。 また出力時にTidy HTMLで整形を掛けているためソースコードも多少整っているハズ。割と自己満足の領域ですが、何気に移行して一番嬉しかったところの一つかもしれません。</p>
-                    <p>サイトのテーマは一応自分で制作したものになります。当初は既存のテーマにコード直書き☆蛮族カスタマイズでぱぱっと済ます予定でしたが、結局は時間と労力を掛けてしまいました。おかげで最低限ではありますが、自分が欲しい機能は一通り実装できたと思います。</p>
-                    <p>以下はWordpressからHugoへ移行した理由と、実際に移行した感想でも残しておこうと思います。</p>
-                    <p>まず移行した理由。これは色々ありますが、一番はWordpressの手厚すぎる機能を逐一消し飛ばす作業が煩わしく感じたのが大きいかもしれません。テキストを勝手に絵文字にしたりとかのアレですね。</p>
-                    <p>そして移行先にHugoを選んだのは…簡単そうだったからです。身も蓋もない話ですが、私はGitやReactなどを触ったことがないので、なるべく導入のハードルが低そうなものを選びました。</p>
-                    <p>そして実際にHugoでサイトを制作して良かった点としては以下の通りです。</p>
-                    <ul>
-                        <li>サイトの表示が爆速（当社比）</li>
-                        <li>セキュリティ上のリスクが少なめ</li>
-                        <li>ローカル環境＆Markdown形式で記事が書ける</li>
-                        <li>＝お気に入りのエディターが使える</li>
-                        <li>データベース不要で維持費が掛かりにくい</li>
-                        <li>サイト構築の自由度が高い</li>
-                        <li>公式リファレンスが充実しており、有志の日本語版もある</li>
-                    </ul>
-                    <p>…大部分は静的サイトによる恩恵ですね…（他のSSGを使ってないのでHugo特有の強みを言えない）<br>
-                    なおローカルサーバーは立ち上げ簡単で内容も即時反映、ローカルなのでいくらエラーを出しても安心と非常に快適です。昔はよくWordpressの本番環境を適当にイジってはエラーを出していたので…</p>
-                    <p>一方で気になった点としては以下の通りです。</p>
-                    <ul>
-                        <li>テーマの依存度が高い</li>
-                        <li>画像の扱いが面倒</li>
-                    </ul>
-                    <p>Hugoのテーマは見た目だけでなく機能面も担っているので、かなり依存度が高そうです。モノによってはサイトの設定や構成を見直す必要があるため、他者のテーマを転々とするような使い方はちょっと大変かなと思いました。この辺は土台が決まっているWordpressが強いですね。</p>
-                    <p>画像も標準だと最低限のimgタグを出力するだけなので、どのように管理するかはサイトやテーマ次第。「全部uploadsにブチ込んだったらええねん！」なWordpressも大概でしたが、こっちはこっちで色々考える必要がありそうですね。</p>
-                    <p>以上がサイト移行に関するアレコレです。<br>
-                    実際にHugo（とGitやシェルスクリプト）を触ってみて、改めてWordpressのお手軽さが身に沁みましたね…</p>
-                    <p>ただ、それ故に学べることも多くて今の私には丁度いい選択肢だったと思います。サイトを最低限＆柔軟に構築できるのも私好みでした。今後も少しずつ改良して良いテーマに育てていきたいですね。盆栽みたいな感じで。</p>
-                    <p>ただまぁ…結局大事なのは中身なので…記事の更新をサボらないようにしたいですね。前回みたいに改修作業で燃え尽きてしまわないように…</p>
+                    <p><a href="/uploads/blog/2023-11-23-super-mario-rpg-01.webp" target="_blank" rel="noopener"><img src="/uploads/blog/2023-11-23-super-mario-rpg-01-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
+                    <p>予てより楽しみにしていたSwitch版スーパーマリオRPGが発売されました！勿論買ってます。</p>
+                    <p>現在はユミンパを撃破し二つ目のスターピースを入手、そして宿屋でリンク君の姿を確認したところです。後日アップデートが来る可能性もあるため、少しずつ味わっていこうかなと。</p>
+                    <p>流石に小さい頃に何度も遊んだだけあってマップ構成や各所の小ネタは殆ど覚えてますね。記憶をなぞりながら新作を遊ぶというのは中々新鮮な体験です。ただ、途中でレベルアップボーナスの変動システムに気付いて一時間ほどやり直しは挟みました。早い内にヘルプ見といてよかった…！</p>
+                    <p>マリオRPGという時点でもうかなり面白い訳ですが、リメイク作品としても今のところかなり好感触です。<br>
+                    原作の要素は大抵きっちり再現されているようですし、当時の不便なところは改良されていてすごく遊びやすくなってますね。いつでも地図から好きなマップに移動できたり、弱点や耐性が可視化されたりなどなど…</p>
+                    <p>余談ですが、キノコ城の隠し宝箱、CMやチュートリアル等でがっつり存在が示唆されている上に、ゲーム購入後に送られてくるメールにまで「Switch版は後からでも取れる！」みたいなことが書かれていて笑いました。まぁ当時の基準でもかなり理不尽だったしね…私も終盤で知って絶望したことがあります。</p>
+                    <p><a href="/uploads/blog/2023-11-23-super-mario-rpg-02.webp" target="_blank" rel="noopener"><img src="/uploads/blog/2023-11-23-super-mario-rpg-02-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
+                    <p>グラフィックも非常に綺麗になりました。上記画像の敵キャラ、グラフィックが荒かった当時は目玉がニョキッと生えたおちょぼ口のモンスターだと思ってました。甲羅だったんだ…</p>
+                    <p>他にも発売前の情報で「お前そういう造形だったんか…」という敵キャラが何体かいたので、今後も新しい発見がありそうで楽しみです。他にもワイン川くだりの洞窟が幻想的になってたり、モブのキノピオが可愛くなってたりと、全体的にアートワークが好みで嬉しいです。</p>
+                    <p>反対に気になる点としては、ワールドマップのロードがやや長いことと、マリオの当たり判定がカプセル状なのかオブジェクトに乗る際に滑り落ちやすいことでしょうか。この辺は現代らしくアップデートで改善されることに期待しておきます。</p>
+                    <p>あとこれは完全に趣味ですが、効果音は原作の特徴的な音の方が好きですね。ノコへいの「ヒュンヒュンフォッ！」みたいな。ただ音楽などに馴染むよう合わせた結果だと思います。</p>
+                    <p>そんな感じでSwitch版マリオRPG、まだ序盤ではありますが満足度は中々の高さです。名作が名作として生まれ変わって私は嬉しいよ…</p>
+                    <p>あとは新要素がどれくらいあるかですが、原作をかなり丁寧に扱っている感があるのでそっちは控え目かもしれませんね。星のふる丘とかもそのままな気がするなぁ。ボスの追加とかがあったらすごく嬉しいけど…！</p>
                 </div>
                 <footer class="post-footer"></footer>
                 <nav class="post-navigation">
-                    <div class="next-post">
-                        <a href="/blog/2023-07-24-pikmin4/">Next: ピクミン4（体験版）クリア！</a>
-                    </div>
                     <div class="prev-post">
-                        <a href="/blog/2023-07-14-botw/">Prev: ゼルダの伝説BotW クリア！</a>
+                        <a href="/blog/2023-11-19-moss/">Prev: Moss 第一巻読了</a>
                     </div>
                 </nav>
             </article>
