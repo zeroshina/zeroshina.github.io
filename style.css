@@ -427,9 +427,7 @@ body {
 }
 
 .post-content hr {
-	width: 98%;
 	height: 1px;
-	margin: var(--space-3) auto;
 	border: none;
 	background-color: var(--border-color);
 }
