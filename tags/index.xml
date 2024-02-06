@@ -7,8 +7,15 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
         <copyright>© 047</copyright>
-        <lastBuildDate>Tue, 16 Jan 2024 00:00:00 +0900</lastBuildDate>
+        <lastBuildDate>Tue, 06 Feb 2024 00:00:00 +0900</lastBuildDate>
         <atom:link href="https://zeroshina.jp/tags/index.xml" rel="self" type="application/rss+xml" />
+        <item>
+            <title>アプリ</title>
+            <link>https://zeroshina.jp/tags/mobile-app/</link>
+            <pubDate>Tue, 06 Feb 2024 00:00:00 +0900</pubDate>
+            <guid>https://zeroshina.jp/tags/mobile-app/</guid>
+            <description></description>
+        </item>
         <item>
             <title>アラド戦記</title>
             <link>https://zeroshina.jp/tags/dnf/</link>
@@ -21,13 +28,6 @@
             <link>https://zeroshina.jp/tags/steam/</link>
             <pubDate>Sun, 31 Dec 2023 00:00:00 +0900</pubDate>
             <guid>https://zeroshina.jp/tags/steam/</guid>
-            <description></description>
-        </item>
-        <item>
-            <title>アプリ</title>
-            <link>https://zeroshina.jp/tags/mobile-app/</link>
-            <pubDate>Mon, 18 Dec 2023 00:00:00 +0900</pubDate>
-            <guid>https://zeroshina.jp/tags/mobile-app/</guid>
             <description></description>
         </item>
         <item>
