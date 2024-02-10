@@ -7,8 +7,15 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
         <copyright>© 047</copyright>
-        <lastBuildDate>Wed, 15 Nov 2023 00:00:00 +0900</lastBuildDate>
+        <lastBuildDate>Sat, 10 Feb 2024 00:00:00 +0900</lastBuildDate>
         <atom:link href="https://zeroshina.jp/categories/coding/index.xml" rel="self" type="application/rss+xml" />
+        <item>
+            <title>svgファイルを正規表現で置換して最適化する</title>
+            <link>https://zeroshina.jp/post/svg-regex/</link>
+            <pubDate>Sat, 10 Feb 2024 00:00:00 +0900</pubDate>
+            <guid>https://zeroshina.jp/post/svg-regex/</guid>
+            <description>&lt;p&gt;&lt;a href="https://zeroshina.jp/blog/2024-01-20-sfic/" &gt;アイコンアセット&lt;/a&gt;を制作した時のお話。&lt;/p&gt; &lt;p&gt;配布用のsvgファイルを出力した際、空のグループやガイド画像の参照まで書き出されてしまったため、これをテキストエディタの正規表現で置換する方法を残しておきます。&lt;/p&gt; &lt;p&gt;本当はツール側で出力内容を制御したいところですが、私の環境ではその手段がなく、かといって出力の度に不要なレイヤーを消すのも手間なので…少数のファイルであればweb上の最適化ツールで事足りそうですが、今回は沢山のファイルを処理したかったのでこの方法を採りました。&lt;/p&gt; &lt;p&gt;ただし、私は正規表現やsvgに関して全くの素人です。他のフォーマットや環境での動作は保証できませんし、「自分のところでは動いたからヨシ！」という精神で記事を書いています。そのためバックアップは必ず取り、自己責任でのご利用をお願いします。&lt;/p&gt; &lt;p&gt;なお、私の使用したエディタはSublime Text 3になります。&lt;/p&gt;</description>
+        </item>
         <item>
             <title>HugoでUnity WebGLを表示する</title>
             <link>https://zeroshina.jp/post/hugo-unity-shortcode/</link>
