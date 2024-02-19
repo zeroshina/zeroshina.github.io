@@ -431,6 +431,11 @@ body {
 	border: none;
 	background-color: var(--border-color);
 }
+
+.post-content del {
+	text-decoration: line-through;
+}
+
 .post-content aside {
 	padding: var(--space-3) var(--space-4);
 	margin: var(--space-4) 0;
