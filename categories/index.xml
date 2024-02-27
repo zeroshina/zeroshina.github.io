@@ -7,7 +7,7 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
         <copyright>© 047</copyright>
-        <lastBuildDate>Sat, 10 Feb 2024 00:00:00 +0900</lastBuildDate>
+        <lastBuildDate>Tue, 27 Feb 2024 00:00:00 +0900</lastBuildDate>
         <atom:link href="https://zeroshina.jp/categories/index.xml" rel="self" type="application/rss+xml" />
         <item>
             <title>その他</title>
@@ -17,17 +17,17 @@
             <description></description>
         </item>
         <item>
+            <title>ゲーム</title>
+            <link>https://zeroshina.jp/categories/game/</link>
+            <pubDate>Tue, 27 Feb 2024 00:00:00 +0900</pubDate>
+            <guid>https://zeroshina.jp/categories/game/</guid>
+            <description></description>
+        </item>
+        <item>
             <title>コーディング</title>
             <link>https://zeroshina.jp/categories/coding/</link>
             <pubDate>Sat, 10 Feb 2024 00:00:00 +0900</pubDate>
             <guid>https://zeroshina.jp/categories/coding/</guid>
-            <description></description>
-        </item>
-        <item>
-            <title>ゲーム</title>
-            <link>https://zeroshina.jp/categories/game/</link>
-            <pubDate>Tue, 06 Feb 2024 00:00:00 +0900</pubDate>
-            <guid>https://zeroshina.jp/categories/game/</guid>
             <description></description>
         </item>
         <item>

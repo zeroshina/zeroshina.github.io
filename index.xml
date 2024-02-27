@@ -7,8 +7,15 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
         <copyright>© 047</copyright>
-        <lastBuildDate>Sat, 10 Feb 2024 00:00:00 +0900</lastBuildDate>
+        <lastBuildDate>Tue, 27 Feb 2024 00:00:00 +0900</lastBuildDate>
         <atom:link href="https://zeroshina.jp/index.xml" rel="self" type="application/rss+xml" />
+        <item>
+            <title>地獄の警備再び アラド戦記 仙界アップデート</title>
+            <link>https://zeroshina.jp/blog/2024-02-27-dnf-arad/</link>
+            <pubDate>Tue, 27 Feb 2024 00:00:00 +0900</pubDate>
+            <guid>https://zeroshina.jp/blog/2024-02-27-dnf-arad/</guid>
+            <description>&lt;p&gt;&lt;a href="https://zeroshina.jp/uploads/blog/2024-02-27-dnf-arad-01.webp" target="_blank" rel="noopener"&gt;&lt;img src="https://zeroshina.jp/uploads/blog/2024-02-27-dnf-arad-01-thumb.webp" alt="" loading="lazy" width="800" height="450"&gt;&lt;/a&gt;&lt;/p&gt; &lt;p&gt;復帰して早一ヶ月半、やってきました仙界アップデート！&lt;/p&gt; &lt;p&gt;新規エリアに新規ダンジョン、大量の変更事項に大量のイベントが合わさった正真正銘の大型アップデートでございます。大型すぎて一週間経った今でも把握しきれていないところがある…&lt;/p&gt; &lt;p&gt;アップデート後はまず仙界のストーリーを進めるところから始めました。が、やはりアラドの最新ストーリーは長い…！じっくり読みながらとはいえ、録画データは計4時間の20GB、クエスト完了まで3日掛かってしまいました。因みに、録画しているのはリプレイ機能では見れないムービーやカットシーンがあったりするからですね。黒き聖戦ストーリーのニルバスとニウの邂逅然り。&lt;/p&gt; &lt;p&gt;シナリオ的にはまだ序章の雰囲気が漂いますが、仙界が故郷のミューズだと専用会話が時折挟まれたりして結構楽しめました。舞台の仙界も景色が綺麗で神獣も可愛いのがいいですね。癒やし大事。&lt;/p&gt; &lt;p&gt;特によかったのは新規キャラであり仙界ストーリーの中心人物でもあるシュムちゃん。まさかのござる口調が意外にもマッチしており、また記憶を失くしたり混濁することもある仙界の舞台設定において、人々の約束事を記録して守る役目というのがよく出来てるなと思います。仙界キャラで一番好きかも…&lt;/p&gt; &lt;p&gt;本家韓国アラドでは仙界パッケが発売されていて、つよつよクリーチャー枠にSDシュムちゃんがいるっぽいので日本にやってくるのが楽しみです。私のクリーチャー（称号とオーラも）、どのキャラも3,4年以上前のやつだから…&lt;/p&gt; &lt;p&gt;&lt;a href="https://zeroshina.jp/uploads/blog/2024-02-27-dnf-arad-02.webp" target="_blank" rel="noopener"&gt;&lt;img src="https://zeroshina.jp/uploads/blog/2024-02-27-dnf-arad-02-thumb.webp" alt="" loading="lazy" width="800" height="450"&gt;&lt;/a&gt;&lt;/p&gt; &lt;p&gt;踏むでない！というメッセージに踏めと言わんばかりの矢印が添えられているのも好き。&lt;/p&gt; &lt;p&gt;当然ダンジョンや装備関連でも沢山の追加変更がありましたが、個人的に大きいのは既存Dの緩和と、手に入る装備オプションLvの引き上げでしょうか。これによりソロで育成できる範囲がぐっと広がり、というかレイド以外のコンテンツには殆どアクセス出来るようになったんじゃないかなと思います。ありがたや…&lt;/p&gt; &lt;p&gt;融合装備もかなり入手しやすくなり、現在メインキャラ4体の融合部位もどんどん増えていってます。着実に強くなっていく一番楽しい時期！&lt;/p&gt; &lt;p&gt;そして新たにミストギアという「僕の考えた最強のカスタムエピック」が作れる装備も実装されました。これは特定のダンジョンでランダムにドロップする代物であり、入手には延々と同じダンジョンを潜る必要があります。&lt;strong&gt;往年のヘル警備の復活や…！&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;当初は青天井だったらしいですが、本家で不評だったようで天井が実装。日本でもその恩恵に預かり天井実装済みです。&lt;strong&gt;なおその回数2000回&lt;/strong&gt;。入場材料が必要なことも加味すると、天にも届きそうな高い天井ですね…&lt;/p&gt; &lt;p&gt;ただこれもつい先日に本家で調整が予告され、有効なカスタムエピックの入手率増加や天井回数の削減などの緩和措置が行われるようです。つまり今は頑張らなくてもいいってことだな！…まぁ結局、装備のオプションLvを上げるために通うことにはなるんですけど…&lt;/p&gt; &lt;p&gt;新規の上級Dエキスパートの要求名声値が47,624なので、当面はそこを目標に融合装備集めやオプションLv上げに勤しもうと思います。名声値、あと4000以上必要だけど届くのかなこれ…&lt;/p&gt;</description>
+        </item>
         <item>
             <title>svgファイルを正規表現で置換して最適化する</title>
             <link>https://zeroshina.jp/post/svg-regex/</link>
