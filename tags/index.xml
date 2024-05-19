@@ -1,90 +1,90 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-    <channel>
-        <title>Tags on 047</title>
-        <link>https://zeroshina.jp/tags/</link>
-        <description>Recent content in Tags on 047</description>
-        <generator>Hugo -- gohugo.io</generator>
-        <language>ja</language>
-        <copyright>© 047</copyright>
-        <lastBuildDate>Wed, 03 Apr 2024 00:00:00 +0900</lastBuildDate>
-        <atom:link href="https://zeroshina.jp/tags/index.xml" rel="self" type="application/rss+xml" />
-        <item>
-            <title>アラド戦記</title>
-            <link>https://zeroshina.jp/tags/dnf/</link>
-            <pubDate>Wed, 03 Apr 2024 00:00:00 +0900</pubDate>
-            <guid>https://zeroshina.jp/tags/dnf/</guid>
-            <description></description>
-        </item>
-        <item>
-            <title>アプリ</title>
-            <link>https://zeroshina.jp/tags/mobile-app/</link>
-            <pubDate>Tue, 06 Feb 2024 00:00:00 +0900</pubDate>
-            <guid>https://zeroshina.jp/tags/mobile-app/</guid>
-            <description></description>
-        </item>
-        <item>
-            <title>Steam</title>
-            <link>https://zeroshina.jp/tags/steam/</link>
-            <pubDate>Sun, 31 Dec 2023 00:00:00 +0900</pubDate>
-            <guid>https://zeroshina.jp/tags/steam/</guid>
-            <description></description>
-        </item>
-        <item>
-            <title>Nintendo Switch</title>
-            <link>https://zeroshina.jp/tags/nintendo-switch/</link>
-            <pubDate>Thu, 23 Nov 2023 00:00:00 +0900</pubDate>
-            <guid>https://zeroshina.jp/tags/nintendo-switch/</guid>
-            <description></description>
-        </item>
-        <item>
-            <title>VR</title>
-            <link>https://zeroshina.jp/tags/vr/</link>
-            <pubDate>Sun, 19 Nov 2023 00:00:00 +0900</pubDate>
-            <guid>https://zeroshina.jp/tags/vr/</guid>
-            <description></description>
-        </item>
-        <item>
-            <title>Hugo</title>
-            <link>https://zeroshina.jp/tags/hugo/</link>
-            <pubDate>Wed, 15 Nov 2023 00:00:00 +0900</pubDate>
-            <guid>https://zeroshina.jp/tags/hugo/</guid>
-            <description></description>
-        </item>
-        <item>
-            <title>Unity</title>
-            <link>https://zeroshina.jp/tags/unity/</link>
-            <pubDate>Wed, 15 Nov 2023 00:00:00 +0900</pubDate>
-            <guid>https://zeroshina.jp/tags/unity/</guid>
-            <description></description>
-        </item>
-        <item>
-            <title>遊戯王</title>
-            <link>https://zeroshina.jp/tags/yugioh/</link>
-            <pubDate>Fri, 10 Nov 2023 00:00:00 +0900</pubDate>
-            <guid>https://zeroshina.jp/tags/yugioh/</guid>
-            <description></description>
-        </item>
-        <item>
-            <title>Blender</title>
-            <link>https://zeroshina.jp/tags/blender/</link>
-            <pubDate>Thu, 03 Aug 2023 00:00:00 +0900</pubDate>
-            <guid>https://zeroshina.jp/tags/blender/</guid>
-            <description></description>
-        </item>
-        <item>
-            <title>SD</title>
-            <link>https://zeroshina.jp/tags/sd/</link>
-            <pubDate>Tue, 11 Jul 2023 00:00:00 +0900</pubDate>
-            <guid>https://zeroshina.jp/tags/sd/</guid>
-            <description></description>
-        </item>
-        <item>
-            <title>ローポリ</title>
-            <link>https://zeroshina.jp/tags/lowpoly/</link>
-            <pubDate>Tue, 11 Jul 2023 00:00:00 +0900</pubDate>
-            <guid>https://zeroshina.jp/tags/lowpoly/</guid>
-            <description></description>
-        </item>
-    </channel>
+  <channel>
+    <title>Tags on 047</title>
+    <link>https://zeroshina.jp/tags/</link>
+    <description>Recent content in Tags on 047</description>
+    <generator>Hugo</generator>
+    <language>ja</language>
+    <copyright>© 047</copyright>
+    <lastBuildDate>Sun, 19 May 2024 00:00:00 +0900</lastBuildDate>
+    <atom:link href="https://zeroshina.jp/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Steam</title>
+      <link>https://zeroshina.jp/tags/steam/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://zeroshina.jp/tags/steam/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>アラド戦記</title>
+      <link>https://zeroshina.jp/tags/dnf/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://zeroshina.jp/tags/dnf/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>アプリ</title>
+      <link>https://zeroshina.jp/tags/mobile-app/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://zeroshina.jp/tags/mobile-app/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Nintendo Switch</title>
+      <link>https://zeroshina.jp/tags/nintendo-switch/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://zeroshina.jp/tags/nintendo-switch/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>VR</title>
+      <link>https://zeroshina.jp/tags/vr/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://zeroshina.jp/tags/vr/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hugo</title>
+      <link>https://zeroshina.jp/tags/hugo/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://zeroshina.jp/tags/hugo/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Unity</title>
+      <link>https://zeroshina.jp/tags/unity/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://zeroshina.jp/tags/unity/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>遊戯王</title>
+      <link>https://zeroshina.jp/tags/yugioh/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://zeroshina.jp/tags/yugioh/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Blender</title>
+      <link>https://zeroshina.jp/tags/blender/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://zeroshina.jp/tags/blender/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>SD</title>
+      <link>https://zeroshina.jp/tags/sd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://zeroshina.jp/tags/sd/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>ローポリ</title>
+      <link>https://zeroshina.jp/tags/lowpoly/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://zeroshina.jp/tags/lowpoly/</guid>
+      <description></description>
+    </item>
+  </channel>
 </rss>
