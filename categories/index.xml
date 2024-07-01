@@ -2,60 +2,60 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on 047</title>
-    <link>http://localhost:1313/categories/</link>
+    <link>https://zeroshina.jp/categories/</link>
     <description>Recent content in Categories on 047</description>
     <generator>Hugo</generator>
     <language>ja</language>
     <copyright>© 047</copyright>
     <lastBuildDate>Mon, 01 Jul 2024 00:00:00 +0900</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://zeroshina.jp/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>その他</title>
-      <link>http://localhost:1313/categories/uncategorized/</link>
+      <link>https://zeroshina.jp/categories/uncategorized/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/uncategorized/</guid>
+      <guid>https://zeroshina.jp/categories/uncategorized/</guid>
       <description></description>
     </item>
     <item>
       <title>ゲーム</title>
-      <link>http://localhost:1313/categories/game/</link>
+      <link>https://zeroshina.jp/categories/game/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/game/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>カード</title>
-      <link>http://localhost:1313/categories/card/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/card/</guid>
+      <guid>https://zeroshina.jp/categories/game/</guid>
       <description></description>
     </item>
     <item>
       <title>コーディング</title>
-      <link>http://localhost:1313/categories/coding/</link>
+      <link>https://zeroshina.jp/categories/coding/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/coding/</guid>
+      <guid>https://zeroshina.jp/categories/coding/</guid>
       <description></description>
     </item>
     <item>
       <title>お知らせ</title>
-      <link>http://localhost:1313/categories/information/</link>
+      <link>https://zeroshina.jp/categories/information/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/information/</guid>
+      <guid>https://zeroshina.jp/categories/information/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>カード</title>
+      <link>https://zeroshina.jp/categories/card/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://zeroshina.jp/categories/card/</guid>
       <description></description>
     </item>
     <item>
       <title>モデリング</title>
-      <link>http://localhost:1313/categories/modeling/</link>
+      <link>https://zeroshina.jp/categories/modeling/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/modeling/</guid>
+      <guid>https://zeroshina.jp/categories/modeling/</guid>
       <description></description>
     </item>
     <item>
       <title>日記</title>
-      <link>http://localhost:1313/categories/diary/</link>
+      <link>https://zeroshina.jp/categories/diary/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/diary/</guid>
+      <guid>https://zeroshina.jp/categories/diary/</guid>
       <description></description>
     </item>
   </channel>
