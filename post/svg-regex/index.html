@@ -1,393 +1,599 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head prefix="og: http://ogp.me/ns#">
-    <meta name="generator" content="HTML Tidy for HTML5 for Windows version 5.8.0">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta property="og:site_name" content="047">
-    <meta property="og:title" content="svgファイルを正規表現で置換して最適化する">
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://zeroshina.jp/post/svg-regex/">
-    <meta property="og:image" content="https://zeroshina.jp/uploads/site/cover-image-thumb.webp">
-    <meta property="og:locale" content="ja_JP">
-    <link rel="canonical" href="https://zeroshina.jp/post/svg-regex/">
-    <link rel="stylesheet" href="/style.css">
-    <link rel="icon" href="/uploads/site/favicon.png">
-    <link rel="stylesheet" href="/lib/icomoon/style.css">
-    <link rel="stylesheet" href="/lib/lightbox/lightbox.css">
-    <script defer type="text/javascript" src="/lib/lightbox/lightbox.js"></script>
-    <title>svgファイルを正規表現で置換して最適化する - 047</title>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KNSCG1XLPB"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-KNSCG1XLPB');
-    </script>
+<head prefix="og: http://ogp.me/ns#"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+    
+	<meta property="og:site_name" content="047">
+	<meta property="og:title" content="svgファイルを正規表現で置換して最適化する">
+	<meta property="og:type" content="article">
+	<meta property="og:url" content="http://localhost:1313/post/svg-regex/">
+	<meta property="og:image" content="http://localhost:1313/uploads/site/cover-image-thumb.webp">
+	<meta property="og:locale" content="ja_JP">
+	
+	<link rel="canonical" href="http://localhost:1313/post/svg-regex/">
+	
+	<link rel="stylesheet" href="/style.css">
+	<link rel="icon" href="/uploads/site/favicon.png">
+	<link rel="stylesheet" href="/lib/icomoon/style.css">
+	<link rel="stylesheet" href="/lib/lightbox/lightbox.css">
+	<script defer type="text/javascript" src="/lib/lightbox/lightbox.js"></script>
+	<title>svgファイルを正規表現で置換して最適化する - 047</title>
+	
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KNSCG1XLPB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-KNSCG1XLPB');
+</script>
+
 </head>
 <body>
-    <header class="site-header">
-        <div class="header-content">
-            <div class="site-title">
-                <a href="/">047</a>
-            </div>
-            <nav class="site-menu">
-                <div class="menu-item">
-                    <a href="/blog/">Blog</a>
-                </div>
-                <div class="menu-item">
-                    <a href="/review/">Review</a>
-                </div>
-                <div class="menu-item">
-                    <a href="/post/">Tips</a>
-                </div>
-                <div class="menu-item">
-                    <a href="/artwork/">Artwork</a>
-                </div>
-            </nav>
-        </div>
-    </header>
-    <main class="site-content">
-        <div class="main-content">
-            <article class="post single section-post">
-                <header class="post-header">
-                    <h1 class="post-title">svgファイルを正規表現で置換して最適化する</h1>
-                    <div class="post-meta date">
-                        <time class="post-meta-item" datetime="2024-02-10 00:00:00 +0900 JST">2024/02/10</time>
-                    </div>
-                    <div class="post-meta taxonomies">
-                        <span class="post-meta-title taxonomy">Categories:</span> <span class="post-meta-item term"><a href="/categories/coding/">コーディング</a></span>
-                    </div>
-                </header>
-                <div class="post-content">
-                    <p><a href="/blog/2024-01-20-sfic/">アイコンアセット</a>を制作した時のお話。</p>
-                    <p>配布用のsvgファイルを出力した際、空のグループやガイド画像の参照まで書き出されてしまったため、これをテキストエディタの正規表現で置換する方法を残しておきます。</p>
-                    <p>本当はツール側で出力内容を制御したいところですが、私の環境ではその手段がなく、かといって出力の度に不要なレイヤーを消すのも手間なので…少数のファイルであればweb上の最適化ツールで事足りそうですが、今回は沢山のファイルを処理したかったのでこの方法を採りました。</p>
-                    <p>ただし、私は正規表現やsvgに関して全くの素人です。他のフォーマットや環境での動作は保証できませんし、「自分のところでは動いたからヨシ！」という精神で記事を書いています。そのためバックアップは必ず取り、自己責任でのご利用をお願いします。</p>
-                    <p>なお、私の使用したエディタはSublime Text 3になります。</p>
-                    <aside>
-                        <h2>目次</h2>
-                        <nav id="TableOfContents">
-                            <ul>
-                                <li>
-                                    <a href="#%E7%A9%BA%E3%81%AE%E8%A1%8C%E3%82%92%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8B">空の行を削除する</a>
-                                </li>
-                                <li>
-                                    <a href="#%E7%A9%BA%E3%81%AE%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E3%82%92%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8B">空のグループを削除する</a>
-                                </li>
-                                <li>
-                                    <a href="#%E9%9D%9E%E8%A1%A8%E7%A4%BA%E3%81%AE%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E3%82%92%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8B">非表示のグループを削除する</a>
-                                </li>
-                                <li>
-                                    <a href="#%E3%82%BF%E3%82%B0%E6%9C%AB%E5%B0%BE%E3%81%AE%E7%A9%BA%E7%99%BD%E3%82%92%E5%8F%96%E3%82%8A%E9%99%A4%E3%81%8F">タグ末尾の空白を取り除く</a>
-                                </li>
-                                <li>
-                                    <a href="#fill%E3%81%AE%E8%89%B2%E6%8C%87%E5%AE%9A%E3%82%92%E5%8F%96%E3%82%8A%E9%99%A4%E3%81%8F">fillの色指定を取り除く</a>
-                                </li>
-                                <li>
-                                    <a href="#%E3%82%B3%E3%83%A1%E3%83%B3%E3%83%88%E3%82%A2%E3%82%A6%E3%83%88%E3%82%92%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8B">コメントアウトを削除する</a>
-                                </li>
-                                <li>
-                                    <a href="#%E3%82%BF%E3%82%B0%E5%86%85%E3%81%AE%E6%94%B9%E8%A1%8C%E3%82%92%E5%8F%96%E3%82%8A%E9%99%A4%E3%81%8F">タグ内の改行を取り除く</a>
-                                </li>
-                                <li>
-                                    <a href="#%E3%82%AA%E3%83%9E%E3%82%B1%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E4%B8%8D%E8%A6%81%E3%82%89%E3%81%97%E3%81%84%E8%A8%98%E8%BF%B0%E3%81%AE%E5%89%8A%E9%99%A4">オマケ：その他の不要らしい記述の削除</a>
-                                </li>
-                                <li>
-                                    <a href="#%E3%81%82%E3%81%A8%E3%81%8C%E3%81%8D">あとがき</a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </aside>
-                    <h2 id="空の行を削除する">空の行を削除する</h2>
-                    <p>検索：</p>
-                    <pre tabindex="0"><code>^\s*$\s?
-</code></pre>
-                    <p>空行（あるいはスペースやタブのみの行）を検索する正規表現です。置換後のテキストを未記入で実行することで対象を削除できます。</p>
-                    <p>本記事ではなるべく空行が出ないようパターンを記述していますが、もし空行が発生した場合はこちらで処理してください。</p>
-                    <h2 id="空のグループを削除する">空のグループを削除する</h2>
-                    <p>例：</p>
-                    <pre tabindex="0"><code>&lt;g id="test_x5F_01"&gt;
+	<header class="site-header">
+		<div class="header-content">
+			<div class="site-title">
+    
+    <a href="/">        
+        
+        
+
+        
+        
+        
+            047
+            
+    </a>
+</div>
+<nav class="site-menu">
+    
+    <div class="menu-item">
+        
+            <a href="/blog/">Blog</a>
+        
+    </div>
+    
+    <div class="menu-item">
+        
+            <a href="/review/">Review</a>
+        
+    </div>
+    
+    <div class="menu-item">
+        
+            <a href="/post/">Tips</a>
+        
+    </div>
+    
+    <div class="menu-item">
+        
+            <a href="/artwork/">Artwork</a>
+        
+    </div>
+    
+</nav>
+		</div>
+	</header>
+	<main class="site-content">
+		<div class="main-content">
+			
+<article class="post single section-post">
+	<header class="post-header">
+		<h1 class="post-title">svgファイルを正規表現で置換して最適化する</h1>
+		<div class="post-meta date">
+	<time class="post-meta-item" datetime="2024-02-10 00:00:00 &#43;0900 JST">2024/02/10</time>
+</div>
+		
+    
+		
+			<div class="post-meta taxonomies">
+    		<span class="post-meta-title taxonomy">Categories:</span>
+    		
+    			
+    				<span class="post-meta-item term"><a href="/categories/coding/">コーディング</a></span>
+    			
+    		
+    		</div>
+    	
+	
+
+    
+	
+
+		
+	</header>
+	<div class="post-content">
+		
+		
+
+        <p><a href="/blog/2024-01-20-sfic/"
+  
+  >アイコンアセット</a>を制作した時のお話。</p>
+<p>配布用のsvgファイルを出力した際、空のグループやガイド画像の参照まで書き出されてしまったため、これをテキストエディタの正規表現で置換する方法を残しておきます。</p>
+<p>本当はツール側で出力内容を制御したいところですが、私の環境ではその手段がなく、かといって出力の度に不要なレイヤーを消すのも手間なので…少数のファイルであればweb上の最適化ツールで事足りそうですが、今回は沢山のファイルを処理したかったのでこの方法を採りました。</p>
+<p>ただし、私は正規表現やsvgに関して全くの素人です。他のフォーマットや環境での動作は保証できませんし、「自分のところでは動いたからヨシ！」という精神で記事を書いています。そのためバックアップは必ず取り、自己責任でのご利用をお願いします。</p>
+<p>なお、私の使用したエディタはSublime Text 3になります。</p>
+<aside><h2>目次</h2><nav id="TableOfContents">
+  <ul>
+    <li><a href="#空の行を削除する">空の行を削除する</a></li>
+    <li><a href="#空のグループを削除する">空のグループを削除する</a></li>
+    <li><a href="#非表示のグループを削除する">非表示のグループを削除する</a></li>
+    <li><a href="#タグ末尾の空白を取り除く">タグ末尾の空白を取り除く</a></li>
+    <li><a href="#fillの色指定を取り除く">fillの色指定を取り除く</a></li>
+    <li><a href="#コメントアウトを削除する">コメントアウトを削除する</a></li>
+    <li><a href="#タグ内の改行を取り除く">タグ内の改行を取り除く</a></li>
+    <li><a href="#オマケその他の不要らしい記述の削除">オマケ：その他の不要らしい記述の削除</a></li>
+    <li><a href="#あとがき">あとがき</a></li>
+  </ul>
+</nav></aside>
+
+<h2 id="空の行を削除する">空の行を削除する</h2>
+<p>検索：</p>
+<pre tabindex="0"><code>^\s*$\s?
+</code></pre><p>空行（あるいはスペースやタブのみの行）を検索する正規表現です。置換後のテキストを未記入で実行することで対象を削除できます。</p>
+<p>本記事ではなるべく空行が出ないようパターンを記述していますが、もし空行が発生した場合はこちらで処理してください。</p>
+<h2 id="空のグループを削除する">空のグループを削除する</h2>
+<p>例：</p>
+<pre tabindex="0"><code>&lt;g id=&#34;test_x5F_01&#34;&gt;
 &lt;/g&gt;
-</code></pre>
-                    <p>検索：</p>
-                    <pre tabindex="0"><code>^\s*&lt;g.*?&gt;\s*&lt;/g&gt;\s?
-</code></pre>
-                    <p>何も含まれていないレイヤーが出力され、空の<code>&lt;g&gt;</code>タグが生成された場合。（これくらいはツール側で出力を制御させてほしい）</p>
-                    <p>中に文字が含まれていない<code>&lt;g&gt;</code>タグを検索しているため、空のグループが入れ子になっている場合は末端しか削除されない点に注意。</p>
-                    <h2 id="非表示のグループを削除する">非表示のグループを削除する</h2>
-                    <p>例：</p>
-                    <pre tabindex="0"><code>&lt;g id="edit_1_" display="none"&gt;
-        &lt;g display="inline"&gt;
-                &lt;polyline fill="#204080" points="235.001,720 160.001,670 205.001,670 235.001,690"/&gt;
-        &lt;/g&gt;
+</code></pre><p>検索：</p>
+<pre tabindex="0"><code>^\s*&lt;g.*?&gt;\s*&lt;/g&gt;\s?
+</code></pre><p>何も含まれていないレイヤーが出力され、空の<code>&lt;g&gt;</code>タグが生成された場合。（これくらいはツール側で出力を制御させてほしい）</p>
+<p>中に文字が含まれていない<code>&lt;g&gt;</code>タグを検索しているため、空のグループが入れ子になっている場合は末端しか削除されない点に注意。</p>
+<h2 id="非表示のグループを削除する">非表示のグループを削除する</h2>
+<p>例：</p>
+<pre tabindex="0"><code>&lt;g id=&#34;edit_1_&#34; display=&#34;none&#34;&gt;
+	&lt;g display=&#34;inline&#34;&gt;
+		&lt;polyline fill=&#34;#204080&#34; points=&#34;235.001,720 160.001,670 205.001,670 235.001,690&#34;/&gt;
+	&lt;/g&gt;
 &lt;/g&gt;
-</code></pre>
-                    <p>検索：</p>
-                    <pre tabindex="0"><code>^(\t*)&lt;g.*?display="none"[\s\S]*?^\1&lt;/g&gt;\s?
-</code></pre>
-                    <p>レイヤーを非表示にして出力したら<code>display="none"</code>がついた上で出力されてしまった場合。</p>
-                    <p>このパターンでは<code>display="none"</code>が指定されたタグ開始から、同じインデント階層の閉じタグまでを検索します。流石にインデントがズレているような状況はないと思うので想定していません。ご了承を。</p>
-                    <h2 id="タグ末尾の空白を取り除く">タグ末尾の空白を取り除く</h2>
-                    <p>例：</p>
-                    <pre tabindex="0"><code>&lt;polygon fill="#204080" points="160,230 160,250 340,250 660,250 840,250 840,230          "/&gt;
-</code></pre>
-                    <p>検索：</p>
-                    <pre tabindex="0"><code>\s+"/&gt;
-</code></pre>
-                    <p>置換：</p>
-                    <pre tabindex="0"><code>"/&gt;
-</code></pre>
-                    <p>なぜか出力した座標情報の末尾にスペースやタブが含まれているケース。謎です。</p>
-                    <p>タグの末尾にあることを前提としているので他の情報が後に続くと検索できません。素人なのでsvgの仕様上そういうことがあるのかも分からない…でも自分のところでは動いたからヨシ！</p>
-                    <h2 id="fillの色指定を取り除く">fillの色指定を取り除く</h2>
-                    <p>例：</p>
-                    <pre tabindex="0"><code>&lt;g id="test_x5F_01"&gt;
-        &lt;g&gt;
-                &lt;circle fill="#204080" cx="320" cy="650" r="50"/&gt;
-                &lt;circle fill="#204080" cx="680" cy="650" r="50"/&gt;
-        &lt;/g&gt;
+</code></pre><p>検索：</p>
+<pre tabindex="0"><code>^(\t*)&lt;g.*?display=&#34;none&#34;[\s\S]*?^\1&lt;/g&gt;\s?
+</code></pre><p>レイヤーを非表示にして出力したら<code>display=&quot;none&quot;</code>がついた上で出力されてしまった場合。</p>
+<p>このパターンでは<code>display=&quot;none&quot;</code>が指定されたタグ開始から、同じインデント階層の閉じタグまでを検索します。流石にインデントがズレているような状況はないと思うので想定していません。ご了承を。</p>
+<h2 id="タグ末尾の空白を取り除く">タグ末尾の空白を取り除く</h2>
+<p>例：</p>
+<pre tabindex="0"><code>&lt;polygon fill=&#34;#204080&#34; points=&#34;160,230 160,250 340,250 660,250 840,250 840,230 		&#34;/&gt;
+</code></pre><p>検索：</p>
+<pre tabindex="0"><code>\s+&#34;/&gt;
+</code></pre><p>置換：</p>
+<pre tabindex="0"><code>&#34;/&gt;
+</code></pre><p>なぜか出力した座標情報の末尾にスペースやタブが含まれているケース。謎です。</p>
+<p>タグの末尾にあることを前提としているので他の情報が後に続くと検索できません。素人なのでsvgの仕様上そういうことがあるのかも分からない…でも自分のところでは動いたからヨシ！</p>
+<h2 id="fillの色指定を取り除く">fillの色指定を取り除く</h2>
+<p>例：</p>
+<pre tabindex="0"><code>&lt;g id=&#34;test_x5F_01&#34;&gt;
+	&lt;g&gt;
+		&lt;circle fill=&#34;#204080&#34; cx=&#34;320&#34; cy=&#34;650&#34; r=&#34;50&#34;/&gt;
+		&lt;circle fill=&#34;#204080&#34; cx=&#34;680&#34; cy=&#34;650&#34; r=&#34;50&#34;/&gt;
+	&lt;/g&gt;
 &lt;/g&gt;
-</code></pre>
-                    <p>検索：</p>
-                    <pre tabindex="0"><code>fill=".*?"\s*
-</code></pre>
-                    <p>こちらは単色アイコンなどで色指定が不要な場合に使います。</p>
-                    <p>一応<code>fill="red"</code>といった色指定の場合でも置換可能です。</p>
-                    <h2 id="コメントアウトを削除する">コメントアウトを削除する</h2>
-                    <p>例：</p>
-                    <pre tabindex="0"><code>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+</code></pre><p>検索：</p>
+<pre tabindex="0"><code>fill=&#34;.*?&#34;\s*
+</code></pre><p>こちらは単色アイコンなどで色指定が不要な場合に使います。</p>
+<p>一応<code>fill=&quot;red&quot;</code>といった色指定の場合でも置換可能です。</p>
+<h2 id="コメントアウトを削除する">コメントアウトを削除する</h2>
+<p>例：</p>
+<pre tabindex="0"><code>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;
 &lt;!-- Generator: Adobe Illustrator 16.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --&gt;
-&lt;!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"&gt;
-&lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1000px"
-         height="1000px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve"&gt;
-</code></pre>
-                    <p>検索パターン：</p>
-                    <pre tabindex="0"><code>^&lt;!--[\s|\S]*?--&gt;$\s?
-</code></pre>
-                    <p>出力したソフトによって差し込まれたコメントアウトを削除したい場合。（未だにCS6にしがみついていることがバレちゃう…）</p>
-                    <p>こちらは行全体、もしくは複数行に跨るコメントを検索しています。部分的なコメントを削除したい場合は<strong>上記パターンを置換した上で</strong><code>&lt;!--[\s|\S]*?--&gt;</code>を対象に置換してください。先にこちらで置換すると一行or複数行コメントで空行が発生します。</p>
-                    <h2 id="タグ内の改行を取り除く">タグ内の改行を取り除く</h2>
-                    <pre tabindex="0"><code>&lt;g id="ship_x5F_01"&gt;
-        &lt;g&gt;
-                &lt;path fill="#204080" d="M580.002,669.935V620h-50v49.945c-98.928-0.611-252.847-8.101-375-99.945l-30,35
-                        c68.549,33.842,99.424,75.091,133.827,115h271.173h50h234.076c38.695-49.001,60.924-90,60.924-90
-                        C759.834,664.945,666.553,669.417,580.002,669.935z"/&gt;
-        &lt;/g&gt;
+&lt;!DOCTYPE svg PUBLIC &#34;-//W3C//DTD SVG 1.1//EN&#34; &#34;http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd&#34;&gt;
+&lt;svg version=&#34;1.1&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34; xmlns:xlink=&#34;http://www.w3.org/1999/xlink&#34; x=&#34;0px&#34; y=&#34;0px&#34; width=&#34;1000px&#34;
+	 height=&#34;1000px&#34; viewBox=&#34;0 0 1000 1000&#34; enable-background=&#34;new 0 0 1000 1000&#34; xml:space=&#34;preserve&#34;&gt;
+</code></pre><p>検索パターン：</p>
+<pre tabindex="0"><code>^&lt;!--[\s|\S]*?--&gt;$\s?
+</code></pre><p>出力したソフトによって差し込まれたコメントアウトを削除したい場合。（未だにCS6にしがみついていることがバレちゃう…）</p>
+<p>こちらは行全体、もしくは複数行に跨るコメントを検索しています。部分的なコメントを削除したい場合は<strong>上記パターンを置換した上で</strong><code>&lt;!--[\s|\S]*?--&gt;</code>を対象に置換してください。先にこちらで置換すると一行or複数行コメントで空行が発生します。</p>
+<h2 id="タグ内の改行を取り除く">タグ内の改行を取り除く</h2>
+<pre tabindex="0"><code>&lt;g id=&#34;ship_x5F_01&#34;&gt;
+	&lt;g&gt;
+		&lt;path fill=&#34;#204080&#34; d=&#34;M580.002,669.935V620h-50v49.945c-98.928-0.611-252.847-8.101-375-99.945l-30,35
+			c68.549,33.842,99.424,75.091,133.827,115h271.173h50h234.076c38.695-49.001,60.924-90,60.924-90
+			C759.834,664.945,666.553,669.417,580.002,669.935z&#34;/&gt;
+	&lt;/g&gt;
 &lt;/g&gt;
-</code></pre>
-                    <p>検索：</p>
-                    <pre tabindex="0"><code>(?&lt;=[^&gt;\s])\s*[\r\n|\r|\n]+\s*(?=[^&lt;\s])
-</code></pre>
-                    <p>置換：</p>
-                    <pre tabindex="0"><code> 
-</code></pre>
-                    <p>座標データなどの一行が長い箇所で改行が挟まれており、これを削除したい場合。分かりにくいですが置換後に半角スペース1つを指定しています。</p>
-                    <p>整形用の改行を削除すべきかは微妙なところですが、ひとまず上記のパターンでタグとは無関係な改行を削除できると思います。ただし一行がとんでもなく長くなっても知らないです。</p>
-                    <h2 id="オマケその他の不要らしい記述の削除">オマケ：その他の不要らしい記述の削除</h2>
-                    <p>検索：</p>
-                    <pre tabindex="0"><code>&lt;\?xml version="1.0".*?encoding="utf-8".*?\?&gt;\s?
-</code></pre>
-                    <pre tabindex="0"><code>&lt;!DOCTYPE svg PUBLIC.*?&gt;\s?
-</code></pre>
-                    <pre tabindex="0"><code>\s*x="0px"\s*y="0px"
-</code></pre>
-                    <pre tabindex="0"><code>\s*enable-background=".*?"
-</code></pre>
-                    <pre tabindex="0"><code>\s*xml:space="preserve"
-</code></pre>
-                    <p>svgファイルの最適化を調べていた際に見かけた、どうやら不要らしい記述を削除するパターン。svgの仕様に関する知識をそもそも持ち合わせていないため、どれをどういう理由で削っていいのかは分かってないです。後日改めて調べる…かもしれません。</p>
-                    <p>3段目の<code>\s*x="0px"\s*y="0px"</code>はいかにも他のデータに誤爆しそうなので、安全にいきたい場合は下記のような指定にした方がよさそうです。</p>
-                    <p>検索：</p>
-                    <pre tabindex="0"><code>(&lt;svg.*?)(\s*x="0px"\s*y="0px")
-</code></pre>
-                    <p>置換：</p>
-                    <pre tabindex="0"><code>\1
-</code></pre>
-                    <h2 id="あとがき">あとがき</h2>
-                    <p>以上、正規表現によるsvgの最適化でした。</p>
-                    <p>記事を書くにあたって調べているうちに項目が増え、結局「これも全部手動でやるのは大変だな…」となって最終的に簡易ツールを作りました。流石に人様にお出しできるようなものじゃないですが、自分のsvgファイルくらいは一括で最適化できるようになりました、たぶん。</p>
-                    <p>正規表現…たまに使うことはあるものの、そもそもコーディングすることが稀なので全部忘れてしまい、毎回ゼロからのスタートです。ぱっと見が呪文なので、今回の内容も数カ月後には暗号になっているかもしれません。</p>
-                </div>
-                <footer class="post-footer"></footer>
-                <nav class="post-navigation">
-                    <div class="prev-post">
-                        <a href="/post/hugo-unity-shortcode/">Prev: HugoでUnity WebGLを表示する</a>
-                    </div>
-                </nav>
-            </article>
-        </div>
-        <div class="side-content">
-            <aside class="widget profile">
-                <div class="widget-header">
-                    <h2>Profile</h2>
-                </div>
-                <div class="widget-content">
-                    <p><img src="/uploads/site/profile.webp" alt="" loading="lazy" width="140" height="140"></p>
-                    <p>全実績解除したい系カジュアルゲーマー。いつか積みゲーとウィッシュリストを空っぽにしたい。</p>
-                    <p>最近はサイトのレイアウトを試行錯誤しています。</p>
-                    <div class="profile-icons">
-                        <a href="https://arstla.net/" class="icon icon-home" target="_blank" rel="noopener" title="Site"></a> <a href="https://misskey.io/@zeroshina" class="icon icon-bubble" target="_blank" rel="noopener" title="Misskey"></a> <a href="https://www.buymeacoffee.com/zeroshina" class="icon icon-mug" target="_blank" rel="noopener" title="Buy Me a Coffee"></a> <a href="https://zeroshina.jp/index.xml" class="icon icon-rss" target="_blank" rel="noopener" title="RSS"></a>
-                    </div>
-                </div>
-            </aside>
-            <aside class="widget pickup">
-                <div class="widget-header">
-                    <h2>Information</h2>
-                </div>
-                <div class="widget-content">
-                    <ul>
-                        <li>
-                            <p><a href="/blog/2024-01-20-sfic/"><img src="/uploads/blog/2024-01-20-sfic-01-thumb.webp" alt="" loading="lazy" width="800" height="533"></a></p>
-                            <p><a href="/blog/2024-01-20-sfic/">シンプルな単色アイコンのアセット販売を始めました</a></p>
-                        </li>
-                    </ul>
-                </div>
-            </aside>
-            <aside class="widget custom">
-                <div class="widget-header">
-                    <h2>Ad</h2>
-                </div>
-                <div class="widget-content">
-                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5700117217719363" crossorigin="anonymous"></script> <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5700117217719363" data-ad-slot="2963772559" data-ad-format="auto" data-full-width-responsive="true"></ins> 
-                    <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
-                </div>
-            </aside>
-            <aside class="widget taxnomies categories">
-                <div class="widget-header">
-                    <h2>Categories</h2>
-                </div>
-                <div class="widget-content">
-                    <ul>
+</code></pre><p>検索：</p>
+<pre tabindex="0"><code>(?&lt;=[^&gt;\s])\s*[\r\n|\r|\n]+\s*(?=[^&lt;\s])
+</code></pre><p>置換：</p>
+<pre tabindex="0"><code> 
+</code></pre><p>座標データなどの一行が長い箇所で改行が挟まれており、これを削除したい場合。分かりにくいですが置換後に半角スペース1つを指定しています。</p>
+<p>整形用の改行を削除すべきかは微妙なところですが、ひとまず上記のパターンでタグとは無関係な改行を削除できると思います。ただし一行がとんでもなく長くなっても知らないです。</p>
+<h2 id="オマケその他の不要らしい記述の削除">オマケ：その他の不要らしい記述の削除</h2>
+<p>検索：</p>
+<pre tabindex="0"><code>&lt;\?xml version=&#34;1.0&#34;.*?encoding=&#34;utf-8&#34;.*?\?&gt;\s?
+</code></pre><pre tabindex="0"><code>&lt;!DOCTYPE svg PUBLIC.*?&gt;\s?
+</code></pre><pre tabindex="0"><code>\s*x=&#34;0px&#34;\s*y=&#34;0px&#34;
+</code></pre><pre tabindex="0"><code>\s*enable-background=&#34;.*?&#34;
+</code></pre><pre tabindex="0"><code>\s*xml:space=&#34;preserve&#34;
+</code></pre><p>svgファイルの最適化を調べていた際に見かけた、どうやら不要らしい記述を削除するパターン。svgの仕様に関する知識をそもそも持ち合わせていないため、どれをどういう理由で削っていいのかは分かってないです。後日改めて調べる…かもしれません。</p>
+<p>3段目の<code>\s*x=&quot;0px&quot;\s*y=&quot;0px&quot;</code>はいかにも他のデータに誤爆しそうなので、安全にいきたい場合は下記のような指定にした方がよさそうです。</p>
+<p>検索：</p>
+<pre tabindex="0"><code>(&lt;svg.*?)(\s*x=&#34;0px&#34;\s*y=&#34;0px&#34;)
+</code></pre><p>置換：</p>
+<pre tabindex="0"><code>\1
+</code></pre><h2 id="あとがき">あとがき</h2>
+<p>以上、正規表現によるsvgの最適化でした。</p>
+<p>記事を書くにあたって調べているうちに項目が増え、結局「これも全部手動でやるのは大変だな…」となって最終的に簡易ツールを作りました。流石に人様にお出しできるようなものじゃないですが、自分のsvgファイルくらいは一括で最適化できるようになりました、たぶん。</p>
+<p>正規表現…たまに使うことはあるものの、そもそもコーディングすることが稀なので全部忘れてしまい、毎回ゼロからのスタートです。ぱっと見が呪文なので、今回の内容も数カ月後には暗号になっているかもしれません。</p>
+	</div>
+	<footer class="post-footer">
+	</footer>
+	<nav class="post-navigation">
+		
+		
+			<div class="prev-post"><a href="/post/hugo-unity-shortcode/">Prev: HugoでUnity WebGLを表示する</a></div>			
+				
+	</nav>
+</article>
+
+		</div>
+		
+		<div class="side-content">
+			
+
+
+
+
+	
+
+
+
+	
+		
+		
+
+
+	
+		<aside class="widget profile">
+			<div class="widget-header">
+				<h2>Profile</h2>		
+			</div>
+			<div class="widget-content">
+						
+				
+					<p><img src="/uploads/site/profile.webp" alt="" loading="lazy" width="140" height="140"></p>
+				
+				<p>全実績解除したい系カジュアルゲーマー。いつか積みゲーとウィッシュリストを空っぽにしたい。</p>
+<p>最近はサイトのレイアウトを試行錯誤しています。</p>
+
+				
+					<div class="profile-icons">
+					
+						
+							<a href="https://arstla.net/" class="icon icon-home" target="_blank" rel="noopener" title="Site"></a>
+									
+					
+						
+							<a href="https://misskey.io/@zeroshina" class="icon icon-bubble" target="_blank" rel="noopener" title="Misskey"></a>
+									
+					
+						
+							<a href="https://www.buymeacoffee.com/zeroshina" class="icon icon-mug" target="_blank" rel="noopener" title="Buy Me a Coffee"></a>
+									
+					
+						
+							<a href="https://zeroshina.jp/index.xml" class="icon icon-rss" target="_blank" rel="noopener" title="RSS"></a>
+									
+					
+					</div>
+				
+			</div>
+		</aside>
+	
+
+		
+
+	
+		
+		
+
+	
+		<aside class="widget pickup">
+			<div class="widget-header">
+				<h2>Information</h2>		
+			</div>
+			<div class="widget-content">
+				<ul>
+					
+						
+							<li>
+								
+								<p><a href="/blog/2024-01-20-sfic/"><img src="/uploads/blog/2024-01-20-sfic-01-thumb.webp" alt="" loading="lazy" width="800" height="533"></a></p>
+	                    		<p><a href="/blog/2024-01-20-sfic/">シンプルな単色アイコンのアセット販売を始めました</a></p>
+                    		</li>
+						
+					
+				</ul>
+			</div>
+		</aside>
+	
+
+		
+
+	
+		
+		
+				<aside class="widget custom">
+	<div class="widget-header">
+		<h2>Ad</h2>		
+	</div>
+	<div class="widget-content">
+		
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5700117217719363"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5700117217719363"
+     data-ad-slot="2963772559"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+
+	</div>
+</aside>
+		
+		
+
+	
+		
+		
+
+
+    
+        <aside class="widget taxnomies categories">
+            <div class="widget-header">
+                <h2>Categories</h2>
+            </div>
+            <div class="widget-content">
+                <ul>
+                
+                    
+                    
                         <li>
                             <a href="/categories/game/">ゲーム (29)</a>
                         </li>
+                          
+                
+                    
+                    
                         <li>
-                            <a href="/categories/card/">カード (7)</a>
+                            <a href="/categories/card/">カード (8)</a>
                         </li>
+                          
+                
+                    
+                    
                         <li>
                             <a href="/categories/modeling/">モデリング (4)</a>
                         </li>
+                          
+                
+                    
+                    
                         <li>
                             <a href="/categories/coding/">コーディング (2)</a>
                         </li>
+                          
+                
+                    
+                    
                         <li>
                             <a href="/categories/diary/">日記 (1)</a>
                         </li>
+                          
+                
+                    
+                    
                         <li>
                             <a href="/categories/information/">お知らせ (1)</a>
                         </li>
+                          
+                
+                    
+                    
                         <li>
                             <a href="/categories/uncategorized/">その他 (1)</a>
                         </li>
-                    </ul>
-                </div>
-            </aside>
-            <aside class="widget taxnomies tags">
-                <div class="widget-header">
-                    <h2>Tags</h2>
-                </div>
-                <div class="widget-content">
-                    <ul>
+                          
+                
+                </ul>                
+            </div>          
+        </aside>    
+    
+
+    
+        <aside class="widget taxnomies tags">
+            <div class="widget-header">
+                <h2>Tags</h2>
+            </div>
+            <div class="widget-content">
+                <ul>
+                
+                    
+                    
                         <li>
                             <a href="/tags/dnf/">アラド戦記 (8)</a>
                         </li>
+                          
+                
+                    
+                    
                         <li>
                             <a href="/tags/steam/">Steam (8)</a>
                         </li>
+                          
+                
+                    
+                    
                         <li>
                             <a href="/tags/mobile-app/">アプリ (7)</a>
                         </li>
+                          
+                
+                    
+                    
                         <li>
                             <a href="/tags/nintendo-switch/">Nintendo Switch (7)</a>
                         </li>
+                          
+                
+                    
+                    
                         <li>
-                            <a href="/tags/yugioh/">遊戯王 (6)</a>
+                            <a href="/tags/yugioh/">遊戯王 (7)</a>
                         </li>
+                          
+                
+                    
+                    
                         <li>
                             <a href="/tags/blender/">Blender (3)</a>
                         </li>
+                          
+                
+                    
+                    
                         <li>
                             <a href="/tags/vr/">VR (2)</a>
                         </li>
+                          
+                
+                    
+                    
                         <li>
                             <a href="/tags/hugo/">Hugo (1)</a>
                         </li>
+                          
+                
+                    
+                    
                         <li>
                             <a href="/tags/lowpoly/">ローポリ (1)</a>
                         </li>
+                          
+                
+                    
+                    
                         <li>
                             <a href="/tags/sd/">SD (1)</a>
                         </li>
+                          
+                
+                    
+                    
                         <li>
                             <a href="/tags/unity/">Unity (1)</a>
                         </li>
-                    </ul>
-                </div>
-            </aside>
-            <aside class="widget recent">
-                <div class="widget-header">
-                    <h2>Recent Blog</h2>
-                </div>
-                <div class="widget-content">
-                    <ul>
-                        <li>
-                            <p><a href="/blog/2024-07-01-dnf-arad/"><img src="/uploads/blog/2024-07-01-dnf-arad-01-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
-                            <p><a href="/blog/2024-07-01-dnf-arad/">行けるところまで行った アラド戦記</a></p>
-                        </li>
-                    </ul>
-                </div>
-                <div class="widget-header">
-                    <h2>Recent Review</h2>
-                </div>
-                <div class="widget-content">
-                    <ul>
-                        <li>
-                            <p><a href="/review/small-sleeve-inner-side-daiso/"><img src="/review/small-sleeve-inner-side-daiso/cover-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
-                            <p><a href="/review/small-sleeve-inner-side-daiso/">ダイソーの横入れインナースリーブは実用的なのか？DAISO トレカスリーブ MS-1 レビュー</a></p>
-                        </li>
-                    </ul>
-                </div>
-                <div class="widget-header">
-                    <h2>Recent Artwork</h2>
-                </div>
-                <div class="widget-content">
-                    <ul>
-                        <li>
-                            <p><a href="/artwork/lowpoly-256fes-2023/"><img src="/artwork/lowpoly-256fes-2023/cover-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
-                            <p><a href="/artwork/lowpoly-256fes-2023/">ローポリ アルシェインさん in #256fes</a></p>
-                        </li>
-                    </ul>
-                </div>
-            </aside>
-            <aside class="widget custom">
-                <div class="widget-header">
-                    <h2>Links</h2>
-                </div>
-                <div class="widget-content">
-                    <ul>
-                        <li>
-                            <a href="/privacy/">プライバシーポリシー</a>
-                        </li>
-                        <li>
-                            <a href="/categories/">カテゴリ一覧</a>
-                        </li>
-                        <li>
-                            <a href="/tags/">タグ一覧</a>
-                        </li>
-                    </ul>
-                </div>
-            </aside>
-        </div>
-    </main>
-    <footer class="site-footer">
-        <div class="footer-content">
-            <div class="footer-row">
-                <span class="footer-item copyright">© 047</span>
+                          
+                
+                </ul>                
+            </div>          
+        </aside>    
+    
+
+		
+
+	
+		
+		
+
+
+
+<aside class="widget recent">
+    
+                    
+            <div class="widget-header">
+                <h2>Recent Blog</h2>
             </div>
-        </div>
-    </footer>
+            <div class="widget-content">
+                <ul>
+                
+                    <li>
+                        
+                        <p><a href="/blog/2024-07-01-dnf-arad/"><img src="/uploads/blog/2024-07-01-dnf-arad-01-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
+                        <p><a href="/blog/2024-07-01-dnf-arad/">行けるところまで行った アラド戦記</a></p>
+                    </li>
+                
+                </ul>                
+            </div>
+        
+    
+                    
+            <div class="widget-header">
+                <h2>Recent Review</h2>
+            </div>
+            <div class="widget-content">
+                <ul>
+                
+                    <li>
+                        
+                        <p><a href="/review/small-sleeve-over/"><img src="/review/small-sleeve-over/cover-thumb.webp" alt="" loading="lazy" width="800" height="452"></a></p>
+                        <p><a href="/review/small-sleeve-over/">遊戯王 オーバースリーブの比較</a></p>
+                    </li>
+                
+                </ul>                
+            </div>
+        
+    
+        
+    
+                    
+            <div class="widget-header">
+                <h2>Recent Artwork</h2>
+            </div>
+            <div class="widget-content">
+                <ul>
+                
+                    <li>
+                        
+                        <p><a href="/artwork/lowpoly-256fes-2023/"><img src="/artwork/lowpoly-256fes-2023/cover-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
+                        <p><a href="/artwork/lowpoly-256fes-2023/">ローポリ アルシェインさん in #256fes</a></p>
+                    </li>
+                
+                </ul>                
+            </div>
+        
+    
+</aside>
+		
+
+	
+		
+		
+				<aside class="widget custom">
+	<div class="widget-header">
+		<h2>Links</h2>		
+	</div>
+	<div class="widget-content">
+		<ul>
+<li><a href="/privacy/"
+  
+  >プライバシーポリシー</a></li>
+<li><a href="/categories/"
+  
+  >カテゴリ一覧</a></li>
+<li><a href="/tags/"
+  
+  >タグ一覧</a></li>
+</ul>
+
+	</div>
+</aside>
+		
+		
+
+		</div>
+		
+	</main>
+	<footer class="site-footer">
+		<div class="footer-content">
+			 <div class="footer-row">
+    <span class="footer-item copyright">© 047</span>
+</div>
+		</div>
+	</footer>
 </body>
 </html>

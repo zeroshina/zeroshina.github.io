@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>その他 on 047</title>
-    <link>https://zeroshina.jp/categories/uncategorized/</link>
+    <link>http://localhost:1313/categories/uncategorized/</link>
     <description>Recent content in その他 on 047</description>
     <generator>Hugo</generator>
     <language>ja</language>
     <copyright>© 047</copyright>
     <lastBuildDate>Thu, 17 Mar 2022 00:00:00 +0900</lastBuildDate>
-    <atom:link href="https://zeroshina.jp/categories/uncategorized/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/categories/uncategorized/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>「このApple IDは有効ではありません。」と表示された時の対処法</title>
-      <link>https://zeroshina.jp/post/apple-id-disabled/</link>
+      <link>http://localhost:1313/post/apple-id-disabled/</link>
       <pubDate>Thu, 17 Mar 2022 00:00:00 +0900</pubDate>
-      <guid>https://zeroshina.jp/post/apple-id-disabled/</guid>
+      <guid>http://localhost:1313/post/apple-id-disabled/</guid>
       <description>&lt;p&gt;結論：Apple公式にお問い合わせしたら復旧してくれました。&lt;/p&gt;</description>
     </item>
   </channel>

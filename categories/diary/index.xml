@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>日記 on 047</title>
-    <link>https://zeroshina.jp/categories/diary/</link>
+    <link>http://localhost:1313/categories/diary/</link>
     <description>Recent content in 日記 on 047</description>
     <generator>Hugo</generator>
     <language>ja</language>
     <copyright>© 047</copyright>
     <lastBuildDate>Thu, 20 Jul 2023 00:00:00 +0900</lastBuildDate>
-    <atom:link href="https://zeroshina.jp/categories/diary/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/categories/diary/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>WordpressからHugoへ</title>
-      <link>https://zeroshina.jp/blog/2023-07-20-wordpress-to-hugo/</link>
+      <link>http://localhost:1313/blog/2023-07-20-wordpress-to-hugo/</link>
       <pubDate>Thu, 20 Jul 2023 00:00:00 +0900</pubDate>
-      <guid>https://zeroshina.jp/blog/2023-07-20-wordpress-to-hugo/</guid>
+      <guid>http://localhost:1313/blog/2023-07-20-wordpress-to-hugo/</guid>
       <description>&lt;p&gt;半年ぶりn回目のサイトの新調を行いました。&lt;/p&gt;&#xA;&lt;p&gt;ただし今回は長年使っていたWordpressではなく、Hugoでサイトの構築を行っています。いわゆる動的サイトから静的サイトへの移行ということで、学びのある挑戦だからセーフと自分に言い聞かせております。&lt;/p&gt;&#xA;&lt;p&gt;構成としてはHugoでサイト出力、GitHub Pagesで公開というよくある組み合わせです。 また出力時にTidy HTMLで整形を掛けているためソースコードも多少整っているハズ。割と自己満足の領域ですが、何気に移行して一番嬉しかったところの一つかもしれません。&lt;/p&gt;&#xA;&lt;p&gt;サイトのテーマは一応自分で制作したものになります。当初は既存のテーマにコード直書き☆蛮族カスタマイズでぱぱっと済ます予定でしたが、結局は時間と労力を掛けてしまいました。おかげで最低限ではありますが、自分が欲しい機能は一通り実装できたと思います。&lt;/p&gt;&#xA;&lt;p&gt;以下はWordpressからHugoへ移行した理由と、実際に移行した感想でも残しておこうと思います。&lt;/p&gt;</description>
     </item>
   </channel>

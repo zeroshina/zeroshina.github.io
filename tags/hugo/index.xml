@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hugo on 047</title>
-    <link>https://zeroshina.jp/tags/hugo/</link>
+    <link>http://localhost:1313/tags/hugo/</link>
     <description>Recent content in Hugo on 047</description>
     <generator>Hugo</generator>
     <language>ja</language>
     <copyright>© 047</copyright>
     <lastBuildDate>Wed, 15 Nov 2023 00:00:00 +0900</lastBuildDate>
-    <atom:link href="https://zeroshina.jp/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>HugoでUnity WebGLを表示する</title>
-      <link>https://zeroshina.jp/post/hugo-unity-shortcode/</link>
+      <link>http://localhost:1313/post/hugo-unity-shortcode/</link>
       <pubDate>Wed, 15 Nov 2023 00:00:00 +0900</pubDate>
-      <guid>https://zeroshina.jp/post/hugo-unity-shortcode/</guid>
+      <guid>http://localhost:1313/post/hugo-unity-shortcode/</guid>
       <description>&lt;p&gt;もう半年以上前の話になりますが、WordpressからHugoにサイトを移行した際、Unityコンテンツを移植する必要がありました。&lt;/p&gt;&#xA;&lt;p&gt;慣れないHugoと解凍エラーで苦労したものの、無事Unityコンテンツの表示に成功、さて記事を書くぞという段階で放置してしまっていたので、今更ながらきちんと記事にして残しておこうと思います。&lt;/p&gt;&#xA;&lt;p&gt;手順としては適切なビルド設定をした上で、Unity公式のWebGLテンプレートを流用してショートコードを作るだけの単純なものとなっております。使用したツールのバージョンは以下の通り。&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Hugo: v0.120.4&lt;/li&gt;&#xA;&lt;li&gt;Unity: 2022.3.11f1  (LTS)&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
   </channel>
