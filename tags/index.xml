@@ -7,8 +7,15 @@
     <generator>Hugo</generator>
     <language>ja</language>
     <copyright>© 047</copyright>
-    <lastBuildDate>Mon, 01 Jul 2024 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 07 Jul 2024 00:00:00 +0900</lastBuildDate>
     <atom:link href="https://zeroshina.jp/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>遊戯王</title>
+      <link>https://zeroshina.jp/tags/yugioh/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://zeroshina.jp/tags/yugioh/</guid>
+      <description></description>
+    </item>
     <item>
       <title>アラド戦記</title>
       <link>https://zeroshina.jp/tags/dnf/</link>
@@ -56,13 +63,6 @@
       <link>https://zeroshina.jp/tags/unity/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://zeroshina.jp/tags/unity/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>遊戯王</title>
-      <link>https://zeroshina.jp/tags/yugioh/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://zeroshina.jp/tags/yugioh/</guid>
       <description></description>
     </item>
     <item>
