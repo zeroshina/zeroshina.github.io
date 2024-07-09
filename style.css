@@ -38,8 +38,9 @@
 	--fs-site-menu: 1.1rem;
 	--fs-icon-main: 1.4rem;
 
+	--fs-section-title: 1.8rem;
 	--fs-post-title-single: 1.9rem;
-	--fs-post-title-card: 1.5rem;
+	--fs-post-title-card: 1.4rem;
 
 	--fs-main: 0.9rem;
 	--fs-sub: 0.8rem;
@@ -350,6 +351,14 @@ body {
 }
 
 
+/* section-title */
+.posts-title {
+	width: 100%;
+	padding: var(--space-3);
+	font-size: var(--fs-section-title);
+	font-weight: bold;
+	text-align: center;
+}
 
 /* post-card */
 .post.card {

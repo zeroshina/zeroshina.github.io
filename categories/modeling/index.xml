@@ -11,23 +11,23 @@
     <atom:link href="https://zeroshina.jp/categories/modeling/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Blender 背景を透過したavi動画の出力</title>
-      <link>https://zeroshina.jp/post/blender-alpha-movie/</link>
+      <link>https://zeroshina.jp/tips/blender-alpha-movie/</link>
       <pubDate>Thu, 03 Aug 2023 00:00:00 +0900</pubDate>
-      <guid>https://zeroshina.jp/post/blender-alpha-movie/</guid>
+      <guid>https://zeroshina.jp/tips/blender-alpha-movie/</guid>
       <description>&lt;p&gt;Blenderで出力した動画に編集を加える場合、背景が透過されていた方が都合の良い場面があります。&lt;br&gt;&#xA;こちらは出力設定を変更することで対応できますが、項目が多く見落としがちなため手順をメモとして残しておこうと思います。&lt;/p&gt;&#xA;&lt;p&gt;使用しているBlenderのバージョンは3.6.1になります。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Blender ワイヤーフレームでの描画と出力</title>
-      <link>https://zeroshina.jp/post/blender-render-wireframe/</link>
+      <link>https://zeroshina.jp/tips/blender-render-wireframe/</link>
       <pubDate>Tue, 01 Aug 2023 00:00:00 +0900</pubDate>
-      <guid>https://zeroshina.jp/post/blender-render-wireframe/</guid>
+      <guid>https://zeroshina.jp/tips/blender-render-wireframe/</guid>
       <description>&lt;p&gt;ローポリの作品を公開する際にワイヤーフレームで出力したいことがあったため、非常に簡単なことではありますがメモとして残しておこうと思います。&lt;br&gt;&#xA;ここではモデル全体を白などの単色で描画し、その上にワイヤーフレームを描画する前提で説明を行います。&lt;/p&gt;&#xA;&lt;p&gt;なお、使用したBlenderのバージョンは3.6.1になります。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Blender Unlitシェーダーによる描画と出力</title>
-      <link>https://zeroshina.jp/post/blender-render-unlit/</link>
+      <link>https://zeroshina.jp/tips/blender-render-unlit/</link>
       <pubDate>Fri, 28 Jul 2023 00:00:00 +0900</pubDate>
-      <guid>https://zeroshina.jp/post/blender-render-unlit/</guid>
+      <guid>https://zeroshina.jp/tips/blender-render-unlit/</guid>
       <description>&lt;p&gt;ローポリでモデルを制作する際、Unlitシェーダーで描画・出力したい場面がありました。&lt;br&gt;&#xA;Unlit、つまりモデルに陰影をつけずにテクスチャのカラーをそのまま反映させる描画方法ですね。こちらはBlenderのWorkbenchレンダラーを使うことで簡単に設定できるため、メモも兼ねて手順を残しておきます。&lt;/p&gt;&#xA;&lt;p&gt;使用したBlenderのバージョンは3.6.1になります。&lt;/p&gt;</description>
     </item>
     <item>
