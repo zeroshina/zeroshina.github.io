@@ -7,8 +7,15 @@
     <generator>Hugo</generator>
     <language>ja</language>
     <copyright>© 047</copyright>
-    <lastBuildDate>Sun, 07 Jul 2024 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 20 Jul 2024 00:00:00 +0900</lastBuildDate>
     <atom:link href="https://zeroshina.jp/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Steam</title>
+      <link>https://zeroshina.jp/tags/steam/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://zeroshina.jp/tags/steam/</guid>
+      <description></description>
+    </item>
     <item>
       <title>遊戯王</title>
       <link>https://zeroshina.jp/tags/yugioh/</link>
@@ -21,13 +28,6 @@
       <link>https://zeroshina.jp/tags/dnf/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://zeroshina.jp/tags/dnf/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Steam</title>
-      <link>https://zeroshina.jp/tags/steam/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://zeroshina.jp/tags/steam/</guid>
       <description></description>
     </item>
     <item>
