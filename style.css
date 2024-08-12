@@ -489,6 +489,24 @@ p code {
 	margin: var(--space-1) 0;
 }
 
+/* amazon-ad */
+.amazon-ad {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+}
+.amazon-ad img {
+	margin: 0;
+}
+.post-content .amazon-ad .ad-image {
+	flex: 1 0 25%;
+	max-width: 33%;
+	padding: var(--space-2);
+}
+.post-content .amazon-ad .ad-title {
+	padding: var(--space-2);
+}
+
 /* pagination */
 .pagination {
 	flex: 0 0 100%;

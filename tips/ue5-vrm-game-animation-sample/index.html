@@ -126,14 +126,14 @@
                     <p>上記リンクからGame Animation サンプルをライブラリに追加し、それを元にプロジェクトを作成。作成したプロジェクトにVRM4Uを導入して有効化した状態を本記事のスタート地点とさせて頂きます。</p>
                     <h2 id="手順">手順</h2>
                     <h3 id="プロジェクト内容の確認">プロジェクト内容の確認</h3>
-                    <p><a href="/tips/ue5-vrm-game-animation-sample/guide-01.webp" target="_blank" rel="noopener"><img src="/tips/ue5-vrm-game-animation-sample/guide-01-thumb.webp" alt="guide-01" loading="lazy" width="800" height="450"></a></p>
+                    <p><a href="/tips/ue5-vrm-game-animation-sample/guide-01.webp" target="_blank" rel="noopener"><img src="/tips/ue5-vrm-game-animation-sample/guide-01-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
                     <p>作業を始める前にGame Animation サンプルの内容を確認しておきます。</p>
                     <p>レベルを開始するとキャラクターが表示され、WASD形式で操作できます。試しにその辺を走らせてみるといい感じに障害物を乗り越えたりしてくれますね。</p>
                     <p>また、足元に配置されているボタンを押すと障害物コースへ移動したり、操作方法の確認ウィンドウなどが表示されます。</p>
                     <p>特に重要なのが開始地点の右にある「Game Animation Widget」で、FPSの設定や入力の可視化に加え、操作キャラの変更もここで行うことが出来ます。本記事ではこのウィジェットに任意のモデルを登録し、変更することを目標とします。</p>
                     <p>それでは、次項から作業に移ります。</p>
                     <h3 id="vrmファイルの読み込み">vrmファイルの読み込み</h3>
-                    <p><a href="/tips/ue5-vrm-game-animation-sample/guide-02.webp" target="_blank" rel="noopener"><img src="/tips/ue5-vrm-game-animation-sample/guide-02-thumb.webp" alt="guide-02" loading="lazy" width="800" height="533"></a></p>
+                    <p><a href="/tips/ue5-vrm-game-animation-sample/guide-02.webp" target="_blank" rel="noopener"><img src="/tips/ue5-vrm-game-animation-sample/guide-02-thumb.webp" alt="" loading="lazy" width="800" height="533"></a></p>
                     <p>まずはvrmファイルのインポートから。</p>
                     <p>VRM4Uプラグインの導入と有効化が済んでいればそのまま読み込めます。本記事ではテスト用としてVRoid Studioの「Avater Sample_B」をVRM1.0形式で出力して使わせて頂きました。</p>
                     <p>vrmをインポートすると複数のファイルが生成されますので、本記事では「Custom/TestCharacter」フォルダを作成してそこに読み込みます。モデル名は「TestCharacter」としました。この辺は各自お好きな名前や配置でどうぞ。</p>
@@ -142,7 +142,7 @@
                     <p>インポートしたモデルとサンプルのモデルでは使用するスケルトン（ボーン構造）が異なるため、公式チュートリアルではここでアニメーション共有に必要なIKリターゲッタを作成する手順が入ります。</p>
                     <p>しかし、<strong>VRM4Uはインポート時に必要なリターゲッタを生成してくれる</strong>ため、次は手順を一つ飛ばして生成されたIKリターゲッタをGame Animation サンプルのリターゲットシステムに登録します。（手動でIKリターゲッタを作成したい場合はおまけ2を参照）</p>
                     <p>コンテンツドロワーを開き、「コンテンツ→BluePrints→RetargetedCharacters」フォルダ内の「<strong>ABP_GenericRetarget</strong>」を開きます。</p>
-                    <p><a href="/tips/ue5-vrm-game-animation-sample/guide-03.webp" target="_blank" rel="noopener"><img src="/tips/ue5-vrm-game-animation-sample/guide-03-thumb.webp" alt="guide-03" loading="lazy" width="800" height="450"></a></p>
+                    <p><a href="/tips/ue5-vrm-game-animation-sample/guide-03.webp" target="_blank" rel="noopener"><img src="/tips/ue5-vrm-game-animation-sample/guide-03-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
                     <p>「クラスのデフォルト」を選択し、右側の詳細タブ内の「<strong>IKRetargeter Map</strong>」を展開します。ここにIKリターゲッタの登録を行います。</p>
                     <p>+ボタンを押して新しい項目を追加し、右側に生成されたIKリターゲッタ「<strong>RTG_UEFN_インポートしたモデル名</strong>」を、左側にタグを指定します。タグの名前は任意ですが、<strong>次項で同じものを指定する必要がある</strong>ため、記入した名前は覚えておいてください。ここでは公式の表記に則り「RTG_UEFN_to_TestCharacter」とします。</p>
                     <p>以上の設定を終えましたら、忘れずに保存してコンパイルしておきましょう。これでリターゲッタの登録は完了です。</p>
@@ -150,28 +150,28 @@
                     <p>次に、実際に動かすためのキャラクターを用意します。</p>
                     <p>コンテンツドロワーを開き、先ほどと同じフォルダ（BluePrints→RetargetedCharacters）内にある「<strong>CBP_SandboxCharacter_Manny</strong>」を複製して名前を変更します。ここでは「CBP_TestCharacter」としました。</p>
                     <p>早速、複製したブループリントクラスを開いてビューポート画面に切り替えます。</p>
-                    <p><a href="/tips/ue5-vrm-game-animation-sample/guide-04.webp" target="_blank" rel="noopener"><img src="/tips/ue5-vrm-game-animation-sample/guide-04-thumb.webp" alt="guide-04" loading="lazy" width="800" height="450"></a></p>
+                    <p><a href="/tips/ue5-vrm-game-animation-sample/guide-04.webp" target="_blank" rel="noopener"><img src="/tips/ue5-vrm-game-animation-sample/guide-04-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
                     <p>最初に注意点として、<strong>この項目で編集を行うのは「Mesh (CharacterMesh0)」内にある「Manny」のみ</strong>です。うっかり他のMeshを編集しないよう注意しましょう。下手に設定をイジるとエディタがクラッシュします。</p>
                     <p>このMannyの名前は変えても問題ないため、本記事では「TestCharacter」に変更しました。</p>
                     <p>Manny改めTestCharacterを選択し、画面右側の詳細タブ内にあるメッシュ項目の「<strong>Skeletal Mesh Asset</strong>」にインポートしたモデルのスケルタルメッシュを指定します。変更後も見た目が変わらない場合はファイルを保存して開きなおすと反映されます。（開きなおした際は編集対象がルートに戻っている点に注意）</p>
                     <p>最後にタグ項目の「Component Tags」に、先ほどのABP_GenericRetargetで登録したタグを指定します。本記事では「RTG_UEFN_to_TestCharacter」を指定しましたので、同様の指定を行います。</p>
-                    <p><a href="/tips/ue5-vrm-game-animation-sample/guide-05.webp" target="_blank" rel="noopener"><img src="/tips/ue5-vrm-game-animation-sample/guide-05-thumb.webp" alt="guide-05" loading="lazy" width="800" height="450"></a></p>
+                    <p><a href="/tips/ue5-vrm-game-animation-sample/guide-05.webp" target="_blank" rel="noopener"><img src="/tips/ue5-vrm-game-animation-sample/guide-05-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
                     <p>設定後、キャラクターが待機モーションを取っていれば成功です。もし初期ポーズから変化していない場合はABP_GenericRetargetのコンパイルを済ませ、タグの名前や、タグを指定するコンポーネントが間違っていないかを確認してみてください。</p>
                     <h3 id="ウィジェットへの登録">ウィジェットへの登録</h3>
                     <p>最後に作成したキャラクターをウィジェットに登録してプレイ時に変更できるようにします。</p>
                     <p>コンテンツドロワーで「コンテンツ→Widgets」フォルダ内にある「<strong>GameAnimationWidget</strong>」を開いて編集画面に入ります。</p>
-                    <p><a href="/tips/ue5-vrm-game-animation-sample/guide-06.webp" target="_blank" rel="noopener"><img src="/tips/ue5-vrm-game-animation-sample/guide-06-thumb.webp" alt="guide-06" loading="lazy" width="800" height="450"></a></p>
+                    <p><a href="/tips/ue5-vrm-game-animation-sample/guide-06.webp" target="_blank" rel="noopener"><img src="/tips/ue5-vrm-game-animation-sample/guide-06-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
                     <p>ウィジェット内にキャラクターのサムネイルが並んだ列がありますので、そのうちの一つを複製して項目を追加します。今回は最後尾のものを複製しました。</p>
                     <p>追加したアイコンを選択し、詳細タブのデフォルト項目にある「<strong>Object</strong>」に先ほど作成したブループリントクラスを指定します。作業は以上で完了です。楽！</p>
                     <h3 id="動作確認">動作確認</h3>
                     <p>最後に動作確認を行います。レベルを開始してGame Animation Widgetsを開き、登録したキャラクターを選んで変更してみましょう。</p>
-                    <p><a href="/tips/ue5-vrm-game-animation-sample/guide-07.webp" target="_blank" rel="noopener"><img src="/tips/ue5-vrm-game-animation-sample/guide-07-thumb.webp" alt="guide-07" loading="lazy" width="800" height="450"></a></p>
+                    <p><a href="/tips/ue5-vrm-game-animation-sample/guide-07.webp" target="_blank" rel="noopener"><img src="/tips/ue5-vrm-game-animation-sample/guide-07-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
                     <p>キャラクターが変更されて問題なく動けたら成功です。お疲れ様でした。</p>
                     <h2 id="おまけ1ブループリントでアウトラインを適用する">おまけ1：ブループリントでアウトラインを適用する</h2>
                     <p>最初からレベル上に存在するアクターに関しては<a href="https://ruyo.github.io/VRM4U/01_look/" target="_blank" rel="noopener">VRM4Uのマニュアル</a>通りの手順でアウトラインを適用できますが、今回のようにアクターが後から追加される場合はブループリントで対応する必要があるようです。</p>
                     <p>先ほど作成した「CBP_TestCharacter」のEvent BeginPlayノードにMToon Attach Actorを生成してセットする処理を追加してみます。</p>
-                    <p><a href="/tips/ue5-vrm-game-animation-sample/extra-01.webp" target="_blank" rel="noopener"><img src="/tips/ue5-vrm-game-animation-sample/extra-01-thumb.webp" alt="extra-01" loading="lazy" width="800" height="450"></a></p>
-                    <p><a href="/tips/ue5-vrm-game-animation-sample/extra-02.webp" target="_blank" rel="noopener"><img src="/tips/ue5-vrm-game-animation-sample/extra-02-thumb.webp" alt="extra-02" loading="lazy" width="800" height="450"></a></p>
+                    <p><a href="/tips/ue5-vrm-game-animation-sample/extra-01.webp" target="_blank" rel="noopener"><img src="/tips/ue5-vrm-game-animation-sample/extra-01-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
+                    <p><a href="/tips/ue5-vrm-game-animation-sample/extra-02.webp" target="_blank" rel="noopener"><img src="/tips/ue5-vrm-game-animation-sample/extra-02-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
                     <p>無事アウトラインがつきました。（ついでに描画クオリティも低からEpicにしてみました）</p>
                     <h2 id="おまけ2手動によるリターゲッタの作成と調整">おまけ2：手動によるリターゲッタの作成と調整</h2>
                     <p>今回の手順では不要ですが、IKリターゲッタを自分で作成する方法もまとめておきます。</p>
@@ -182,11 +182,11 @@
                         <li>「Target IKRig Asset」に「IK_UEFN_インポートしたモデル名_Mannequin」を指定</li>
                         <li>プレビューが重なって見づらいため「Preview Settings→Target Mesh Offset」のX値を変更して適度に距離を取る</li>
                     </ul>
-                    <p><a href="/tips/ue5-vrm-game-animation-sample/extra-03.webp" target="_blank" rel="noopener"><img src="/tips/ue5-vrm-game-animation-sample/extra-03-thumb.webp" alt="extra-03" loading="lazy" width="800" height="450"></a></p>
+                    <p><a href="/tips/ue5-vrm-game-animation-sample/extra-03.webp" target="_blank" rel="noopener"><img src="/tips/ue5-vrm-game-animation-sample/extra-03-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
                     <p>以上の設定を終えると、UEが自動的に両者のボーン構造からマッピングを作成してくれます。各ボーンがソースのどのボーンに割り当てられているかは、画面右下の「チェーンマッピング」タブから確認、編集することが出来ます。</p>
                     <p>これでリターゲット完了…と思いきや、インポートしたモデルのポーズが変です。これはマネキンがAポーズなのに対し、vrm側がTポーズを取っていることが原因です。</p>
                     <p>これを修正するために、画面左上の「Runnning Retarget」を押して一旦ポーズ編集モードに切り替えます。この編集モードではビューポートのフチが青色になり、リターゲットのプレビューも解除されます。</p>
-                    <p><a href="/tips/ue5-vrm-game-animation-sample/extra-04.webp" target="_blank" rel="noopener"><img src="/tips/ue5-vrm-game-animation-sample/extra-04-thumb.webp" alt="extra-04" loading="lazy" width="800" height="450"></a></p>
+                    <p><a href="/tips/ue5-vrm-game-animation-sample/extra-04.webp" target="_blank" rel="noopener"><img src="/tips/ue5-vrm-game-animation-sample/extra-04-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
                     <p>続いて画面左上、ボーン階層タブの編集対象が「ターゲット」になっているのを確認し、作成ボタンを押して「<strong>ポーズアセットをインポート</strong>」を選択します。メニューがグレーアウトしている場合はプレビューモードになっている可能性がありますのでご確認ください。</p>
                     <p>インポートするポーズを指定するウィンドウが表示されますので、「<strong>POSE_retarget_インポートしたモデル名</strong>」を選択し、ウィンドウ右下のポーズ指定を「POSE_T」から「<strong>POSE_A</strong>」に変更して決定します。</p>
                     <p>これでvrm側のポーズをマネキンと同じAポーズに出来ました。試しに画面右下の「アセット ブラウザ」タブから適当なアニメーションをダブルクリックで再生してみましょう。マネキンと同じように動いていれば成功です。</p>
@@ -195,6 +195,11 @@
                     <p>こうして手順にまとめると簡単な作業ですが、UEもVRMも素人なせいで初回のセットアップは結構苦労しました。さらにVRM4Uがリターゲッタを生成してくれることに気づかず遠回りまで…</p>
                     <p>なお冒頭に述べた通り、vrmだけでなくpmxファイルなども読み込んでくれるため、気軽に配布モデルの動作チェックが出来て楽しいのでオススメです。</p>
                     <p>余談ですが、以前制作したローポリキャラクターをやっつけでvrm化して読み込んでも一応動作しました。流石に動きはダバダバしてて変でしたが。次はきちんとvrm対応のモデルを作って動かしてみたいですね。</p>
+                    <hr>
+                    <div class="amazon-ad">
+                        <a href="https://amzn.to/3YZuSGf" target="_blank" rel="noopener" class="ad-image"><img src="https://m.media-amazon.com/images/I/91laaqflboL._SL1500_.jpg" alt="" loading="lazy"></a> <a href="https://amzn.to/3YZuSGf" target="_blank" rel="noopener" class="ad-title">
+                        <p>Unreal Engine 5で極めるゲーム開発：サンプルデータと動画で学ぶゲーム制作プロジェクト</p></a>
+                    </div>
                 </div>
                 <footer class="post-footer"></footer>
                 <nav class="post-navigation">
