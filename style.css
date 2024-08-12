@@ -498,12 +498,12 @@ p code {
 .amazon-ad img {
 	margin: 0;
 }
-.post-content .amazon-ad .ad-image {
+.post-content .amazon-ad .product-image {
 	flex: 1 0 25%;
 	max-width: 33%;
 	padding: var(--space-2);
 }
-.post-content .amazon-ad .ad-title {
+.post-content .amazon-ad .product-title {
 	padding: var(--space-2);
 }
 
