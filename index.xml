@@ -7,8 +7,15 @@
     <generator>Hugo</generator>
     <language>ja</language>
     <copyright>© 047</copyright>
-    <lastBuildDate>Sat, 20 Jul 2024 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 12 Aug 2024 00:00:00 +0900</lastBuildDate>
     <atom:link href="https://zeroshina.jp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>UE5.4 Game Animation サンプルでVRMファイルを動かす手順</title>
+      <link>https://zeroshina.jp/tips/ue5-vrm-game-animation-sample/</link>
+      <pubDate>Mon, 12 Aug 2024 00:00:00 +0900</pubDate>
+      <guid>https://zeroshina.jp/tips/ue5-vrm-game-animation-sample/</guid>
+      <description>&lt;p&gt;Unreal Engineでは、モーションマッチングを使用したアニメーションのサンプルプロジェクトとして『&lt;a href=&#34;https://www.unrealengine.com/marketplace/ja/product/game-animation-sample&#34;&#xD;&#xA;  &#xD;&#xA;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Game Animation サンプル&lt;/a&gt;』が配布されています。&lt;/p&gt;&#xA;&lt;p&gt;これはキャラクターを自然なアニメーションで操作できるプロジェクトで、さらに操作キャラを任意のモデルに変更することも出来ます。自作モデルの動作確認や配布されているモデルの鑑賞などに役立ちそうですね。&lt;/p&gt;&#xA;&lt;p&gt;という訳で、本記事はこのプロジェクトでvrmファイルを動かすまでの手順をまとめたものになります。vrmと銘打ってはいますが、&lt;a href=&#34;https://ruyo.github.io/VRM4U/04_import/&#34;&#xD;&#xA;  &#xD;&#xA;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;VRM4Uのなんでもインポート&lt;/a&gt;機能によりpmxファイル等でも動作します。ありがたい…！&lt;/p&gt;</description>
+    </item>
     <item>
       <title>作業のお供に ChillPulse</title>
       <link>https://zeroshina.jp/blog/2024-07-20-chill-pulse/</link>
