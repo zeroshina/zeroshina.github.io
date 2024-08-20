@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns#">
+    <meta name="generator" content="HTML Tidy for HTML5 for Windows version 5.8.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:site_name" content="047">
+    <meta property="og:title" content="入れ子構造になった.zipファイルをPowerShellで解消する">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://zeroshina.jp/tips/powershell-resolve-nested-zip/">
+    <meta property="og:image" content="https://zeroshina.jp/uploads/site/cover-scroll-thumb.webp">
+    <meta property="og:locale" content="ja_JP">
+    <link rel="canonical" href="https://zeroshina.jp/tips/powershell-resolve-nested-zip/">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" href="/uploads/site/favicon.png">
+    <link rel="stylesheet" href="/lib/icomoon/style.css">
+    <link rel="stylesheet" href="/lib/lightbox/lightbox.css">
+    <script defer type="text/javascript" src="/lib/lightbox/lightbox.js"></script>
+    <title>入れ子構造になった.zipファイルをPowerShellで解消する - 047</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KNSCG1XLPB"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-KNSCG1XLPB');
+    </script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-content">
+            <div class="site-title">
+                <a href="/">047</a>
+            </div>
+            <nav class="site-menu">
+                <div class="menu-item">
+                    <a href="/blog/">Blog</a>
+                </div>
+                <div class="menu-item">
+                    <a href="/review/">Review</a>
+                </div>
+                <div class="menu-item">
+                    <a href="/tips/">Tips</a>
+                </div>
+                <div class="menu-item">
+                    <a href="/artwork/">Artwork</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <main class="site-content">
+        <div class="main-content">
+            <article class="post single section-tips">
+                <header class="post-header">
+                    <h1 class="post-title">入れ子構造になった.zipファイルをPowerShellで解消する</h1>
+                    <div class="post-meta date">
+                        <time class="post-meta-item" datetime="2024-08-21 00:00:00 +0900 JST">2024/08/21</time>
+                    </div>
+                    <div class="post-meta taxonomies taxonomies-category">
+                        <span class="post-meta-title taxonomy">Categories:</span> <span class="post-meta-item term"><a href="/categories/coding/">コーディング</a></span>
+                    </div>
+                    <div class="post-meta taxonomies taxonomies-tag">
+                        <span class="post-meta-title taxonomy">Tags:</span> <span class="post-meta-item term"><a href="/tags/powershell/">PowerShell</a></span>
+                    </div>
+                </header>
+                <div class="post-content">
+                    <p>PCでよく作業をする方であれば、一度は入れ子になった.zipファイルを見かけたことがあるのではないでしょうか。解凍すると <strong>[フォルダA] / [フォルダA] / [ファイル]</strong> …みたいになっているアレです。</p>
+                    <p>あれは単一のフォルダを指定して圧縮を行うと発生します。ツール側が選択したファイル数に関わらずフォルダにまとめてしまうからですね。（そのためフォルダではなく中身を全指定することで回避可能）</p>
+                    <p>さて、単に解凍して使う分には気にならない入れ子構造ですが、複数の.zipファイルをまとめて解凍したり、あるいは保管しておく際には、この入れ子の有無が混在することに微妙な歯がゆさを感じることもあります。</p>
+                    <p>そんな塵のような思いが積み重なって山となり、先日とうとう.zipファイルの入れ子を一括で取り除く処理が欲しくなってしまいました。</p>
+                    <p>という訳で今回は、「<strong>入れ子構造の.zipをそうでない.zipに変換するPowershellスクリプト</strong>」の記事となります。なお、私はその日初めてPowerShellを触りましたので、<strong>スクリプトの品質について全く保障できません</strong>。完全自己責任でどうぞ。</p>
+                    <h2 id="動作環境">動作環境</h2>
+                    <ul>
+                        <li>OS: Windows11</li>
+                        <li>Windows PowerShell: 5.1.22621.3958</li>
+                        <li>PowerShell: 7.4.4</li>
+                    </ul>
+                    <p>上記の環境で動作確認を行いました。なお、初期状態ではPowerShellスクリプトの実行は制限されており、実行ポリシーを変更する必要があるようです。「PowerShell 実行ポリシー」などで検索すれば情報が出てきますが、<strong>セキュリティに関わる部分ですので慎重にご検討ください。</strong></p>
+                    <h2 id="スクリプトと実行手順">スクリプトと実行手順</h2>
+                    <div class="highlight">
+                        <div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+                            <table style="border-spacing:0;padding:0;margin:0;border:0;">
+                                <tr>
+                                    <td style="vertical-align:top;padding:0;margin:0;border:0;">
+                                        <pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span></code></pre>
+                                    </td>
+                                    <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+                                        <pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#75715e"># backupフォルダが無ければ作成</span>
+</span></span><span style="display:flex;"><span>$backupFolderPath = (Split-Path -LiteralPath $MyInvocation.MyCommand.Path) + <span style="color:#e6db74">"\backup\"</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (!(Test-Path -LiteralPath $backupFolderPath)) {
+</span></span><span style="display:flex;"><span>    New-Item -LiteralPath $backupFolderPath -ItemType Directory
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># このファイルと同じディレクトリにある.zipを対象</span>
+</span></span><span style="display:flex;"><span>$zips = Get-ChildItem ((Split-Path $MyInvocation.MyCommand.Path) + <span style="color:#e6db74">"\*.zip"</span>) <span style="color:#f92672">-File</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">foreach</span> ($zip <span style="color:#66d9ef">in</span> $zips) {
+</span></span><span style="display:flex;"><span>    $targetFolderPath = $zip.DirectoryName + <span style="color:#e6db74">"\"</span> + $zip.BaseName    
+</span></span><span style="display:flex;"><span>    echo (<span style="color:#e6db74">"Target: "</span> + $targetFolderPath)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 解凍</span>
+</span></span><span style="display:flex;"><span>    Expand-Archive -LiteralPath $($zip.FullName) -DestinationPath $targetFolderPath
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># フォルダが1つのみ存在する場合に実行</span>
+</span></span><span style="display:flex;"><span>    $folders = Get-ChildItem -LiteralPath $targetFolderPath -Directory
+</span></span><span style="display:flex;"><span>    $files = Get-ChildItem -LiteralPath $targetFolderPath <span style="color:#f92672">-File</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> ($folders.Count <span style="color:#f92672">-eq</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">-and</span> $files.Count <span style="color:#f92672">-eq</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 元の.zipをbackupフォルダに移動</span>
+</span></span><span style="display:flex;"><span>        Move-Item -LiteralPath $zip.FullName ($backupFolderPath + $zip.Name)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 圧縮（標準のCompress-Archiveは角括弧と2GB以上のファイルに対応できない）</span>
+</span></span><span style="display:flex;"><span>        [<span style="color:#66d9ef">IO.Compression.ZipFile</span>]::CreateFromDirectory($folders[<span style="color:#ae81ff">0</span>].FullName, $zip.FullName)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        echo (<span style="color:#e6db74">"圧縮が完了しました。"</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span> { 
+</span></span><span style="display:flex;"><span>        echo (<span style="color:#e6db74">"処理条件に当てはまらないためスキップされました。"</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 解凍したフォルダを削除</span>
+</span></span><span style="display:flex;"><span>    Remove-Item -LiteralPath $targetFolderPath -Recurse
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <p>上記のスクリプトを.ps1形式で保存します。このスクリプトは自身と同じフォルダ内の.zipに対して実行されますので、処理したいファイルと同じフォルダに配置してください。</p>
+                    <p>スクリプトを右クリックし、メニューから「<strong>PowerShellで実行</strong>」で動作します。（Windows11なら「その他のオプションを表示」を経由する必要あり）</p>
+                    <p>スクリプト実行時に「backup」フォルダが作成され、内容が変更される場合は元の.zipファイルがそこに移動します。処理を行う対象は「<strong>ルート直下のファイルが0個、フォルダが1個しかない</strong>」.zipファイルです。</p>
+                    <h2 id="注意点">注意点</h2>
+                    <p>注意点として、このスクリプトやスクリプトまでのパスに角括弧… <strong>[]</strong> これですね。これが含まれていると実行できません。.zipファイルやその中身に角括弧が含まれている分には問題ありませんので、必要に応じて角括弧を含まないフォルダに移して実行してください。</p>
+                    <p>また、入れ子ならフォルダ名が異なっていても処理されるため、意図した構造まで削除される場合があります。例えばゲームにおける「Mods」フォルダや、エディタにおける「Plugins」フォルダがそれにあたりますね。</p>
+                    <p>あとさらに、backupフォルダに同名ファイルが存在するとエラーが出ます。適宜お掃除してください。</p>
+                    <h2 id="まとめ">まとめ</h2>
+                    <p>以上、「入れ子構造になった.zipファイルをPowerShellで解消する」でした。</p>
+                    <p>やってることのショボさの割に注意点が多くて面倒かと思いますが、自分用に動けばOKの精神で書いたものなのでご容赦ください。</p>
+                    <p>Powershell…ちゃんと勉強したら便利に使えそうな反面、普通にファイル名に使える角括弧くんに対してよわよわだったりとクセもありそうでした。ただ触っていて楽しかったので、次に一括処理の何かを作る時もPowershellで組んでみようと思います。</p>
+                    <p>余談ですが、私は特に実行ポリシーの変更を行わずともスクリプトを実行できたため、不思議に思って確認したら実行ポリシーがUnrestricted（無制限）になっていました。いつの間に触っていたんだろう…怖…</p>
+                    <hr>
+                    <div class="amazon-ad">
+                        <a href="https://amzn.to/4cvaIqt" target="_blank" rel="noopener" class="product-image"><img src="https://c.media-amazon.com/images/I/71c36Yy2JGL._AC_SL1500_.jpg" alt="" loading="lazy"></a> <a href="https://amzn.to/4cvaIqt" target="_blank" rel="noopener" class="product-title">ナカバヤシ(Nakabayashi) フエルネット エアダスター ノンフロン スパウトタイプ 350ml 3本 FNC-JB01S-3P</a>
+                    </div>
+                </div>
+                <footer class="post-footer"></footer>
+                <nav class="post-navigation">
+                    <div class="prev-post">
+                        <a href="/tips/ue5-vrm-game-animation-sample/">Prev: UE5.4 Game Animation サンプルでVRMファイルを動かす手順</a>
+                    </div>
+                </nav>
+            </article>
+        </div>
+        <div class="side-content">
+            <aside class="widget profile">
+                <div class="widget-header">
+                    <h2>Profile</h2>
+                </div>
+                <div class="widget-content">
+                    <p><img src="/uploads/site/profile.webp" alt="" loading="lazy" width="140" height="140"></p>
+                    <p>Author: 047</p>
+                    <p>最近は積みゲーを崩しています。</p>
+                    <div class="profile-icons">
+                        <a href="https://arstla.net/" class="icon icon-home" target="_blank" rel="noopener" title="Site"></a> <a href="https://misskey.io/@zeroshina" class="icon icon-bubble" target="_blank" rel="noopener" title="Misskey"></a> <a href="https://www.buymeacoffee.com/zeroshina" class="icon icon-mug" target="_blank" rel="noopener" title="Buy Me a Coffee"></a> <a href="https://zeroshina.jp/index.xml" class="icon icon-rss" target="_blank" rel="noopener" title="RSS"></a>
+                    </div>
+                </div>
+            </aside>
+            <aside class="widget pickup">
+                <div class="widget-header">
+                    <h2>Information</h2>
+                </div>
+                <div class="widget-content">
+                    <ul>
+                        <li>
+                            <p><a href="/blog/2024-01-20-sfic/"><img src="/uploads/blog/2024-01-20-sfic-01-thumb.webp" alt="" loading="lazy" width="800" height="533"></a></p>
+                            <p><a href="/blog/2024-01-20-sfic/">シンプルな単色アイコンのアセット販売を始めました</a></p>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+            <aside class="widget custom">
+                <div class="widget-header">
+                    <h2>Ad</h2>
+                </div>
+                <div class="widget-content">
+                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5700117217719363" crossorigin="anonymous"></script> <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5700117217719363" data-ad-slot="2963772559" data-ad-format="auto" data-full-width-responsive="true"></ins> 
+                    <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </aside>
+            <aside class="widget taxnomies categories">
+                <div class="widget-header">
+                    <h2>Categories</h2>
+                </div>
+                <div class="widget-content">
+                    <ul>
+                        <li>
+                            <a href="/categories/game/">ゲーム (30)</a>
+                        </li>
+                        <li>
+                            <a href="/categories/card/">カード (8)</a>
+                        </li>
+                        <li>
+                            <a href="/categories/coding/">コーディング (4)</a>
+                        </li>
+                        <li>
+                            <a href="/categories/modeling/">モデリング (4)</a>
+                        </li>
+                        <li>
+                            <a href="/categories/diary/">日記 (1)</a>
+                        </li>
+                        <li>
+                            <a href="/categories/information/">お知らせ (1)</a>
+                        </li>
+                        <li>
+                            <a href="/categories/uncategorized/">その他 (1)</a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+            <aside class="widget taxnomies tags">
+                <div class="widget-header">
+                    <h2>Tags</h2>
+                </div>
+                <div class="widget-content">
+                    <ul>
+                        <li>
+                            <a href="/tags/steam/">Steam (9)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/dnf/">アラド戦記 (8)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/mobile-app/">アプリ (7)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/nintendo-switch/">Nintendo Switch (7)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/yugioh/">遊戯王 (7)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/blender/">Blender (3)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/vr/">VR (2)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/hugo/">Hugo (1)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/lowpoly/">ローポリ (1)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/powershell/">PowerShell (1)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/sd/">SD (1)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/unity/">Unity (1)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/unreal-engine/">Unreal Engine (1)</a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+            <aside class="widget recent">
+                <div class="widget-header">
+                    <h2>Recent Blog</h2>
+                </div>
+                <div class="widget-content">
+                    <ul>
+                        <li>
+                            <p><a href="/blog/2024-07-20-chill-pulse/"><img src="/uploads/blog/2024-07-20-chill-pulse-01-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
+                            <p><a href="/blog/2024-07-20-chill-pulse/">作業のお供に ChillPulse</a></p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="widget-header">
+                    <h2>Recent Review</h2>
+                </div>
+                <div class="widget-content">
+                    <ul>
+                        <li>
+                            <p><a href="/review/small-sleeve-over/"><img src="/review/small-sleeve-over/cover-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
+                            <p><a href="/review/small-sleeve-over/">遊戯王向け オーバースリーブの紹介と比較</a></p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="widget-header">
+                    <h2>Recent Artwork</h2>
+                </div>
+                <div class="widget-content">
+                    <ul>
+                        <li>
+                            <p><a href="/artwork/lowpoly-256fes-2023/"><img src="/artwork/lowpoly-256fes-2023/cover-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
+                            <p><a href="/artwork/lowpoly-256fes-2023/">ローポリ アルシェインさん in #256fes</a></p>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+            <aside class="widget custom">
+                <div class="widget-header">
+                    <h2>Links</h2>
+                </div>
+                <div class="widget-content">
+                    <ul>
+                        <li>
+                            <a href="/privacy/">プライバシーポリシー</a>
+                        </li>
+                        <li>
+                            <a href="/categories/">カテゴリ一覧</a>
+                        </li>
+                        <li>
+                            <a href="/tags/">タグ一覧</a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </main>
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-row">
+                <span class="footer-item copyright">© 047</span>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

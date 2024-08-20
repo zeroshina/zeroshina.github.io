@@ -7,8 +7,15 @@
     <generator>Hugo</generator>
     <language>ja</language>
     <copyright>© 047</copyright>
-    <lastBuildDate>Mon, 12 Aug 2024 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 21 Aug 2024 00:00:00 +0900</lastBuildDate>
     <atom:link href="https://zeroshina.jp/tips/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>入れ子構造になった.zipファイルをPowerShellで解消する</title>
+      <link>https://zeroshina.jp/tips/powershell-resolve-nested-zip/</link>
+      <pubDate>Wed, 21 Aug 2024 00:00:00 +0900</pubDate>
+      <guid>https://zeroshina.jp/tips/powershell-resolve-nested-zip/</guid>
+      <description>&lt;p&gt;PCでよく作業をする方であれば、一度は入れ子になった.zipファイルを見かけたことがあるのではないでしょうか。解凍すると &lt;strong&gt;[フォルダA] / [フォルダA] / [ファイル]&lt;/strong&gt;  …みたいになっているアレです。&lt;/p&gt;&#xA;&lt;p&gt;あれは単一のフォルダを指定して圧縮を行うと発生します。ツール側が選択したファイル数に関わらずフォルダにまとめてしまうからですね。（そのためフォルダではなく中身を全指定することで回避可能）&lt;/p&gt;&#xA;&lt;p&gt;さて、単に解凍して使う分には気にならない入れ子構造ですが、複数の.zipファイルをまとめて解凍したり、あるいは保管しておく際には、この入れ子の有無が混在することに微妙な歯がゆさを感じることもあります。&lt;/p&gt;&#xA;&lt;p&gt;そんな塵のような思いが積み重なって山となり、先日とうとう.zipファイルの入れ子を一括で取り除く処理が欲しくなってしまいました。&lt;/p&gt;&#xA;&lt;p&gt;という訳で今回は、「&lt;strong&gt;入れ子構造の.zipをそうでない.zipに変換するPowershellスクリプト&lt;/strong&gt;」の記事となります。なお、私はその日初めてPowerShellを触りましたので、&lt;strong&gt;スクリプトの品質について全く保障できません&lt;/strong&gt;。完全自己責任でどうぞ。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>UE5.4 Game Animation サンプルでVRMファイルを動かす手順</title>
       <link>https://zeroshina.jp/tips/ue5-vrm-game-animation-sample/</link>
