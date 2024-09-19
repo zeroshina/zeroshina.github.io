@@ -27,6 +27,7 @@
 	}
 }
 
+
 :root {
 	--ff-logo: "Noto Serif", "Times New Roman";
 	--ff-main: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", "游ゴシック", "Yu Gothic", "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
@@ -62,6 +63,8 @@
 
 	--as-post-image-card: 16/9;
 	--as-post-image-list: 4/1;
+
+	--img-extra-limit: 160px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -107,7 +110,7 @@ a img {
 	vertical-align: middle;
 }
 
-/* Delere brank at <li><br><a>... for firefox */
+/* Delete brank at <li><br><a>... for firefox */
 li::marker {
 	white-space: normal;
 }
@@ -417,7 +420,7 @@ body {
 .post-content p {
 	overflow: auto;
 }
-.post-content img {
+.post-content p img {
 	display: block;
 	margin: var(--space-2) 0;
 }
@@ -489,24 +492,6 @@ p code {
 	margin: var(--space-1) 0;
 }
 
-/* amazon-ad */
-.amazon-ad {
-	display: flex;
-	justify-content: center;
-	align-items: flex-start;
-}
-.amazon-ad img {
-	margin: 0;
-}
-.post-content .amazon-ad .product-image {
-	flex: 1 0 25%;
-	max-width: 33%;
-	padding: var(--space-2);
-}
-.post-content .amazon-ad .product-title {
-	padding: var(--space-2);
-}
-
 /* pagination */
 .pagination {
 	flex: 0 0 100%;
@@ -544,6 +529,9 @@ p code {
 /* side content */
 .side-content {
 	font-size: var(--fs-sub);
+	display: flex;
+	flex-wrap: wrap;
+	align-content: flex-start;
 }
 .side-content a {
 	color: var(--fc-main-a);
@@ -553,7 +541,14 @@ p code {
 }
 
 .widget {
+	flex: 0 0 100%;
 	padding: var(--space-2) var(--space-3);
+}
+@media (max-width: 999px) {
+	.widget { flex-basis: 50% }
+}
+@media (max-width: 799px) {	
+	.widget { flex-basis: 100% }
 }
 
 .widget-header {
@@ -571,20 +566,70 @@ p code {
 	margin: var(--space-2) 0;
 }
 
-.profile img {
-	box-sizing: content-box;
-	padding: var(--space-2);
-	border: var(--border-main);
+.widget .post-title {
+	text-align: left;
+	padding: var(--space-2) 0;
 }
 
-.profile-icons {
+/* profile */
+.profile img {	
+	width: 100%;
+	max-width: var(--img-extra-limit);
+	box-sizing: content-box;
+}
+.profile .profile-icon {
+	padding: var(--space-1);
+}
+.profile .social-icons {
 	display: flex;
 	flex-flow: row wrap;
 }
-
-.profile-icons .icon {
+.profile .social-icons .icon {
 	padding: var(--space-2) 0;
 	font-size: var(--fs-icon-main);
 	text-align: center;
 	flex: 0 0 20%;
+}
+.profile .social-banners {
+	display: flex;
+	flex-wrap: wrap;
+}
+.profile .social-banners a {
+	flex: 0 1 auto;
+	padding: var(--space-1);
+}
+
+/* amazon-ad */
+.amazon-ad {
+	display: flex;
+	flex-wrap: wrap;
+}
+.amazon-ad .product-image {
+	flex: 1 0 auto;
+}
+.amazon-ad .product-title {
+	flex: 1 1 auto;
+}
+.post .amazon-ad .product-image {
+	flex-basis: 25%;
+	padding: var(--space-2);
+}
+.post .amazon-ad .product-title {
+	flex-basis: 75%;
+	padding: var(--space-2);
+}
+.widget .amazon-ad .product-image {
+	flex-basis: 100%;
+	padding: var(--space-1);
+}
+.widget .amazon-ad .product-title {
+	flex-basis: 100%;	
+	padding: var(--space-1);
+}
+.amazon-ad .product-image img {
+	width: 100%;
+	max-width: var(--img-extra-limit);
+}
+.amazon-ad .product-title a {
+	color: var(--fc-sub-a);
 }
