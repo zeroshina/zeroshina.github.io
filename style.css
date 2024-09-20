@@ -64,7 +64,7 @@
 	--as-post-image-card: 16/9;
 	--as-post-image-list: 4/1;
 
-	--img-extra-limit: 160px;
+	--widget-width-limit: 160px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -554,7 +554,6 @@ p code {
 .widget-header {
 
 }
-
 .widget-content > * {
 	margin: var(--space-3) 0;
 	padding: 0 var(--space-1);
@@ -566,36 +565,37 @@ p code {
 	margin: var(--space-2) 0;
 }
 
-.widget .post-title {
-	text-align: left;
-	padding: var(--space-2) 0;
-}
-
 /* profile */
-.profile img {	
+.profile .profile-icon img {	
 	width: 100%;
-	max-width: var(--img-extra-limit);
-	box-sizing: content-box;
-}
-.profile .profile-icon {
+	max-width: var(--widget-width-limit);
 	padding: var(--space-1);
+	box-sizing: content-box;
+	vertical-align: middle;
 }
-.profile .social-icons {
+.social-links {
 	display: flex;
 	flex-flow: row wrap;
+	max-width: calc(var(--widget-width-limit) + var(--space-1) * 2);
+	box-sizing: content-box;
 }
-.profile .social-icons .icon {
-	padding: var(--space-2) 0;
+.social-links .social-icon {
+	flex: 0 0 25%;
+	padding: var(--space-1);
 	font-size: var(--fs-icon-main);
-	text-align: center;
-	flex: 0 0 20%;
+	text-align: center;	
 }
-.profile .social-banners {
-	display: flex;
-	flex-wrap: wrap;
-}
-.profile .social-banners a {
+.social-links .social-banner {
 	flex: 0 1 auto;
+	padding: var(--space-2) var(--space-1);
+}
+
+/* widget-post */
+.widget .post-image {
+	padding: var(--space-1);
+}
+.widget .post-title {
+	text-align: left;
 	padding: var(--space-1);
 }
 
@@ -610,6 +610,13 @@ p code {
 .amazon-ad .product-title {
 	flex: 1 1 auto;
 }
+.amazon-ad .product-title a {
+	color: var(--fc-sub-a);
+}
+.amazon-ad .product-title a:hover {
+	color: var(--fc-sub-b);
+}
+
 .post .amazon-ad .product-image {
 	flex-basis: 25%;
 	padding: var(--space-2);
@@ -622,14 +629,11 @@ p code {
 	flex-basis: 100%;
 	padding: var(--space-1);
 }
+.widget .amazon-ad .product-image img {	
+	width: 100%;
+	max-width: var(--widget-width-limit);
+}
 .widget .amazon-ad .product-title {
 	flex-basis: 100%;	
 	padding: var(--space-1);
-}
-.amazon-ad .product-image img {
-	width: 100%;
-	max-width: var(--img-extra-limit);
-}
-.amazon-ad .product-title a {
-	color: var(--fc-sub-a);
 }
