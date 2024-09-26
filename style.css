@@ -64,7 +64,9 @@
 	--as-post-image-card: 16/9;
 	--as-post-image-list: 4/1;
 
+	--post-img-height-limit: 640px;
 	--widget-width-limit: 160px;
+
 }
 
 @media (prefers-color-scheme: dark) {
@@ -423,6 +425,8 @@ body {
 .post-content p img {
 	display: block;
 	margin: var(--space-2) 0;
+	width: auto;
+	max-height: var(--post-img-height-limit);
 }
 .post-content canvas {
 	display: block;
