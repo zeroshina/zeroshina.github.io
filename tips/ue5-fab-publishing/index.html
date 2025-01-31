@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns#">
+    <meta name="generator" content="HTML Tidy for HTML5 for Windows version 5.8.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Epic Gamesが提供する『Fab』でのアセット出品手順を大まかに解説しました。">
+    <meta property="og:site_name" content="047">
+    <meta property="og:title" content="Epic Games Fabにプロジェクトを提出して出品するまでの手順">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://zeroshina.jp/tips/ue5-fab-publishing/">
+    <meta property="og:image" content="https://zeroshina.jp/tips/ue5-fab-publishing/cover-thumb.webp">
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:description" content="Epic Gamesが提供する『Fab』でのアセット出品手順を大まかに解説しました。">
+    <link rel="canonical" href="https://zeroshina.jp/tips/ue5-fab-publishing/">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" href="/uploads/site/favicon.png">
+    <link rel="stylesheet" href="/lib/icomoon/style.css">
+    <link rel="stylesheet" href="/lib/lightbox/lightbox.css">
+    <script defer type="text/javascript" src="/lib/lightbox/lightbox.js"></script>
+    <title>Epic Games Fabにプロジェクトを提出して出品するまでの手順 - 047</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KNSCG1XLPB"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-KNSCG1XLPB');
+    </script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-content">
+            <div class="site-title">
+                <a href="/">047</a>
+            </div>
+            <nav class="site-menu">
+                <div class="menu-item">
+                    <a href="/blog/">Blog</a>
+                </div>
+                <div class="menu-item">
+                    <a href="/review/">Review</a>
+                </div>
+                <div class="menu-item">
+                    <a href="/tips/">Tips</a>
+                </div>
+                <div class="menu-item">
+                    <a href="/artwork/">Artwork</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <main class="site-content">
+        <div class="main-content">
+            <article class="post single section-tips">
+                <header class="post-header">
+                    <h1 class="post-title">Epic Games Fabにプロジェクトを提出して出品するまでの手順</h1>
+                    <div class="post-meta date">
+                        <time class="post-meta-item" datetime="2025-01-31 00:00:00 +0900 JST">2025/01/31</time>
+                    </div>
+                    <div class="post-meta taxonomies taxonomies-tag">
+                        <span class="post-meta-title taxonomy">Tags:</span> <span class="post-meta-item term"><a href="/tags/unreal-engine/">Unreal Engine</a></span>
+                    </div>
+                </header>
+                <div class="post-content">
+                    <p><a href="/tips/ue5-fab-publishing/cover.webp" target="_blank" rel="noopener"><img src="/tips/ue5-fab-publishing/cover-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
+                    <p>2024年10月、Epic Gamesより既存のUEマーケットプレイスやSketchfabのストアなどを統合した『Fab』がリリースされました。</p>
+                    <p>Fabでは売上の88%をパブリッシャーが受け取れる他、有償アセットの公開で<a href="https://www.fab.com/adobe-promo" target="_blank" rel="noopener">Adobe Substance Painter & Modelerのサブスク6か月分のコードを受け取れるキャンペーン</a>も実施されているようです。</p>
+                    <p>私はUnityなどでアイコン素材を出品していたためFabでも販売を始めましたが、まだ情報が少なくて苦労した部分もありました。そこでざっくりではありますが本記事に出品までの流れを残しておこうと思います。</p>
+                    <p>※Fabはまだリリースされて間もないこともあり、今後仕様が変更される可能性があります。より正確で新しい情報については<a href="https://dev.epicgames.com/documentation/en-us/fab/fab-documentation" target="_blank" rel="noopener">公式ドキュメント</a>をご確認ください。</p>
+                    <aside>
+                        <h2>目次</h2>
+                        <nav id="TableOfContents">
+                            <ul>
+                                <li>
+                                    <a href="#%E3%83%91%E3%83%96%E3%83%AA%E3%83%83%E3%82%B7%E3%83%A3%E3%83%BC%E7%99%BB%E9%8C%B2">パブリッシャー登録</a>
+                                </li>
+                                <li>
+                                    <a href="#%E5%87%BA%E5%93%81%E6%89%8B%E7%B6%9A%E3%81%8D">出品手続き</a>
+                                    <ul>
+                                        <li>
+                                            <a href="#%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AE%E4%BD%9C%E6%88%90">プロジェクトの作成</a>
+                                        </li>
+                                        <li>
+                                            <a href="#%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E5%9C%A7%E7%B8%AE%E3%81%A8%E5%85%B1%E6%9C%89">プロジェクトファイルの圧縮と共有</a>
+                                        </li>
+                                        <li>
+                                            <a href="#%E5%95%86%E5%93%81%E3%83%9A%E3%83%BC%E3%82%B8%E3%81%AE%E4%BD%9C%E6%88%90%E3%81%A8%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AE%E6%8F%90%E5%87%BA">商品ページの作成とプロジェクトの提出</a>
+                                        </li>
+                                        <li>
+                                            <a href="#%E4%BB%98%E5%B1%9E%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E9%85%8D%E5%B8%83">付属ファイルの配布</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#%E3%81%BE%E3%81%A8%E3%82%81">まとめ</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </aside>
+                    <h2 id="パブリッシャー登録">パブリッシャー登録</h2>
+                    <p>Fabでの出品にはEpic GamesのアカウントとFabのパブリッシャー登録が必要になります。</p>
+                    <p>パブリッシャー登録は<a href="https://www.fab.com/become-a-publisher" target="_blank" rel="noopener">こちら</a>から申請できますが、注意点として日本人は<strong>認証にパスポートが必要</strong>です。（2025年1月時点）</p>
+                    <p>これは外部の認証サービスであるVeriffが日本のマイナンバーカード等に対応していないためです。（<a href="https://www.veriff.com/supported-countries" target="_blank" rel="noopener">対応リスト</a>）パスポートなしでも途中までは手続き可能ですが、60日以内に認証しないとパブリッシャーアカウントが閉鎖されるので注意しましょう。私はパスポート発行をサボってギリギリになりました。</p>
+                    <p>それともう一つ、パブリッシャー登録を行うと<strong>プロフィール欄に氏名と市区町村が公開されます</strong>。</p>
+                    <p>流石に住所や電話番号は非公開にできますが、それでもそこそこの個人情報ですからね…抵抗がある方は現時点では出店を諦めるしかなさそうです。</p>
+                    <p>取引者認証を終えると、最後に売上を受け取るためのHyperwallet口座の開設に進みます。Paypal傘下のサービスらしく、確かここでもパスポート認証を要求された記憶があります。</p>
+                    <p>以上を終えるとパブリッシャー登録は完了です。超ざっくり説明で恐縮ですが、私も手探りで進めた部分なので…公式サイトのガバ翻訳や税関連のややこしい項目などもあると思いますが、なんとか乗り切りましょう…！</p>
+                    <h2 id="出品手続き">出品手続き</h2>
+                    <p>パブリッシャー登録を終えたら、次はアセットの出品手続きです。</p>
+                    <p>提出までの流れはアセットによって異なるのですが、例えば画像素材などのC++コードを含まないアセットの場合は以下のような手順になります。</p>
+                    <ul>
+                        <li>Unreal Engineでアセット販売用のプロジェクトを作成</li>
+                        <li>Content直下にアセット用フォルダを作成し、販売するアセットを配置</li>
+                        <li>作成したプロジェクトのうち「.uproject」「Config」「Content」をまとめて.zipに圧縮</li>
+                        <li>圧縮したファイルをGoogle Driveなどで共有</li>
+                        <li>共有ファイルのURLと商品情報を記載して提出、審査に通れば出品完了</li>
+                    </ul>
+                    <p>プロジェクトファイルを手動で圧縮したり、そのファイルを外部サービスにアップロードするなど、ちょっと独特な手順で戸惑いますが一つ一つの作業は簡単です。</p>
+                    <p>また、より詳細かつ正確な情報は<a href="https://support.fab.com/s/article/FAB-TECHNICAL-REQUIREMENTS" target="_blank" rel="noopener">公式の技術要件ページ</a>（もしくは<a href="https://dev.epicgames.com/documentation/en-us/fab/fab-documentation" target="_blank" rel="noopener">公式ドキュメント</a>）にて確認することが出来ます。英語かつ長文ですが、ファイルごとのフォーマットやライセンス、価格やセールといった重要な情報が記載されていますので、一通り目を通しておくことをお勧めします。</p>
+                    <h3 id="プロジェクトの作成">プロジェクトの作成</h3>
+                    <p><a href="/tips/ue5-fab-publishing/guide-01.webp" target="_blank" rel="noopener"><img src="/tips/ue5-fab-publishing/guide-01-thumb.webp" alt="" loading="lazy" width="800" height="600"></a></p>
+                    <p>Fabの要件に沿ったアセットを用意できましたら、プロジェクトの作成に移ります。今回はC++コードを含まないアセットを想定して説明します。</p>
+                    <p>Unreal Engineを起動して「ゲーム」から「ブランク」を選択。「スターターコンテンツ」はオフにしてプロジェクト名を入力します。</p>
+                    <p>プロジェクト名は商品名と同じでなくても構いませんが、それに因んだものにする必要があります。私の場合は商品名だと文字数がオーバーしたため、頭文字を取った略称を使用しました。</p>
+                    <p>名前が決まったらプロジェクトを作成して起動し、Contentフォルダの直下にアセット用のフォルダを作成します。フォルダ名はプロジェクト名と同じものを使用しましょう。あとはこのフォルダに販売するアセットを分類して放り込めばOKです。私のプロジェクトでは下記のようなフォルダ構造になりました。</p>
+                    <ul>
+                        <li>Content
+                            <ul>
+                                <li>[プロジェクト名]
+                                    <ul>
+                                        <li>Textures
+                                            <ul>
+                                                <li>Equipment</li>
+                                                <li>System</li>
+                                                <li>Map（以下省略）</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <p>なお、自動で生成されるDevelopersフォルダなどは削除しても審査に問題はありませんでした。</p>
+                    <h3 id="プロジェクトファイルの圧縮と共有">プロジェクトファイルの圧縮と共有</h3>
+                    <p><a href="/tips/ue5-fab-publishing/guide-02.webp" target="_blank" rel="noopener"><img src="/tips/ue5-fab-publishing/guide-02.webp" alt="" loading="lazy" width="640" height="360"></a></p>
+                    <p>必要なアセットを配置して保存したら、プロジェクトの.zip圧縮を行います。</p>
+                    <p>C++コードを含まない製品で必要なのは「プロジェクト名.uproject」「Content」「Config」の3つです。いずれもプロジェクトのフォルダ内にありますので、これらのファイルとフォルダを一つの.zipファイルに圧縮すればOKです。</p>
+                    <p>また、圧縮にあたってはパスワードを設定することが可能です。審査提出時のみとはいえ外部サービスを使って共有するため、データの漏洩が心配な方は設定しておきましょう。</p>
+                    <p>最後に作成した.zipファイルをGoogleDriveなどにアップロードして共有可能な状態にしておきます。これで提出するプロジェクトの準備が整いました。</p>
+                    <h3 id="商品ページの作成とプロジェクトの提出">商品ページの作成とプロジェクトの提出</h3>
+                    <p><a href="/tips/ue5-fab-publishing/guide-03.webp" target="_blank" rel="noopener"><img src="/tips/ue5-fab-publishing/guide-03-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
+                    <p>提出するプロジェクトが用意できましたので、ここからはFabサイト上で作業を行います。</p>
+                    <p><a href="https://www.fab.com/ja/" target="_blank" rel="noopener">Fab</a>にログインし、上部メニューから「公開」→「出品」で商品ページに移動、商品一覧ページで「新規に出品する」をクリックしてアセットの種類を選択し、商品ページを作成します。</p>
+                    <p>作成した商品ページの編集画面に入り、編集画面左側「+ 新しい形式を追加」をクリックします。ここで提出するプロジェクトやファイルなどを指定することが出来ます。</p>
+                    <p>今回はUEのプロジェクトを提出するため、「Unreal Engine」を指定します。（指定可能なアップロード形式はアセットの種類によって異なります）</p>
+                    <p><a href="/tips/ue5-fab-publishing/guide-04.webp" target="_blank" rel="noopener"><img src="/tips/ue5-fab-publishing/guide-04-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
+                    <p>Unreal Engineを選択すると、プロジェクトのダウンロード先やバージョン情報などを入力する画面が表示されます。</p>
+                    <p>「プロジェクトファイルのリンク」に用意したプロジェクトの共有リンクを、「バージョン注記」に.zipファイルのパスワードを入力します（設定した場合のみ）。あとはUEのバージョンや対応プラットフォームを記入すれば完了です。</p>
+                    <p>因みに画像にもある通り、Unityのプロジェクトもアップロード可能です。しかもこちらはサイト内でアップロードできます。この違いなぜ…</p>
+                    <h3 id="付属ファイルの配布">付属ファイルの配布</h3>
+                    <p>他にもプロジェクト以外に同梱したいファイルがある場合、「その他の形式」→「追加ファイル」で.zipファイルをアップロードすることも可能です。</p>
+                    <p>私の場合はプロジェクトにインポートできない、アイコン素材のアウトライン統合前データを同梱するのに使用しました。これが追加ファイルの正しい使い方なのかは自信ありませんが、審査には通ったのでたぶん大丈夫なはず…</p>
+                    <h2 id="まとめ">まとめ</h2>
+                    <p>あとは商品画像や説明文などの情報を記入して提出すれば完了です。</p>
+                    <p>審査に掛かる時間ですが、私の場合は単純なアイコン素材だからか数時間で通りました。時期にもよると思いますがかなり早かったです。Unityの時は一ヵ月以上待たされたのに…！</p>
+                    <p>また、製品のリリースが完了したら共有状態のプロジェクトファイルは引っ込めて大丈夫です。正直この辺はちょっと回りくどいやり方なので、Unityプロジェクトと同じようにサイト内で完結できると嬉しいですね。</p>
+                    <p>以上、Fabのざっくり出品手順でした。</p>
+                    <p>私は当初2024年内の出品を目指していましたが、パスポートを要求されたり、プロジェクトの提出方法が分からなかったりで大幅に遅れてしまいました。ただ手順が分かれば難しいことはなかったため、今後も他のストアと同様に利用していこうと思います。手数料も安いし…！</p>
+                    <p>割愛だらけのふんわりした記事でしたが、これからFabでの出品に挑戦する方の一助になっていれば幸いです。</p>
+                    <div class="amazon-ad">
+                        <div class="product-image">
+                            <a href="https://amzn.to/3YZuSGf" target="_blank" rel="noopener"><img src="https://m.media-amazon.com/images/I/91laaqflboL._SL1500_.jpg" alt="" loading="lazy"></a>
+                        </div>
+                        <div class="product-title">
+                            <a href="https://amzn.to/3YZuSGf" target="_blank" rel="noopener">Unreal Engine 5で極めるゲーム開発：サンプルデータと動画で学ぶゲーム制作プロジェクト</a>
+                        </div>
+                    </div>
+                </div>
+                <footer class="post-footer"></footer>
+                <nav class="post-navigation">
+                    <div class="prev-post">
+                        <a href="/tips/powershell-resolve-nested-zip/">Prev: 入れ子構造になった.zipファイルをPowerShellで解消する</a>
+                    </div>
+                </nav>
+            </article>
+        </div>
+        <div class="side-content">
+            <aside class="widget profile">
+                <div class="widget-header">
+                    <h2>Profile</h2>
+                </div>
+                <div class="widget-content">
+                    <div class="profile-icon"><img src="/uploads/site/profile.webp" alt="" loading="lazy" width="140" height="140"></div>
+                    <p>Author: 047</p>
+                    <p>最近は積みゲーを崩しています。</p>
+                    <div class="social-links">
+                        <div class="social-icon">
+                            <a href="https://arstla.net/" class="icon icon-home" target="_blank" rel="noopener" title="Site"></a>
+                        </div>
+                        <div class="social-icon">
+                            <a href="https://misskey.io/@zeroshina" class="icon icon-bubble" target="_blank" rel="noopener" title="Misskey"></a>
+                        </div>
+                        <div class="social-icon">
+                            <a href="https://zeroshina.jp/index.xml" class="icon icon-rss" target="_blank" rel="noopener" title="RSS"></a>
+                        </div>
+                        <div class="social-icon">
+                            <a href="https://www.buymeacoffee.com/zeroshina" class="icon icon-mug" target="_blank" rel="noopener" title="Buy Me a Coffee"></a>
+                        </div>
+                        <div class="social-banner">
+                            <a href="https://arstla.booth.pm/" target="_blank" rel="noopener" title="BOOTH"><img src="https://asset.booth.pm/static-images/banner/200x40_01.png"></a>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            <aside class="widget custom">
+                <div class="widget-header">
+                    <h2>Amazon Ad</h2>
+                </div>
+                <div class="widget-content">
+                    <div class="amazon-ad">
+                        <div class="product-image">
+                            <a href="https://amzn.to/3PACIjr" target="_blank" rel="noopener"><img src="https://m.media-amazon.com/images/I/9120Os94shL._SL1500_.jpg" alt="" loading="lazy"></a>
+                        </div>
+                        <div class="product-title">
+                            <a href="https://amzn.to/3PACIjr" target="_blank" rel="noopener">ハクメイとミコチ 13巻 (HARTA COMIX)</a>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            <aside class="widget taxnomies categories">
+                <div class="widget-header">
+                    <h2>Categories</h2>
+                </div>
+                <div class="widget-content">
+                    <ul>
+                        <li>
+                            <a href="/categories/game/">ゲーム (35)</a>
+                        </li>
+                        <li>
+                            <a href="/categories/card/">カード (8)</a>
+                        </li>
+                        <li>
+                            <a href="/categories/coding/">コーディング (4)</a>
+                        </li>
+                        <li>
+                            <a href="/categories/modeling/">モデリング (4)</a>
+                        </li>
+                        <li>
+                            <a href="/categories/device/">デバイス (2)</a>
+                        </li>
+                        <li>
+                            <a href="/categories/diary/">日記 (1)</a>
+                        </li>
+                        <li>
+                            <a href="/categories/information/">お知らせ (1)</a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+            <aside class="widget taxnomies tags">
+                <div class="widget-header">
+                    <h2>Tags</h2>
+                </div>
+                <div class="widget-content">
+                    <ul>
+                        <li>
+                            <a href="/tags/steam/">Steam (11)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/dnf/">アラド戦記 (9)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/nintendo-switch/">Nintendo Switch (9)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/mobile-app/">アプリ (7)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/yugioh/">遊戯王 (7)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/blender/">Blender (3)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/unreal-engine/">Unreal Engine (2)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/vr/">VR (2)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/hugo/">Hugo (1)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/lowpoly/">ローポリ (1)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/powershell/">PowerShell (1)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/sd/">SD (1)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/unity/">Unity (1)</a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+            <aside class="widget recent">
+                <div class="widget-header">
+                    <h2>Recent Blog</h2>
+                </div>
+                <div class="widget-content">
+                    <div class="post">
+                        <div class="post-image">
+                            <a href="/blog/2024-12-31-ghost-trick/"><img src="/uploads/blog/2024-12-31-ghost-trick-01-thumb.webp" alt="" loading="lazy" width="800" height="450"></a>
+                        </div>
+                        <div class="post-title">
+                            <a href="/blog/2024-12-31-ghost-trick/">年の瀬ユウレイ GHOST TRICK</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget-header">
+                    <h2>Recent Review</h2>
+                </div>
+                <div class="widget-content">
+                    <div class="post">
+                        <div class="post-image">
+                            <a href="/review/soundpeats-air5/"><img src="/review/soundpeats-air5/cover-thumb.webp" alt="" loading="lazy" width="800" height="450"></a>
+                        </div>
+                        <div class="post-title">
+                            <a href="/review/soundpeats-air5/">音声ガイダンスからの解放 SOUNDPEATS Air5 レビュー</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget-header">
+                    <h2>Recent Artwork</h2>
+                </div>
+                <div class="widget-content">
+                    <div class="post">
+                        <div class="post-image">
+                            <a href="/artwork/lowpoly-256fes-2023/"><img src="/artwork/lowpoly-256fes-2023/cover-thumb.webp" alt="" loading="lazy" width="800" height="450"></a>
+                        </div>
+                        <div class="post-title">
+                            <a href="/artwork/lowpoly-256fes-2023/">ローポリ アルシェインさん in #256fes</a>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            <aside class="widget custom">
+                <div class="widget-header">
+                    <h2>Google Ad</h2>
+                </div>
+                <div class="widget-content">
+                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5700117217719363" crossorigin="anonymous"></script> <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5700117217719363" data-ad-slot="2963772559" data-ad-format="auto" data-full-width-responsive="true"></ins> 
+                    <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </aside>
+            <aside class="widget custom">
+                <div class="widget-header">
+                    <h2>Links</h2>
+                </div>
+                <div class="widget-content">
+                    <ul>
+                        <li>
+                            <a href="/privacy/">プライバシーポリシー</a>
+                        </li>
+                        <li>
+                            <a href="/categories/">カテゴリ一覧</a>
+                        </li>
+                        <li>
+                            <a href="/tags/">タグ一覧</a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </main>
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-row">
+                <span class="footer-item copyright">© 047</span>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
