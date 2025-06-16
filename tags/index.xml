@@ -7,8 +7,15 @@
     <generator>Hugo</generator>
     <language>ja</language>
     <copyright>© 047</copyright>
-    <lastBuildDate>Mon, 07 Apr 2025 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 16 Jun 2025 00:00:00 +0900</lastBuildDate>
     <atom:link href="https://zeroshina.jp/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>アプリ</title>
+      <link>https://zeroshina.jp/tags/mobile-app/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://zeroshina.jp/tags/mobile-app/</guid>
+      <description></description>
+    </item>
     <item>
       <title>アラド戦記</title>
       <link>https://zeroshina.jp/tags/dnf/</link>
@@ -49,13 +56,6 @@
       <link>https://zeroshina.jp/tags/powershell/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://zeroshina.jp/tags/powershell/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>アプリ</title>
-      <link>https://zeroshina.jp/tags/mobile-app/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://zeroshina.jp/tags/mobile-app/</guid>
       <description></description>
     </item>
     <item>
