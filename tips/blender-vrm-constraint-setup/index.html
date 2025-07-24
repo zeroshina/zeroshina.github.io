@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns#">
+    <meta name="generator" content="HTML Tidy for HTML5 for Windows version 5.8.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:site_name" content="047">
+    <meta property="og:title" content="Blender VRM1.0におけるボーンコンストレイント設定">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://zeroshina.jp/tips/blender-vrm-constraint-setup/">
+    <meta property="og:image" content="https://zeroshina.jp/tips/blender-vrm-constraint-setup/cover-thumb.webp">
+    <meta property="og:locale" content="ja_JP">
+    <link rel="canonical" href="https://zeroshina.jp/tips/blender-vrm-constraint-setup/">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" href="/uploads/site/favicon.png">
+    <link rel="stylesheet" href="/lib/icomoon/style.css">
+    <link rel="stylesheet" href="/lib/lightbox/lightbox.css">
+    <script defer type="text/javascript" src="/lib/lightbox/lightbox.js"></script>
+    <title>Blender VRM1.0におけるボーンコンストレイント設定 - 047</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KNSCG1XLPB"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-KNSCG1XLPB');
+    </script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-content">
+            <div class="site-title">
+                <a href="/">047</a>
+            </div>
+            <nav class="site-menu">
+                <div class="menu-item">
+                    <a href="/blog/">Blog</a>
+                </div>
+                <div class="menu-item">
+                    <a href="/review/">Review</a>
+                </div>
+                <div class="menu-item">
+                    <a href="/tips/">Tips</a>
+                </div>
+                <div class="menu-item">
+                    <a href="/artwork/">Artwork</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <main class="site-content">
+        <div class="main-content">
+            <article class="post single section-tips">
+                <header class="post-header">
+                    <h1 class="post-title">Blender VRM1.0におけるボーンコンストレイント設定</h1>
+                    <div class="post-meta date">
+                        <time class="post-meta-item" datetime="2025-07-24 00:00:00 +0900 JST">2025/07/24</time>
+                    </div>
+                    <div class="post-meta taxonomies taxonomies-category">
+                        <span class="post-meta-title taxonomy">Categories:</span> <span class="post-meta-item term"><a href="/categories/modeling/">モデリング</a></span>
+                    </div>
+                    <div class="post-meta taxonomies taxonomies-tag">
+                        <span class="post-meta-title taxonomy">Tags:</span> <span class="post-meta-item term"><a href="/tags/blender/">Blender</a></span> <span class="post-meta-item term"><a href="/tags/vrm/">VRM</a></span> <span class="post-meta-item term"><a href="/tags/unity/">Unity</a></span>
+                    </div>
+                </header>
+                <div class="post-content">
+                    <p><a href="/tips/blender-vrm-constraint-setup/cover.webp" target="_blank" rel="noopener"><img src="/tips/blender-vrm-constraint-setup/cover-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
+                    <p><strong>本記事はVRM1.0におけるコンストレイント設定について、自身がVRM対応モデルの制作をした際に調べたことや気づいたことをまとめたものとなります。</strong></p>
+                    <p>VRM1.0はコンストレイント機能に対応しており、特定のボーンを参照して回転に追従させるといったことが可能です。手首の回転を補完するヘルパーが定番ですね。</p>
+                    <p>これらはUnity上で設定することも出来ますが、Blenderでも適切なボーンコンストレイント設定をしておけば<a href="https://extensions.blender.org/add-ons/vrm/" target="_blank" rel="noopener">VRM format</a>での出力時にそのままコンストレイント情報をエクスポート出来るようになっています。</p>
+                    <p>一方でVRM1.0のコンストレイントにはいくつか制約が設けられており、例えば上腕や太ももなど既存のボーン構造・コンストレイント設定では対応できないケースもありましたので、ここにメモとして残しておきます。</p>
+                    <ul>
+                        <li>使用環境
+                            <ul>
+                                <li>Blender: 4.4.3</li>
+                                <li>VRM Format: 3.7.5</li>
+                                <li>Unity: 6.1 (6000.1.10f1)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <aside>
+                        <h2>目次</h2>
+                        <nav id="TableOfContents">
+                            <ul>
+                                <li>
+                                    <a href="#%E5%8F%82%E8%80%83%E8%B3%87%E6%96%99">参考資料</a>
+                                </li>
+                                <li>
+                                    <a href="#%E3%82%B3%E3%83%B3%E3%82%B9%E3%83%88%E3%83%AC%E3%82%A4%E3%83%B3%E3%83%88%E3%81%AE%E6%A6%82%E8%A6%81">コンストレイントの概要</a>
+                                </li>
+                                <li>
+                                    <a href="#%E5%89%8D%E8%85%95%E6%89%8B%E9%A6%96%E3%81%AE%E3%82%B3%E3%83%B3%E3%82%B9%E3%83%88%E3%83%AC%E3%82%A4%E3%83%B3%E3%83%88">前腕・手首のコンストレイント</a>
+                                </li>
+                                <li>
+                                    <a href="#%E4%B8%8A%E8%85%95%E5%A4%AA%E3%82%82%E3%82%82%E3%81%AE%E3%82%B3%E3%83%B3%E3%82%B9%E3%83%88%E3%83%AC%E3%82%A4%E3%83%B3%E3%83%88">上腕・太もものコンストレイント</a>
+                                </li>
+                                <li>
+                                    <a href="#%E3%81%8A%E3%81%BE%E3%81%91blender%E3%81%AE%E5%9B%9E%E8%BB%A2%E3%82%B3%E3%83%94%E3%83%BC%E3%81%A7y%E8%BB%B8%E5%9B%9E%E8%BB%A2%E3%81%8C%E9%A3%9B%E3%81%B6%E8%A9%B1">おまけ：Blenderの回転コピーでY軸回転が飛ぶ話</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </aside>
+                    <h2 id="参考資料">参考資料</h2>
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+                        <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/7ZuEbzE7Hew?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+                    </div>
+                    <p>VRM1.0の仕様についての解説動画です。VRMを策定しているVRMコンソーシアム様によるもので、コンストレイントについては12分35秒頃に解説、1時間2分20秒頃に実演があります。それ以外にも有益な情報ばかりなのでオススメです。</p>
+                    <p>また、<a href="https://github.com/vrm-c/vrm-specification/tree/master" target="_blank" rel="noopener">vrm-specification</a>ではVRM1.0に関する仕様と、コンストレイントの設定例としてサンプルモデルが配布されています。こちらのモデルも参考になりました。</p>
+                    <h2 id="コンストレイントの概要">コンストレイントの概要</h2>
+                    <p>VRM1.0では以下の3つのコンストレイントを利用できます。</p>
+                    <ul>
+                        <li><strong>Roll constraint</strong><br>
+                        指定先のボーンの回転を1軸だけコピーします。Blenderでは「回転コピー」を1軸のみ指定した状態に相当。</li>
+                        <li><strong>Rotation Constraint</strong><br>
+                        指定先のボーンの回転を全てコピーします。Blenderでは「回転コピー」を全ての軸で指定した状態に相当。</li>
+                        <li><strong>Aim Constraint</strong><br>
+                        ボーンの方向を指定先のボーンに向けさせます。Blenderでは「減衰トラック」に相当。</li>
+                    </ul>
+                    <p>これらのコンストレイントをどのように実装するかはアプリ側に委ねられており、挙動が統一されている訳ではありません。また使用にあたっていくつかの制約が設けられています。主要なものを以下に挙げます。</p>
+                    <ul>
+                        <li><strong>各ボーンに使用できるコンストレイントは種類問わず1つのみ</strong></li>
+                        <li><strong>Humanoidボーンや、Humanoidボーンを子孫に持つボーンにはコンストレイントを設定できない</strong></li>
+                        <li><strong>コンストレイントの参照先はHumanoidボーンでなければならない</strong></li>
+                        <li><strong>回転コピーにおいて、値の「反転」は使用できない</strong></li>
+                    </ul>
+                    <p>Humanoidボーンはアプリ側が制御するためコンストレイントの影響を与えてはならず、またランタイムで処理するためコンストレイントが循環したり連鎖するような構築も出来ないようになっています。</p>
+                    <p>「<strong>Humainodボーンが動いたらコンストレイントでヘルパーも動く、それでおしまい</strong>」というシンプルな構成が求められるようです。</p>
+                    <p><a href="/tips/blender-vrm-constraint-setup/guide-constraint-rule.webp" target="_blank" rel="noopener"><img src="/tips/blender-vrm-constraint-setup/guide-constraint-rule-thumb.webp" alt="" loading="lazy" width="800" height="200"></a></p>
+                    <p>Blenderでは「サイドバー（Nキー）→VRMタブ→Node Constraint」に各コンストレイントの条件が記載されています。</p>
+                    <p>条件を満たしたコンストレイントはリストに追加されてエクスポート対象になり、Unityにインポートした際にも自動でコンストレイントが割り当てられます。</p>
+                    <p>なお、循環依存関連の制約は満たしていなくてもエクスポート出来ましたが、アプリでの動作が保証されないため避けるのが無難かと思います。</p>
+                    <h2 id="前腕手首のコンストレイント">前腕・手首のコンストレイント</h2>
+                    <p><a href="/tips/blender-vrm-constraint-setup/guide-lowerarm.webp" target="_blank" rel="noopener"><img src="/tips/blender-vrm-constraint-setup/guide-lowerarm-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
+                    <p>ボーンコンストレイントの定番、手のひねりを前腕に一部反映するコンストレイントです。</p>
+                    <p>手のY軸回転をコピーするだけで完結する動きのため、短い手順でVRMに対応できます。ボーンの階層構造は以下の通りです。</p>
+                    <ul>
+                        <li>LowerArm
+                            <ul>
+                                <li>Hand</li>
+                                <li>Helper_UpperArm_01 (HandのY軸回転を追従：弱)</li>
+                                <li>Helper_UpperArm_02 (HandのY軸回転を追従：中)</li>
+                                <li>Helper_UpperArm_03 (HandのY軸回転を追従：強)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <p>これらのヘルパーボーンに回転コピーを追加し、<strong>座標軸をY軸のみに、ミックスを加算に、座標空間を両方ともローカル空間に設定</strong>します。あとは各ヘルパーごとに影響値を調整すれば完了です。設定が適切なら「Roll Constraint」のリストにボーン名が追加されます。</p>
+                    <p>また、座標軸を変更すれば膝や肘の回転にも対応可能です。</p>
+                    <h2 id="上腕太もものコンストレイント">上腕・太もものコンストレイント</h2>
+                    <p><a href="/tips/blender-vrm-constraint-setup/guide-upperarm-overview.webp" target="_blank" rel="noopener"><img src="/tips/blender-vrm-constraint-setup/guide-upperarm-overview-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
+                    <p>上腕や太ももの付け根側のひねり回転を抑えるコンストレイントです。</p>
+                    <p>私が制作していたモデルでは上腕ボーンの子にヘルパーを追加し、回転コピーの「反転」を使ってひねりを相殺していました。しかしVRMの制約下ではこの方法は使えません。</p>
+                    <p>そこで上腕とヘルパーは同じ階層に配置し、ヘルパーに「<strong>XZ軸回転を100%コピー</strong>」と「<strong>Y軸回転を任意の割合でコピー</strong>」を行うコンストレイントを設定します。</p>
+                    <p>ただしこれも「使用できるコンストレイントはボーンにつき1つ」の制約があるため、<strong>ヘルパーを2つに分割して親子にする</strong>ことで対応します。ボーン構造は以下の通り。</p>
+                    <ul>
+                        <li>Shoulder
+                            <ul>
+                                <li>UpperArm
+                                    <ul>
+                                        <li>LowerArm</li>
+                                    </ul>
+                                </li>
+                                <li>Helper_UpperArm_Aim (UpperArmのXZ軸回転をコピー)
+                                    <ul>
+                                        <li>Helper_UpperArm_Roll (UpperArmのY軸回転をコピー)</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <p><a href="/tips/blender-vrm-constraint-setup/guide-upperarm-aim.webp" target="_blank" rel="noopener"><img src="/tips/blender-vrm-constraint-setup/guide-upperarm-aim-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
+                    <p>「Helper_UpperArm_Aim」は上腕のXZ軸回転に追従するためのボーンです。</p>
+                    <p>ボーンコンストレイントに「減衰トラック」を追加し、対象ボーンにLowerArmを指定します。これによりLowerArmのヘッド（＝UpperArmのテール）を追いかけるようになり、ひねり以外の上腕の回転を再現できます。</p>
+                    <p><a href="/tips/blender-vrm-constraint-setup/guide-upperarm-roll.webp" target="_blank" rel="noopener"><img src="/tips/blender-vrm-constraint-setup/guide-upperarm-roll-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
+                    <p>Aimヘルパーの子「Helper_UpperArm_Roll」は上腕のY軸回転を任意の割合で追従するボーンです。</p>
+                    <p>前腕のひねりと同じようにY軸のみの「回転コピー」を追加し、お好みで影響度を調整します。これで前腕と同じXZ回転をしつつ、Y軸のみ任意の割合で反映できるようになりました。</p>
+                    <p>なお、<a href="https://github.com/vrm-c/vrm-specification/tree/993a90a5bda9025f3d9e2923ad6dea7506f88553" target="_blank" rel="noopener">サンプルモデル</a>ではこの2つのヘルパーにそれぞれウェイトが振られています。</p>
+                    <p>一方で私は元々ヘルパー1本で制作しており、再調整が面倒＆ウェイトの種類を増やしたくなかったのでRollヘルパーにのみウェイトを割り当てています。これが正しいかは分かりませんが、今のところ問題なく動作しているように見えます。</p>
+                    <h2 id="おまけblenderの回転コピーでy軸回転が飛ぶ話">おまけ：Blenderの回転コピーでY軸回転が飛ぶ話</h2>
+                    <p>以上の手順でコンストレイント設定がVRMに書き出され、Unityでも動作するようになります。</p>
+                    <p>しかし、実際にはBlenderとUnityではコンストレイントの挙動は少し異なり、特にBlenderにおいては意図したものと異なる挙動をする可能性があります。それがこちら。</p>
+                    <p><a href="/tips/blender-vrm-constraint-setup/extra-roll.webp" target="_blank" rel="noopener"><img src="/tips/blender-vrm-constraint-setup/extra-roll-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
+                    <p>（クリックで再生できます）</p>
+                    <p>ボーン構造は先ほどの上腕と同じです。これの上腕にあたるボーンをX軸→Y軸の順に回転させると、90度付近でRollヘルパーのY軸回転が弱まり、ある地点で回転が飛ぶのを確認できます。</p>
+                    <p>これは回転コピーの仕様（座標空間やオイラーのXYZの計算順など）に起因するものと思われ、1軸のみの回転コピーはこのような「思ってたんと違う…」な挙動になります。</p>
+                    <p>これを解消したい場合は<strong>新たに回転コピーを追加し、座標空間を「ワールド空間」、順序を「YXZオイラー角」、ミックスを「置き換え」に設定し、元のコンストレイントの下に配置</strong>します。</p>
+                    <p>これでVRM用のコンストレイントを残しつつ、回転を上書きしてBlenderでも本来意図した（Unityのコンストレイントに近い）挙動に出来ます。ただし、この方法は色々試していた時に偶然見つけたものなので正しい方法なのかは不明です。</p>
+                    <p>また、Unityで問題がなくとも他のアプリで同じことが起きる可能性はあるため、そもそも90度を大きく超えるような回転は控えた方がいいのかもしれません。調査中に見つけた<a href="https://blenderartists.org/t/bone-copy-rotation-glitch/1497006" target="_blank" rel="noopener">Blender Artists Communityの投稿</a>では</p>
+                    <blockquote>
+                        <p>「モデルをこんなポーズにすると見栄えが悪い」という質問に対する答えはたいてい「じゃあ、モデルをそんなポーズにしないで」です。</p>
+                    </blockquote>
+                    <p>と指摘されています。</p>
+                    <hr>
+                    <p>以上、VRM1.0フォーマットにおけるコンストレイントの概要と各部のセットアップ方法などでした。</p>
+                    <p>現状はこれで間に合っていますが、今後も情報の更新や追加があれば適宜アップデートしていこうと思います。</p>
+                    <div class="amazon-ad">
+                        <div class="product-image">
+                            <a href="https://amzn.to/451P9w9" target="_blank" rel="noopener"><img src="https://m.media-amazon.com/images/I/81+uZEZGo-L._SL1500_.jpg" alt="" loading="lazy"></a>
+                        </div>
+                        <div class="product-title">
+                            <a href="https://amzn.to/451P9w9" target="_blank" rel="noopener">スカルプターのための美術解剖学: Anatomy For Sculptors日本語版</a>
+                        </div>
+                    </div>
+                </div>
+                <footer class="post-footer"></footer>
+                <nav class="post-navigation">
+                    <div class="prev-post">
+                        <a href="/tips/ue5-fab-publishing/">Prev: Epic Games Fabにプロジェクトを提出して出品するまでの手順</a>
+                    </div>
+                </nav>
+            </article>
+        </div>
+        <div class="side-content">
+            <aside class="widget profile">
+                <div class="widget-header">
+                    <h2>Profile</h2>
+                </div>
+                <div class="widget-content">
+                    <div class="profile-icon"><img src="/uploads/site/profile.webp" alt="" loading="lazy" width="140" height="140"></div>
+                    <p>Author: 047</p>
+                    <p>ドット絵、イラスト、3Dモデリングなどやっています。Switch2が欲しい。</p>
+                    <div class="social-links">
+                        <div class="social-icon">
+                            <a href="https://arstla.net/" class="icon icon-home" target="_blank" rel="noopener" title="Site"></a>
+                        </div>
+                        <div class="social-icon">
+                            <a href="https://misskey.io/@zeroshina" class="icon icon-bubble" target="_blank" rel="noopener" title="Misskey"></a>
+                        </div>
+                        <div class="social-icon">
+                            <a href="https://zeroshina.jp/index.xml" class="icon icon-rss" target="_blank" rel="noopener" title="RSS"></a>
+                        </div>
+                        <div class="social-icon">
+                            <a href="https://www.buymeacoffee.com/zeroshina" class="icon icon-mug" target="_blank" rel="noopener" title="Buy Me a Coffee"></a>
+                        </div>
+                        <div class="social-banner">
+                            <a href="https://arstla.booth.pm/" target="_blank" rel="noopener" title="BOOTH"><img src="https://asset.booth.pm/static-images/banner/200x40_01.png"></a>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            <aside class="widget custom">
+                <div class="widget-header">
+                    <h2>Amazon Ad</h2>
+                </div>
+                <div class="widget-content">
+                    <div class="amazon-ad">
+                        <div class="product-image">
+                            <a href="https://amzn.to/3PACIjr" target="_blank" rel="noopener"><img src="https://m.media-amazon.com/images/I/9120Os94shL._SL1500_.jpg" alt="" loading="lazy"></a>
+                        </div>
+                        <div class="product-title">
+                            <a href="https://amzn.to/3PACIjr" target="_blank" rel="noopener">ハクメイとミコチ 13巻 (HARTA COMIX)</a>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            <aside class="widget taxnomies categories">
+                <div class="widget-header">
+                    <h2>Categories</h2>
+                </div>
+                <div class="widget-content">
+                    <ul>
+                        <li>
+                            <a href="/categories/game/">ゲーム (40)</a>
+                        </li>
+                        <li>
+                            <a href="/categories/card/">カード (8)</a>
+                        </li>
+                        <li>
+                            <a href="/categories/modeling/">モデリング (5)</a>
+                        </li>
+                        <li>
+                            <a href="/categories/coding/">コーディング (4)</a>
+                        </li>
+                        <li>
+                            <a href="/categories/device/">デバイス (2)</a>
+                        </li>
+                        <li>
+                            <a href="/categories/diary/">日記 (1)</a>
+                        </li>
+                        <li>
+                            <a href="/categories/information/">お知らせ (1)</a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+            <aside class="widget taxnomies tags">
+                <div class="widget-header">
+                    <h2>Tags</h2>
+                </div>
+                <div class="widget-content">
+                    <ul>
+                        <li>
+                            <a href="/tags/steam/">Steam (14)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/dnf/">アラド戦記 (10)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/nintendo-switch/">Nintendo Switch (9)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/mobile-app/">アプリ (8)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/yugioh/">遊戯王 (8)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/blender/">Blender (4)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/unity/">Unity (2)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/unreal-engine/">Unreal Engine (2)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/vr/">VR (2)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/vrm/">VRM (2)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/hugo/">Hugo (1)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/lowpoly/">ローポリ (1)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/powershell/">PowerShell (1)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/sd/">SD (1)</a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+            <aside class="widget recent">
+                <div class="widget-header">
+                    <h2>Recent Blog</h2>
+                </div>
+                <div class="widget-content">
+                    <div class="post">
+                        <div class="post-image">
+                            <a href="/blog/2025-06-16-pokemon-sleep/"><img src="/uploads/blog/2025-06-16-pokemon-sleep-01-thumb.webp" alt="" loading="lazy" width="800" height="600"></a>
+                        </div>
+                        <div class="post-title">
+                            <a href="/blog/2025-06-16-pokemon-sleep/">デデンネを称えよ Pokemon Sleep</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget-header">
+                    <h2>Recent Review</h2>
+                </div>
+                <div class="widget-content">
+                    <div class="post">
+                        <div class="post-image">
+                            <a href="/review/soundpeats-air5/"><img src="/review/soundpeats-air5/cover-thumb.webp" alt="" loading="lazy" width="800" height="450"></a>
+                        </div>
+                        <div class="post-title">
+                            <a href="/review/soundpeats-air5/">音声ガイダンスからの解放 SOUNDPEATS Air5 レビュー</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget-header">
+                    <h2>Recent Artwork</h2>
+                </div>
+                <div class="widget-content">
+                    <div class="post">
+                        <div class="post-image">
+                            <a href="/artwork/lowpoly-256fes-2023/"><img src="/artwork/lowpoly-256fes-2023/cover-thumb.webp" alt="" loading="lazy" width="800" height="450"></a>
+                        </div>
+                        <div class="post-title">
+                            <a href="/artwork/lowpoly-256fes-2023/">ローポリ アルシェインさん in #256fes</a>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            <aside class="widget custom">
+                <div class="widget-header">
+                    <h2>Google Ad</h2>
+                </div>
+                <div class="widget-content">
+                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5700117217719363" crossorigin="anonymous"></script> <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5700117217719363" data-ad-slot="2963772559" data-ad-format="auto" data-full-width-responsive="true"></ins> 
+                    <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </aside>
+            <aside class="widget custom">
+                <div class="widget-header">
+                    <h2>Links</h2>
+                </div>
+                <div class="widget-content">
+                    <ul>
+                        <li>
+                            <a href="/privacy/">プライバシーポリシー</a>
+                        </li>
+                        <li>
+                            <a href="/categories/">カテゴリ一覧</a>
+                        </li>
+                        <li>
+                            <a href="/tags/">タグ一覧</a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </main>
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-row">
+                <span class="footer-item copyright">© 047</span>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

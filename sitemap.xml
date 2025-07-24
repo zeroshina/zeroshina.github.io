@@ -5,15 +5,33 @@
     <loc>https://zeroshina.jp/categories/uncategorized/</loc>
   </url><url>
     <loc>https://zeroshina.jp/</loc>
-    <lastmod>2025-06-16T00:00:00+09:00</lastmod>
+    <lastmod>2025-07-24T00:00:00+09:00</lastmod>
   </url><url>
-    <loc>https://zeroshina.jp/blog/</loc>
-    <lastmod>2025-06-16T00:00:00+09:00</lastmod>
+    <loc>https://zeroshina.jp/tags/blender/</loc>
+    <lastmod>2025-07-24T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://zeroshina.jp/tips/blender-vrm-constraint-setup/</loc>
+    <lastmod>2025-07-24T00:00:00+09:00</lastmod>
   </url><url>
     <loc>https://zeroshina.jp/categories/</loc>
-    <lastmod>2025-06-16T00:00:00+09:00</lastmod>
+    <lastmod>2025-07-24T00:00:00+09:00</lastmod>
   </url><url>
     <loc>https://zeroshina.jp/tags/</loc>
+    <lastmod>2025-07-24T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://zeroshina.jp/tips/</loc>
+    <lastmod>2025-07-24T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://zeroshina.jp/tags/unity/</loc>
+    <lastmod>2025-07-24T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://zeroshina.jp/tags/vrm/</loc>
+    <lastmod>2025-07-24T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://zeroshina.jp/categories/modeling/</loc>
+    <lastmod>2025-07-24T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://zeroshina.jp/blog/</loc>
     <lastmod>2025-06-16T00:00:00+09:00</lastmod>
   </url><url>
     <loc>https://zeroshina.jp/tags/mobile-app/</loc>
@@ -24,9 +42,6 @@
   </url><url>
     <loc>https://zeroshina.jp/blog/2025-06-16-pokemon-sleep/</loc>
     <lastmod>2025-06-16T00:00:00+09:00</lastmod>
-  </url><url>
-    <loc>https://zeroshina.jp/tips/</loc>
-    <lastmod>2025-04-13T00:00:00+09:00</lastmod>
   </url><url>
     <loc>https://zeroshina.jp/blog/2025-04-07-dnf-arad/</loc>
     <lastmod>2025-04-07T00:00:00+09:00</lastmod>
@@ -163,9 +178,6 @@
     <loc>https://zeroshina.jp/tips/hugo-unity-shortcode/</loc>
     <lastmod>2023-11-15T00:00:00+09:00</lastmod>
   </url><url>
-    <loc>https://zeroshina.jp/tags/unity/</loc>
-    <lastmod>2023-11-15T00:00:00+09:00</lastmod>
-  </url><url>
     <loc>https://zeroshina.jp/review/small-sleeve-inner-side-daiso/</loc>
     <lastmod>2023-11-10T00:00:00+09:00</lastmod>
   </url><url>
@@ -202,13 +214,7 @@
     <loc>https://zeroshina.jp/blog/2023-08-04-pokemon-sleep/</loc>
     <lastmod>2023-08-04T00:00:00+09:00</lastmod>
   </url><url>
-    <loc>https://zeroshina.jp/tags/blender/</loc>
-    <lastmod>2023-08-03T00:00:00+09:00</lastmod>
-  </url><url>
     <loc>https://zeroshina.jp/tips/blender-alpha-movie/</loc>
-    <lastmod>2023-08-03T00:00:00+09:00</lastmod>
-  </url><url>
-    <loc>https://zeroshina.jp/categories/modeling/</loc>
     <lastmod>2023-08-03T00:00:00+09:00</lastmod>
   </url><url>
     <loc>https://zeroshina.jp/tips/blender-render-wireframe/</loc>

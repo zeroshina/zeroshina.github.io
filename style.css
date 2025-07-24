@@ -442,6 +442,11 @@ body {
 	margin: var(--space-2) 0;
 }
 
+.post-content blockquote {
+	padding: var(--space-3);
+	border-left: var(--border-main);
+}
+
 .post-content hr {
 	height: 1px;
 	border: none;
