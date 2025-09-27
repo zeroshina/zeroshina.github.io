@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns#">
+    <meta name="generator" content="HTML Tidy for HTML5 for Windows version 5.8.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Minecraftのポーション醸造を自動化する装置の解説です。水入り瓶の作成と補充にも対応しています。">
+    <meta property="og:site_name" content="047">
+    <meta property="og:title" content="Minecraft 水入り瓶の補充もできるポーション自動醸造機 (Java版)">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://zeroshina.jp/tips/minecraft-brewing-machine/">
+    <meta property="og:image" content="https://zeroshina.jp/tips/minecraft-brewing-machine/cover-thumb.webp">
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:description" content="Minecraftのポーション醸造を自動化する装置の解説です。水入り瓶の作成と補充にも対応しています。">
+    <link rel="canonical" href="https://zeroshina.jp/tips/minecraft-brewing-machine/">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" href="/uploads/site/favicon.png">
+    <link rel="stylesheet" href="/lib/icomoon/style.css">
+    <link rel="stylesheet" href="/lib/lightbox/lightbox.css">
+    <script defer type="text/javascript" src="/lib/lightbox/lightbox.js"></script>
+    <title>Minecraft 水入り瓶の補充もできるポーション自動醸造機 (Java版) - 047</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KNSCG1XLPB"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-KNSCG1XLPB');
+    </script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-content">
+            <div class="site-title">
+                <a href="/">047</a>
+            </div>
+            <nav class="site-menu">
+                <div class="menu-item">
+                    <a href="/blog/">Blog</a>
+                </div>
+                <div class="menu-item">
+                    <a href="/review/">Review</a>
+                </div>
+                <div class="menu-item">
+                    <a href="/tips/">Tips</a>
+                </div>
+                <div class="menu-item">
+                    <a href="/artwork/">Artwork</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <main class="site-content">
+        <div class="main-content">
+            <article class="post single section-tips">
+                <header class="post-header">
+                    <h1 class="post-title">Minecraft 水入り瓶の補充もできるポーション自動醸造機 (Java版)</h1>
+                    <div class="post-meta date">
+                        <time class="post-meta-item" datetime="2025-09-28 00:00:00 +0900 JST">2025/09/28</time>
+                    </div>
+                    <div class="post-meta taxonomies taxonomies-category">
+                        <span class="post-meta-title taxonomy">Categories:</span> <span class="post-meta-item term"><a href="/categories/game/">ゲーム</a></span>
+                    </div>
+                    <div class="post-meta taxonomies taxonomies-tag">
+                        <span class="post-meta-title taxonomy">Tags:</span> <span class="post-meta-item term"><a href="/tags/minecraft/">Minecraft</a></span>
+                    </div>
+                </header>
+                <div class="post-content">
+                    <p><a href="/tips/minecraft-brewing-machine/cover.webp" target="_blank" rel="noopener"><img src="/tips/minecraft-brewing-machine/cover-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
+                    <p>どうもこんにちは。久々にMinecraftを遊んだ結果、夢中になって時間と創作意欲を溶かしまくっている者です。</p>
+                    <p>あまりに時間を溶かしてしまったので、せめて何か記事を書いて自分にとってプラスだったと言い張ることにしました。そこで今回は自分用に作ったポーション醸造＋水入り瓶補充装置の紹介を行いたいと思います。</p>
+                    <p>ポーションの自動化で検索すると何でも作れるオールインワン的な装置や、特定のポーションをワンボタンで作れる装置が出てきますが、本記事で扱うのは後者のタイプになります。</p>
+                    <p>…というより、そこで見つけた装置に水入り瓶の作成・補充する機能を加えただけのシンプルな装置です。それゆえ作り方も比較的簡単。</p>
+                    <p>本記事の装置で自動化できるのは以下の工程になります。</p>
+                    <ul>
+                        <li>空のガラス瓶から水入り瓶を作成し、醸造台にセットする</li>
+                        <li>予めセットした材料を順番に醸造台に送り、ポーションを醸造する</li>
+                    </ul>
+                    <p>なお、記事の作成にあたってはJava版のMinecraft 1.21.8のバニラ環境で動作確認を行っています。</p>
+                    <aside>
+                        <h2>目次</h2>
+                        <nav id="TableOfContents">
+                            <ul>
+                                <li>
+                                    <a href="#%E6%A6%82%E8%A6%81">概要</a>
+                                </li>
+                                <li>
+                                    <a href="#%E7%94%A8%E6%84%8F%E3%81%99%E3%82%8B%E3%82%82%E3%81%AE">用意するもの</a>
+                                </li>
+                                <li>
+                                    <a href="#%E6%89%8B%E9%A0%861-%E3%83%9D%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E6%9D%90%E6%96%99%E3%82%92%E6%8A%95%E5%85%A5%E3%81%99%E3%82%8B%E8%A3%85%E7%BD%AE%E3%81%AE%E4%BD%9C%E6%88%90">手順1 ポーション材料を投入する装置の作成</a>
+                                </li>
+                                <li>
+                                    <a href="#%E6%89%8B%E9%A0%862-%E6%B0%B4%E5%85%A5%E3%82%8A%E7%93%B6%E3%82%92%E8%A3%9C%E5%85%85%E3%81%99%E3%82%8B%E8%A3%85%E7%BD%AE%E3%81%AE%E4%BD%9C%E6%88%90">手順2 水入り瓶を補充する装置の作成</a>
+                                </li>
+                                <li>
+                                    <a href="#%E3%81%BE%E3%81%A8%E3%82%81">まとめ</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </aside>
+                    <h2 id="概要">概要</h2>
+                    <p><a href="/tips/minecraft-brewing-machine/overview.webp" target="_blank" rel="noopener"><img src="/tips/minecraft-brewing-machine/overview-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
+                    <p>こちらが装置の全体像です。</p>
+                    <p>サイズは横11、奥行き5、高さ5ブロック。ただし実際にはボタンやレバーの操作が必要なため、手前側にスペースがあった方が使いやすいです。</p>
+                    <p>醸造台は2台で1セットで、これを左右対称に配置して4台にしています。「<strong>醸造台の数＝登録できるプリセットの数、ドロッパーの数＝投入できる材料の種類数</strong>」という感じです。これらの数はお好みで調整可能ですが、本記事ではあくまで醸造台4台、ドロッパー4段の構成で解説させて頂きますので予めご了承ください。</p>
+                    <h2 id="用意するもの">用意するもの</h2>
+                    <ul>
+                        <li>建築用ブロック</li>
+                        <li>醸造台 ×4</li>
+                        <li>チェスト ×4</li>
+                        <li>ホッパー ×24</li>
+                        <li>ドロッパー ×16</li>
+                        <li>ディスペンサー ×2</li>
+                        <li>レッドストーンパウダー ×8</li>
+                        <li>レッドストーンリピーター ×4</li>
+                        <li>レッドストーンコンパレーター ×2</li>
+                        <li>レバー ×2</li>
+                        <li>ボタン ×8</li>
+                        <li>水バケツ ×1~2</li>
+                        <li>空き瓶・各種ポーション材料</li>
+                    </ul>
+                    <p>必要なものは上記の通りです。特に材料の負担が大きいのはホッパーでしょうか。勿論2台構成なら材料はこの半分になります。</p>
+                    <h2 id="手順1-ポーション材料を投入する装置の作成">手順1 ポーション材料を投入する装置の作成</h2>
+                    <p>まずは醸造台にポーション材料を送る装置を作成します。</p>
+                    <p><a href="/tips/minecraft-brewing-machine/guide_01.webp" target="_blank" rel="noopener"><img src="/tips/minecraft-brewing-machine/guide_01-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
+                    <p>画像のように醸造台とホッパーを設置します。</p>
+                    <p>醸造台とホッパーは接続する箇所によって振る舞いが変化します。上面はポーション材料の投入、側面はブレイズパウダーとポーション瓶の投入、底面は作成したポーションの排出ですね。</p>
+                    <p>ただし底面のホッパーは何かしらのポーションが出来た瞬間に取り出してしまうため、全ての工程を終えてから取り出すにはホッパーにレッドストーン信号を送り続ける必要があります。この機能をつけるのは手間なので今回の装置ではポーションの取り出しは手動です。割り切りも大事。</p>
+                    <p><a href="/tips/minecraft-brewing-machine/guide_02.webp" target="_blank" rel="noopener"><img src="/tips/minecraft-brewing-machine/guide_02-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
+                    <p>次にポーション材料を投入するためのドロッパーをホッパーに向けて配置し、下から2段目のドロッパーにボタンを設置します。</p>
+                    <p>ボタンは設置先＋上下左右1マス＋奥1マスに信号を伝達するため、これで上下のドロッパーにも信号が伝達します。<strong>複数の醸造装置を並べる際、省スペースにとドロッパーを隣接させると互いに干渉するため注意しましょう。（一敗）</strong></p>
+                    <p><a href="/tips/minecraft-brewing-machine/guide_03.webp" target="_blank" rel="noopener"><img src="/tips/minecraft-brewing-machine/guide_03-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
+                    <p>4段目のドロッパーには信号が干渉しないようブロックを1つ挟んでボタンを設置します。</p>
+                    <p>今回はドロッパー4段の構成なのでこのような形ですが、もし残留ポーション用などにドロッパーを5段、6段と積む場合は特にブロックを噛ませる必要はありません。2段目と5段目にそれぞれボタンを設置すればOKです。</p>
+                    <p><a href="/tips/minecraft-brewing-machine/guide_04.webp" target="_blank" rel="noopener"><img src="/tips/minecraft-brewing-machine/guide_04-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
+                    <p>ただしその分サイズが大きくなりますし、記事はあくまで4段想定のブロック配置なのでレイアウトが少し不格好になりますが…</p>
+                    <p>ポーションの材料投入部分はこれで完了です。各ドロッパーに適当なアイテムを入れて動作確認をしましょう。ボタンを押して材料が1個ずつホッパー（あるいは醸造台）に流れたら成功です。材料の個数が一致しない場合は他の信号が干渉している場合があります。ドロッパーが隣接していないか、ボタンの位置が適切かをチェックしましょう。</p>
+                    <h2 id="手順2-水入り瓶を補充する装置の作成">手順2 水入り瓶を補充する装置の作成</h2>
+                    <p>次に水入り瓶を醸造台にセットする装置を作ります。</p>
+                    <p><a href="/tips/minecraft-brewing-machine/guide_05.webp" target="_blank" rel="noopener"><img src="/tips/minecraft-brewing-machine/guide_05-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
+                    <p><strong>装置の後ろ側に回り</strong>、醸造台背面にホッパーを接続します。</p>
+                    <p>次にホッパーの上にラージチェストを設置し、さらにチェスト側面にホッパーを接続します。最後にもう一個ホッパーを上に乗せて完了です。このホッパーの上に水源を配置し、生成した水入り瓶をキャッチして醸造台に送り込むという仕組みです。</p>
+                    <p><a href="/tips/minecraft-brewing-machine/guide_06.webp" target="_blank" rel="noopener"><img src="/tips/minecraft-brewing-machine/guide_06-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
+                    <p>ここからはガラス瓶を水入り瓶に変換する装置を作ります。</p>
+                    <p>まずドロッパー3段目の高さにブロックを設置します。これが装置の足場になり、また室内にした時は天井にもなります。</p>
+                    <p><a href="/tips/minecraft-brewing-machine/guide_07.webp" target="_blank" rel="noopener"><img src="/tips/minecraft-brewing-machine/guide_07-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
+                    <p>先ほど最後に設置したホッパーの上に水源を、その隣にディスペンサーを水に向く形で設置します。このディスペンサーに空のガラス瓶を入れ、繰り返し信号を送ることで水入り瓶を自動で量産できます。</p>
+                    <p><a href="/tips/minecraft-brewing-machine/guide_08.webp" target="_blank" rel="noopener"><img src="/tips/minecraft-brewing-machine/guide_08-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
+                    <p>繰り返し信号を送信するために、画像のようにリピーターやコンパレーターを配置してクロック回路を作成します。<strong>コンパレーターは一度右クリックして減算モードにする必要があるので注意</strong>。クロック回路の仕組みは検索すると出てくるのでそちらでドウゾ。私の理解もかなりザックリなので…</p>
+                    <p>一部パウダーの代わりにリピーターを使用しているのはドロッパーへの干渉を防ぐため（＋繰り返しの速度を落とすため）です。これでもホッパーには干渉しますが、動作への影響はほぼないと思われるので無視しています。</p>
+                    <p><a href="/tips/minecraft-brewing-machine/guide_09.webp" target="_blank" rel="noopener"><img src="/tips/minecraft-brewing-machine/guide_09-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
+                    <p>最後に外側にあるリピーターの後ろにブロックとレバーを設置し、レバーの信号がリピーターに届くようにします。丁度ドロッパー4段目のボタンと隣接する形ですね。</p>
+                    <p>以上の回路を反対側にも設置したら完了です。ディスペンサーに空のガラス瓶を10個ほど入れ、レバーをONにして動作確認を行いましょう。小刻みにディスペンサーが作動し、水入り瓶がホッパー、チェストと流れて醸造台にセットされれば成功です。</p>
+                    <p>最初は並んだ醸造台の片方にしか水入り瓶がセットされませんが問題ありません。片方の醸造台とホッパー（8枠分）が一杯になるともう片方にも供給が始まります。</p>
+                    <p>また、この時にドロッパー側がクロック回路によって誤作動を起こしていないかもチェックしておきましょう。ドロッパー内の材料が減っていなければ問題なしです。</p>
+                    <h2 id="まとめ">まとめ</h2>
+                    <p><a href="/tips/minecraft-brewing-machine/guide_10.webp" target="_blank" rel="noopener"><img src="/tips/minecraft-brewing-machine/guide_10-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
+                    <p>あとは実際に作りたいポーションの材料を入れて、問題なくポーションが作成されれば装置は完成です。</p>
+                    <p>材料の送られ方が均一でない場合は他の信号が干渉している可能性があります。干渉しやすいのはドロッパー同士と、ドロッパーとクロック回路部分です。</p>
+                    <p>注意事項として、ディスペンサーに入れるガラス瓶は1スタック（64個）程度にするか、必要な分を確保したらレバーをOFFに戻しましょう。安全装置のない構造なので、チェストやホッパーに入りきらない分はどんどん溢れて無駄になります。</p>
+                    <p>また、今回はクロック回路を左右に分けて個別に水入り瓶を補給できるようにしましたが、この回路を中央に設置することでレバー1本で一括制御することも可能です。</p>
+                    <p><a href="/tips/minecraft-brewing-machine/guide_11.webp" target="_blank" rel="noopener"><img src="/tips/minecraft-brewing-machine/guide_11-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
+                    <p>リピーターによる遅延は必須ではありませんが、トラップドア等で蓋をしておかないとホッパーが処理しきれずこちらも水入り瓶が溢れます。</p>
+                    <p>この場合、左右で補給量を調整することは出来ないため、ディスペンサーに入れるガラス瓶の数で調整することになります。また回路も奥に1ブロック分大きくなりますので、お好みで選びください。</p>
+                    <p><a href="/tips/minecraft-brewing-machine/extra_01.webp" target="_blank" rel="noopener"><img src="/tips/minecraft-brewing-machine/extra_01-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
+                    <p>実際に遊んでいるワールドの醸造室です。4段目のホッパー手前はブロックを置くと材料の補充が出来なくなるためハーフブロックを使用しています。</p>
+                    <p><a href="/tips/minecraft-brewing-machine/extra_02.webp" target="_blank" rel="noopener"><img src="/tips/minecraft-brewing-machine/extra_02-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
+                    <p>醸造室裏側。ディスペンサーの底面が見えているのでそこからガラス瓶を補充できます。私はメンテナンスのために裏側にも1ブロック分の通路を確保していますが、なくても補充は可能です。</p>
+                    <p><a href="/tips/minecraft-brewing-machine/extra_03.webp" target="_blank" rel="noopener"><img src="/tips/minecraft-brewing-machine/extra_03-thumb.webp" alt="" loading="lazy" width="800" height="450"></a></p>
+                    <p>回路のある屋上は湧きつぶしも兼ねてハーフブロックで蓋をしています。</p>
+                    <p>以上、ポーション醸造装置の紹介でした。最後までご覧頂きありがとうございました。</p>
+                    <div class="amazon-ad">
+                        <div class="product-image">
+                            <a href="https://amzn.to/3KsCCel" target="_blank" rel="noopener"><img src="https://m.media-amazon.com/images/I/71z4JpH6vmL._AC_SL1500_.jpg" alt="" loading="lazy"></a>
+                        </div>
+                        <div class="product-title">
+                            <a href="https://amzn.to/3KsCCel" target="_blank" rel="noopener">丸美屋 マインクラフト カレー ポーク＆コーン甘口 160g</a>
+                        </div>
+                    </div>
+                    <p>つい先日、スーパーでMinecraftのカレーを見つけ「いつの間にか食卓にまで進出していたのか」とちょっと驚きました。ゲーム内にカレーが実装される日は来るのでしょうか。</p>
+                </div>
+                <footer class="post-footer"></footer>
+                <nav class="post-navigation">
+                    <div class="prev-post">
+                        <a href="/tips/blender-vrm-constraint-setup/">Prev: Blender VRM1.0におけるボーンコンストレイント設定</a>
+                    </div>
+                </nav>
+            </article>
+        </div>
+        <div class="side-content">
+            <aside class="widget profile">
+                <div class="widget-header">
+                    <h2>Profile</h2>
+                </div>
+                <div class="widget-content">
+                    <div class="profile-icon"><img src="/uploads/site/profile.webp" alt="" loading="lazy" width="140" height="140"></div>
+                    <p>Author: 047</p>
+                    <p>ドット絵、イラスト、3Dモデリングなどやっています。最近はよくドット絵をぽちぽちしています。</p>
+                    <div class="social-links">
+                        <div class="social-icon">
+                            <a href="https://arstla.net/" class="icon icon-home" target="_blank" rel="noopener" title="Site"></a>
+                        </div>
+                        <div class="social-icon">
+                            <a href="https://misskey.io/@zeroshina" class="icon icon-bubble" target="_blank" rel="noopener" title="Misskey"></a>
+                        </div>
+                        <div class="social-icon">
+                            <a href="https://zeroshina.jp/index.xml" class="icon icon-rss" target="_blank" rel="noopener" title="RSS"></a>
+                        </div>
+                        <div class="social-icon">
+                            <a href="https://www.buymeacoffee.com/zeroshina" class="icon icon-mug" target="_blank" rel="noopener" title="Buy Me a Coffee"></a>
+                        </div>
+                        <div class="social-banner">
+                            <a href="https://arstla.booth.pm/" target="_blank" rel="noopener" title="BOOTH"><img src="https://asset.booth.pm/static-images/banner/200x40_01.png"></a>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            <aside class="widget custom">
+                <div class="widget-header">
+                    <h2>Amazon Ad</h2>
+                </div>
+                <div class="widget-content">
+                    <div class="amazon-ad">
+                        <div class="product-image">
+                            <a href="https://amzn.to/3PACIjr" target="_blank" rel="noopener"><img src="https://m.media-amazon.com/images/I/9120Os94shL._SL1500_.jpg" alt="" loading="lazy"></a>
+                        </div>
+                        <div class="product-title">
+                            <a href="https://amzn.to/3PACIjr" target="_blank" rel="noopener">ハクメイとミコチ 13巻 (HARTA COMIX)</a>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            <aside class="widget taxnomies categories">
+                <div class="widget-header">
+                    <h2>Categories</h2>
+                </div>
+                <div class="widget-content">
+                    <ul>
+                        <li>
+                            <a href="/categories/game/">ゲーム (44)</a>
+                        </li>
+                        <li>
+                            <a href="/categories/card/">カード (8)</a>
+                        </li>
+                        <li>
+                            <a href="/categories/modeling/">モデリング (5)</a>
+                        </li>
+                        <li>
+                            <a href="/categories/coding/">コーディング (4)</a>
+                        </li>
+                        <li>
+                            <a href="/categories/device/">デバイス (2)</a>
+                        </li>
+                        <li>
+                            <a href="/categories/diary/">日記 (1)</a>
+                        </li>
+                        <li>
+                            <a href="/categories/information/">お知らせ (1)</a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+            <aside class="widget taxnomies tags">
+                <div class="widget-header">
+                    <h2>Tags</h2>
+                </div>
+                <div class="widget-content">
+                    <ul>
+                        <li>
+                            <a href="/tags/steam/">Steam (16)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/dnf/">アラド戦記 (10)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/nintendo-switch/">Nintendo Switch (9)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/mobile-app/">アプリ (8)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/yugioh/">遊戯王 (8)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/blender/">Blender (4)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/minecraft/">Minecraft (2)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/unity/">Unity (2)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/unreal-engine/">Unreal Engine (2)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/vr/">VR (2)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/vrm/">VRM (2)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/hugo/">Hugo (1)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/lowpoly/">ローポリ (1)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/powershell/">PowerShell (1)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/sd/">SD (1)</a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+            <aside class="widget recent">
+                <div class="widget-header">
+                    <h2>Recent Blog</h2>
+                </div>
+                <div class="widget-content">
+                    <div class="post">
+                        <div class="post-image">
+                            <a href="/blog/2025-09-17-minecraft/"><img src="/uploads/blog/2025-09-17-minecraft-01-thumb.webp" alt="" loading="lazy" width="800" height="450"></a>
+                        </div>
+                        <div class="post-title">
+                            <a href="/blog/2025-09-17-minecraft/">時間と創作意欲をマインしてクラフト Minecraft</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget-header">
+                    <h2>Recent Review</h2>
+                </div>
+                <div class="widget-content">
+                    <div class="post">
+                        <div class="post-image">
+                            <a href="/review/soundpeats-air5/"><img src="/review/soundpeats-air5/cover-thumb.webp" alt="" loading="lazy" width="800" height="450"></a>
+                        </div>
+                        <div class="post-title">
+                            <a href="/review/soundpeats-air5/">音声ガイダンスからの解放 SOUNDPEATS Air5 レビュー</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget-header">
+                    <h2>Recent Artwork</h2>
+                </div>
+                <div class="widget-content">
+                    <div class="post">
+                        <div class="post-image">
+                            <a href="/artwork/lowpoly-256fes-2023/"><img src="/artwork/lowpoly-256fes-2023/cover-thumb.webp" alt="" loading="lazy" width="800" height="450"></a>
+                        </div>
+                        <div class="post-title">
+                            <a href="/artwork/lowpoly-256fes-2023/">ローポリ アルシェインさん in #256fes</a>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            <aside class="widget custom">
+                <div class="widget-header">
+                    <h2>Google Ad</h2>
+                </div>
+                <div class="widget-content">
+                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5700117217719363" crossorigin="anonymous"></script> <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5700117217719363" data-ad-slot="2963772559" data-ad-format="auto" data-full-width-responsive="true"></ins> 
+                    <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </aside>
+            <aside class="widget custom">
+                <div class="widget-header">
+                    <h2>Links</h2>
+                </div>
+                <div class="widget-content">
+                    <ul>
+                        <li>
+                            <a href="/privacy/">プライバシーポリシー</a>
+                        </li>
+                        <li>
+                            <a href="/categories/">カテゴリ一覧</a>
+                        </li>
+                        <li>
+                            <a href="/tags/">タグ一覧</a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </main>
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-row">
+                <span class="footer-item copyright">© 047</span>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -7,8 +7,15 @@
     <generator>Hugo</generator>
     <language>ja</language>
     <copyright>© 047</copyright>
-    <lastBuildDate>Wed, 17 Sep 2025 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 28 Sep 2025 00:00:00 +0900</lastBuildDate>
     <atom:link href="https://zeroshina.jp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Minecraft 水入り瓶の補充もできるポーション自動醸造機 (Java版)</title>
+      <link>https://zeroshina.jp/tips/minecraft-brewing-machine/</link>
+      <pubDate>Sun, 28 Sep 2025 00:00:00 +0900</pubDate>
+      <guid>https://zeroshina.jp/tips/minecraft-brewing-machine/</guid>
+      <description>&lt;p&gt;どうもこんにちは。久々にMinecraftを遊んだ結果、夢中になって時間と創作意欲を溶かしまくっている者です。&lt;/p&gt;&#xA;&lt;p&gt;あまりに時間を溶かしてしまったので、せめて何か記事を書いて自分にとってプラスだったと言い張ることにしました。そこで今回は自分用に作ったポーション醸造＋水入り瓶補充装置の紹介を行いたいと思います。&lt;/p&gt;&#xA;&lt;p&gt;ポーションの自動化で検索すると何でも作れるオールインワン的な装置や、特定のポーションをワンボタンで作れる装置が出てきますが、本記事で扱うのは後者のタイプになります。&lt;/p&gt;&#xA;&lt;p&gt;…というより、そこで見つけた装置に水入り瓶の作成・補充する機能を加えただけのシンプルな装置です。それゆえ作り方も比較的簡単。&lt;/p&gt;&#xA;&lt;p&gt;本記事の装置で自動化できるのは以下の工程になります。&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;空のガラス瓶から水入り瓶を作成し、醸造台にセットする&lt;/li&gt;&#xA;&lt;li&gt;予めセットした材料を順番に醸造台に送り、ポーションを醸造する&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;なお、記事の作成にあたってはJava版のMinecraft 1.21.8のバニラ環境で動作確認を行っています。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>時間と創作意欲をマインしてクラフト Minecraft</title>
       <link>https://zeroshina.jp/blog/2025-09-17-minecraft/</link>
