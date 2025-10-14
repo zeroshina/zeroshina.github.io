@@ -5,10 +5,19 @@
     <loc>https://zeroshina.jp/categories/uncategorized/</loc>
   </url><url>
     <loc>https://zeroshina.jp/</loc>
-    <lastmod>2025-09-28T00:00:00+09:00</lastmod>
+    <lastmod>2025-10-14T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://zeroshina.jp/blog/</loc>
+    <lastmod>2025-10-14T00:00:00+09:00</lastmod>
   </url><url>
     <loc>https://zeroshina.jp/categories/</loc>
-    <lastmod>2025-09-28T00:00:00+09:00</lastmod>
+    <lastmod>2025-10-14T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://zeroshina.jp/blog/2025-10-14-covid-nimbus/</loc>
+    <lastmod>2025-10-14T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://zeroshina.jp/categories/diary/</loc>
+    <lastmod>2025-10-14T00:00:00+09:00</lastmod>
   </url><url>
     <loc>https://zeroshina.jp/tags/minecraft/</loc>
     <lastmod>2025-09-28T00:00:00+09:00</lastmod>
@@ -24,9 +33,6 @@
   </url><url>
     <loc>https://zeroshina.jp/categories/game/</loc>
     <lastmod>2025-09-28T00:00:00+09:00</lastmod>
-  </url><url>
-    <loc>https://zeroshina.jp/blog/</loc>
-    <lastmod>2025-09-17T00:00:00+09:00</lastmod>
   </url><url>
     <loc>https://zeroshina.jp/blog/2025-09-17-minecraft/</loc>
     <lastmod>2025-09-17T00:00:00+09:00</lastmod>
@@ -245,9 +251,6 @@
     <lastmod>2023-07-24T00:00:00+09:00</lastmod>
   </url><url>
     <loc>https://zeroshina.jp/blog/2023-07-20-wordpress-to-hugo/</loc>
-    <lastmod>2023-07-20T00:00:00+09:00</lastmod>
-  </url><url>
-    <loc>https://zeroshina.jp/categories/diary/</loc>
     <lastmod>2023-07-20T00:00:00+09:00</lastmod>
   </url><url>
     <loc>https://zeroshina.jp/blog/2023-07-14-botw/</loc>
