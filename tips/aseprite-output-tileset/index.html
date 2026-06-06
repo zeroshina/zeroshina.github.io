@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns#">
+    <meta name="generator" content="HTML Tidy for HTML5 for Windows version 5.8.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Asepriteで制作したタイルセットを分割保存するスクリプトです。空画像のスキップと差分の出力に対応しています。">
+    <meta property="og:site_name" content="047">
+    <meta property="og:title" content="Aseprite タイルセットの分割保存スクリプト（空画像スキップ＆差分機能付き）">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://zeroshina.jp/tips/aseprite-output-tileset/">
+    <meta property="og:image" content="https://zeroshina.jp/uploads/site/cover-scroll-thumb.webp">
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:description" content="Asepriteで制作したタイルセットを分割保存するスクリプトです。空画像のスキップと差分の出力に対応しています。">
+    <link rel="canonical" href="https://zeroshina.jp/tips/aseprite-output-tileset/">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" href="/uploads/site/favicon.png">
+    <link rel="stylesheet" href="/lib/icomoon/style.css">
+    <link rel="stylesheet" href="/lib/lightbox/lightbox.css">
+    <script defer type="text/javascript" src="/lib/lightbox/lightbox.js"></script>
+    <title>Aseprite タイルセットの分割保存スクリプト（空画像スキップ＆差分機能付き） - 047</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KNSCG1XLPB"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-KNSCG1XLPB');
+    </script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-content">
+            <div class="site-title">
+                <a href="/">047</a>
+            </div>
+            <nav class="site-menu">
+                <div class="menu-item">
+                    <a href="/blog/">Blog</a>
+                </div>
+                <div class="menu-item">
+                    <a href="/review/">Review</a>
+                </div>
+                <div class="menu-item">
+                    <a href="/tips/">Tips</a>
+                </div>
+                <div class="menu-item">
+                    <a href="/artwork/">Artwork</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <main class="site-content">
+        <div class="main-content">
+            <article class="post single section-tips">
+                <header class="post-header">
+                    <h1 class="post-title">Aseprite タイルセットの分割保存スクリプト（空画像スキップ＆差分機能付き）</h1>
+                    <div class="post-meta date">
+                        <time class="post-meta-item" datetime="2026-06-06 00:00:00 +0900 JST">2026/06/06</time>
+                    </div>
+                    <div class="post-meta taxonomies taxonomies-category">
+                        <span class="post-meta-title taxonomy">Categories:</span> <span class="post-meta-item term"><a href="/categories/coding/">コーディング</a></span>
+                    </div>
+                    <div class="post-meta taxonomies taxonomies-tag">
+                        <span class="post-meta-title taxonomy">Tags:</span> <span class="post-meta-item term"><a href="/tags/aseprite/">Aseprite</a></span>
+                    </div>
+                </header>
+                <div class="post-content">
+                    <p>先日ドット絵のアイコン素材集を公開したのですが、その際にAsepriteで制作したタイルセットを個別の画像に出力したい場面がありました。</p>
+                    <p>Asepriteは拡張スクリプトに対応しており、指定したサイズで分割保存するスクリプトも検索すれば出てきます。私も以前はそのスクリプトをお借りしていたのですが、作業効率化のためにいくつか機能を加えて自作することにしました。仕様は以下の通りです。</p>
+                    <ul>
+                        <li>指定サイズでタイルセットを分割して出力する</li>
+                        <li><strong>何も描かれていない透明な画像は出力をスキップする</strong></li>
+                        <li>ファイル名にはXY座標に基づいた連番を含め、スキップした画像の連番は空けておく</li>
+                        <li><strong>差分レイヤーを1つ指名し、そのレイヤーの表示と非表示、両方の状態で出力を行う</strong></li>
+                        <li>差分有効時はフォルダとファイル名に差分レイヤー名を含める</li>
+                    </ul>
+                    <p>欲しかったのは太字の「空画像のスキップ」と「差分の出力」ですね。これがないと出力の度にファイルの数だけ手動で作業する羽目になるので…</p>
+                    <p>以上の仕様で自作したものがこちらになります。ただし、私はAsepriteの拡張スクリプトはおろかLuaスクリプトも初めて触る素人ですので、色々と作法がなってないかもしれません。あくまで自己責任でお願いしますネ。</p>
+                    <div class="highlight">
+                        <div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+                            <table style="border-spacing:0;padding:0;margin:0;border:0;">
+                                <tr>
+                                    <td style="vertical-align:top;padding:0;margin:0;border:0;">
+                                        <pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+</span></code></pre>
+                                    </td>
+                                    <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+                                        <pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lua" data-lang="lua"><span style="display:flex;"><span><span style="color:#75715e">-- 分割サイズと差分レイヤー名の指定</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">local</span> width <span style="color:#f92672">=</span> <span style="color:#ae81ff">16</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">local</span> height <span style="color:#f92672">=</span> <span style="color:#ae81ff">16</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">local</span> variation <span style="color:#f92672">=</span> <span style="color:#e6db74">"outline"</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">local</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">saveTiles</span>(sprite, dir, name)  
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">-- レイヤーを統合したRGBカラーモードのイメージを生成</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">local</span> image <span style="color:#f92672">=</span> Image(sprite.width, sprite.height, ColorMode.RGB)
+</span></span><span style="display:flex;"><span>  image:drawSprite(sprite)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">-- タイルごとに保存処理を実行（端数は実行しない）</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> y <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, sprite.height <span style="color:#f92672">/</span> height <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, sprite.width <span style="color:#f92672">/</span> width <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">-- 保存用イメージを作成して描画を行う（座標指定はマイナスになる点に注意）</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">local</span> tile <span style="color:#f92672">=</span> Image(width, height)
+</span></span><span style="display:flex;"><span>      tile:drawImage(image, Point(<span style="color:#f92672">-</span>x <span style="color:#f92672">*</span> width, <span style="color:#f92672">-</span>y <span style="color:#f92672">*</span> height))      
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">-- 描画されているイメージのみ保存する</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (<span style="color:#f92672">not</span> tile:isPlain(Color{ r<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, g<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, b<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, a<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> })) <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>        tile:saveAs(string.format(<span style="color:#e6db74">"%s/%s/%s_%d_%d.png"</span>, dir, name, name, y, x))
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">local</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">saveSprite</span>(sprite)
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">-- パス情報を取得</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">local</span> dir <span style="color:#f92672">=</span> app.fs.filePath(sprite.filename)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">local</span> name <span style="color:#f92672">=</span> app.fs.fileTitle(sprite.filename)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">-- 差分レイヤーが存在する場合は差分ありの出力を行う</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> _, layer <span style="color:#66d9ef">in</span> ipairs(sprite.layers) <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> layer.name <span style="color:#f92672">==</span> variation <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>      layer.isVisible <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>      saveTiles(sprite, dir, name<span style="color:#f92672">..</span><span style="color:#e6db74">"_"</span><span style="color:#f92672">..</span>variation)
+</span></span><span style="display:flex;"><span>      layer.isVisible <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">-- 差分なしの出力</span>
+</span></span><span style="display:flex;"><span>  saveTiles(sprite, dir, name)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 現在開いているファイルを対象に保存を実行</span>
+</span></span><span style="display:flex;"><span>saveSprite(app.activeSprite)
+</span></span></code></pre>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <p>スクリプトを保存する場所はAsepriteの「ファイル」→「スクリプト」→「スクリプトフォルダを開く」で確認できます。そこに上記スクリプトを.lua形式で保存してください。</p>
+                    <p>保存後は再起動か同メニューの「スクリプトフォルダを再スキャン」を選択。スクリプトのメニューに保存したファイルのタイトルが表示されるようになるので、そこから実行できます。</p>
+                    <p>あとはご自身の環境に合わせて分割サイズと差分レイヤー名を指定してください。スクリプト冒頭に記述があります。</p>
+                    <p>以上、Asepriteのタイルセット出力用スクリプトでした。</p>
+                    <p>このスクリプトのために出品作業が1日止まりはしたものの、おかげで無駄な作業が減りましたし、以前お借りしていたものよりも処理速度がかなり改善されたので、そこは自作してよかったですね。</p>
+                    <p>ループ毎に保存用イメージを生成していたりと気になる点はいくつかあるのですが、変に触って挙動が変わっちゃうのもイヤなので一旦これで公開としておきます。今後も機能が増えたらここに追記するかもしれません。</p>
+                    <p><a href="https://arstla.booth.pm/items/8351640" target="_blank" rel="noopener">ドット絵アイコン素材集『16×16 Pixel Icon Collection』</a></p>
+                </div>
+                <footer class="post-footer"></footer>
+                <nav class="post-navigation">
+                    <div class="prev-post">
+                        <a href="/tips/minecraft-brewing-machine/">Prev: Minecraft 水入り瓶の補充もできるポーション自動醸造機 (Java版)</a>
+                    </div>
+                </nav>
+            </article>
+        </div>
+        <div class="side-content">
+            <aside class="widget profile">
+                <div class="widget-header">
+                    <h2>Profile</h2>
+                </div>
+                <div class="widget-content">
+                    <div class="profile-icon"><img src="/uploads/site/profile.webp" alt="" loading="lazy" width="140" height="140"></div>
+                    <p>Author: 047</p>
+                    <p>ドット絵、イラスト、3Dモデリングなどやっています。最近はよくドット絵をぽちぽちしています。</p>
+                    <div class="social-links">
+                        <div class="social-icon">
+                            <a href="https://arstla.net/" class="icon icon-home" target="_blank" rel="noopener" title="Site"></a>
+                        </div>
+                        <div class="social-icon">
+                            <a href="https://misskey.io/@zeroshina" class="icon icon-bubble" target="_blank" rel="noopener" title="Misskey"></a>
+                        </div>
+                        <div class="social-icon">
+                            <a href="https://zeroshina.jp/index.xml" class="icon icon-rss" target="_blank" rel="noopener" title="RSS"></a>
+                        </div>
+                        <div class="social-icon">
+                            <a href="https://www.buymeacoffee.com/zeroshina" class="icon icon-mug" target="_blank" rel="noopener" title="Buy Me a Coffee"></a>
+                        </div>
+                        <div class="social-banner">
+                            <a href="https://arstla.booth.pm/" target="_blank" rel="noopener" title="BOOTH"><img src="https://asset.booth.pm/static-images/banner/200x40_01.png"></a>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            <aside class="widget custom">
+                <div class="widget-header">
+                    <h2>Amazon Ad</h2>
+                </div>
+                <div class="widget-content">
+                    <div class="amazon-ad">
+                        <div class="product-image">
+                            <a href="https://amzn.to/4vBT6E0" target="_blank" rel="noopener"><img src="https://m.media-amazon.com/images/I/71H4GberYjL._SL1200_.jpg" alt="" loading="lazy"></a>
+                        </div>
+                        <div class="product-title">
+                            <a href="https://amzn.to/4vBT6E0" target="_blank" rel="noopener">こんづくし 2 (ヤングジャンプコミックスDIGITAL)</a>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            <aside class="widget taxnomies categories">
+                <div class="widget-header">
+                    <h2>Categories</h2>
+                </div>
+                <div class="widget-content">
+                    <ul>
+                        <li>
+                            <a href="/categories/game/">ゲーム (47)</a>
+                        </li>
+                        <li>
+                            <a href="/categories/card/">カード (9)</a>
+                        </li>
+                        <li>
+                            <a href="/categories/coding/">コーディング (5)</a>
+                        </li>
+                        <li>
+                            <a href="/categories/modeling/">モデリング (5)</a>
+                        </li>
+                        <li>
+                            <a href="/categories/device/">デバイス (2)</a>
+                        </li>
+                        <li>
+                            <a href="/categories/diary/">日記 (2)</a>
+                        </li>
+                        <li>
+                            <a href="/categories/information/">お知らせ (1)</a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+            <aside class="widget taxnomies tags">
+                <div class="widget-header">
+                    <h2>Tags</h2>
+                </div>
+                <div class="widget-content">
+                    <ul>
+                        <li>
+                            <a href="/tags/steam/">Steam (17)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/nintendo-switch/">Nintendo Switch (11)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/dnf/">アラド戦記 (10)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/yugioh/">遊戯王 (9)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/mobile-app/">アプリ (8)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/blender/">Blender (4)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/minecraft/">Minecraft (2)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/unity/">Unity (2)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/unreal-engine/">Unreal Engine (2)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/vr/">VR (2)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/vrm/">VRM (2)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/aseprite/">Aseprite (1)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/hugo/">Hugo (1)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/lowpoly/">ローポリ (1)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/powershell/">PowerShell (1)</a>
+                        </li>
+                        <li>
+                            <a href="/tags/sd/">SD (1)</a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+            <aside class="widget recent">
+                <div class="widget-header">
+                    <h2>Recent Review</h2>
+                </div>
+                <div class="widget-content">
+                    <div class="post">
+                        <div class="post-image">
+                            <a href="/review/small-sleeve-inner-side-br/"><img src="/review/small-sleeve-inner-side-br/cover-thumb.webp" alt="" loading="lazy" width="800" height="450"></a>
+                        </div>
+                        <div class="post-title">
+                            <a href="/review/small-sleeve-inner-side-br/">ほぼ理想の横入れインナースリーブ ブレア クリスタルスリーブ レビュー</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget-header">
+                    <h2>Recent Blog</h2>
+                </div>
+                <div class="widget-content">
+                    <div class="post">
+                        <div class="post-image">
+                            <a href="/blog/2026-04-17-elin/"><img src="/uploads/blog/2026-04-17-elin-01-thumb.webp" alt="" loading="lazy" width="800" height="450"></a>
+                        </div>
+                        <div class="post-title">
+                            <a href="/blog/2026-04-17-elin/">Elin1000日、現実100日</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget-header">
+                    <h2>Recent Artwork</h2>
+                </div>
+                <div class="widget-content">
+                    <div class="post">
+                        <div class="post-image">
+                            <a href="/artwork/lowpoly-256fes-2023/"><img src="/artwork/lowpoly-256fes-2023/cover-thumb.webp" alt="" loading="lazy" width="800" height="450"></a>
+                        </div>
+                        <div class="post-title">
+                            <a href="/artwork/lowpoly-256fes-2023/">ローポリ アルシェインさん in #256fes</a>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            <aside class="widget custom">
+                <div class="widget-header">
+                    <h2>Google Ad</h2>
+                </div>
+                <div class="widget-content">
+                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5700117217719363" crossorigin="anonymous"></script> <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5700117217719363" data-ad-slot="2963772559" data-ad-format="auto" data-full-width-responsive="true"></ins> 
+                    <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </aside>
+            <aside class="widget custom">
+                <div class="widget-header">
+                    <h2>Links</h2>
+                </div>
+                <div class="widget-content">
+                    <ul>
+                        <li>
+                            <a href="/privacy/">プライバシーポリシー</a>
+                        </li>
+                        <li>
+                            <a href="/categories/">カテゴリ一覧</a>
+                        </li>
+                        <li>
+                            <a href="/tags/">タグ一覧</a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </main>
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-row">
+                <span class="footer-item copyright">© 047</span>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

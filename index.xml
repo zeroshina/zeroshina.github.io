@@ -7,8 +7,15 @@
     <generator>Hugo</generator>
     <language>ja</language>
     <copyright>© 047</copyright>
-    <lastBuildDate>Thu, 04 Jun 2026 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 06 Jun 2026 00:00:00 +0900</lastBuildDate>
     <atom:link href="https://zeroshina.jp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Aseprite タイルセットの分割保存スクリプト（空画像スキップ＆差分機能付き）</title>
+      <link>https://zeroshina.jp/tips/aseprite-output-tileset/</link>
+      <pubDate>Sat, 06 Jun 2026 00:00:00 +0900</pubDate>
+      <guid>https://zeroshina.jp/tips/aseprite-output-tileset/</guid>
+      <description>&lt;p&gt;先日ドット絵のアイコン素材集を公開したのですが、その際にAsepriteで制作したタイルセットを個別の画像に出力したい場面がありました。&lt;/p&gt;&#xA;&lt;p&gt;Asepriteは拡張スクリプトに対応しており、指定したサイズで分割保存するスクリプトも検索すれば出てきます。私も以前はそのスクリプトをお借りしていたのですが、作業効率化のためにいくつか機能を加えて自作することにしました。仕様は以下の通りです。&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;指定サイズでタイルセットを分割して出力する&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;何も描かれていない透明な画像は出力をスキップする&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;li&gt;ファイル名にはXY座標に基づいた連番を含め、スキップした画像の連番は空けておく&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;差分レイヤーを1つ指名し、そのレイヤーの表示と非表示、両方の状態で出力を行う&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;li&gt;差分有効時はフォルダとファイル名に差分レイヤー名を含める&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;欲しかったのは太字の「空画像のスキップ」と「差分の出力」ですね。これがないと出力の度にファイルの数だけ手動で作業する羽目になるので…&lt;/p&gt;&#xA;&lt;p&gt;以上の仕様で自作したものがこちらになります。ただし、私はAsepriteの拡張スクリプトはおろかLuaスクリプトも初めて触る素人ですので、色々と作法がなってないかもしれません。あくまで自己責任でお願いしますネ。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>ほぼ理想の横入れインナースリーブ ブレア クリスタルスリーブ レビュー</title>
       <link>https://zeroshina.jp/review/small-sleeve-inner-side-br/</link>
