@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ドット絵 on 047</title>
+    <link>https://zeroshina.jp/tags/pixelart/</link>
+    <description>Recent content in ドット絵 on 047</description>
+    <generator>Hugo</generator>
+    <language>ja</language>
+    <copyright>© 047</copyright>
+    <lastBuildDate>Sun, 07 Jun 2026 00:00:00 +0900</lastBuildDate>
+    <atom:link href="https://zeroshina.jp/tags/pixelart/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ドット絵アイコン素材集『16×16 Pixel Icon Collection』</title>
+      <link>https://zeroshina.jp/artwork/asset-pic16/</link>
+      <pubDate>Sun, 07 Jun 2026 00:00:00 +0900</pubDate>
+      <guid>https://zeroshina.jp/artwork/asset-pic16/</guid>
+      <description>&lt;p&gt;先月ドット絵アイコンのアセットを販売開始したので、こちらにも記事を残しておくことにしました。製品は各種ストアにて販売中です。（宣伝）&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://arstla.booth.pm/items/8351640&#34;&#xD;&#xA;  &#xD;&#xA;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;BOOTH&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.dlsite.com/home/work/=/product_id/RJ01631038.html&#34;&#xD;&#xA;  &#xD;&#xA;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;DLSite&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://assetstore.unity.com/packages/2d/textures-materials/food/16x16-pixel-icons-food-346566&#34;&#xD;&#xA;  &#xD;&#xA;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Unity Asset Store&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.fab.com/ja/listings/985ccdcd-4be2-48a5-8f31-bcfaa44d6077&#34;&#xD;&#xA;  &#xD;&#xA;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;FAB&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://arstla.itch.io/pixel-icon-collection-16&#34;&#xD;&#xA;  &#xD;&#xA;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;itch.io&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Aseprite タイルセットの分割保存スクリプト（空画像スキップ＆差分機能付き）</title>
+      <link>https://zeroshina.jp/tips/aseprite-output-tileset/</link>
+      <pubDate>Sat, 06 Jun 2026 00:00:00 +0900</pubDate>
+      <guid>https://zeroshina.jp/tips/aseprite-output-tileset/</guid>
+      <description>&lt;p&gt;先日&lt;a href=&#34;https://zeroshina.jp/artwork/asset-pic16/&#34;&#xD;&#xA;  &#xD;&#xA;  &gt;ドット絵のアイコン素材集&lt;/a&gt;を公開したのですが、その際にAsepriteで制作したタイルセットを個別の画像に出力したい場面がありました。&lt;/p&gt;&#xA;&lt;p&gt;Asepriteは拡張スクリプトに対応しており、指定したサイズで分割保存するスクリプトも検索すれば出てきます。私も以前はそのスクリプトをお借りしていたのですが、作業効率化のためにいくつか機能を加えて自作することにしました。仕様は以下の通りです。&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;指定サイズでタイルセットを分割して出力する&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;何も描かれていない透明な画像は出力をスキップする&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;li&gt;ファイル名にはXY座標に基づいた連番を含め、スキップした画像の連番は空けておく&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;差分レイヤーを1つ指名し、そのレイヤーの表示と非表示、両方の状態で出力を行う&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;li&gt;差分有効時はフォルダとファイル名に差分レイヤー名を含める&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;欲しかったのは太字の「空画像のスキップ」と「差分の出力」ですね。これがないと出力の度にファイルの数だけ手動で作業する羽目になるので…&lt;/p&gt;&#xA;&lt;p&gt;以上の仕様で自作したものがこちらになります。ただし、私はAsepriteの拡張スクリプトはおろかLuaスクリプトも初めて触る素人ですので、色々と作法がなってないかもしれません。あくまで自己責任でお願いしますネ。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
